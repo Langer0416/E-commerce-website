@@ -68,8 +68,7 @@ public class ProductService {
                 .addParameter("quantity",quantity)
                 .addParameter("picture",picture)
                 .executeUpdate();
-
-            return "success";
+            return "Success";
         }
     }
     int count;
@@ -87,6 +86,26 @@ public class ProductService {
         }
         else{
             return "fail";
+        }
+    }
+int b;
+    public String registerProduct(String account,String name,Integer phone,String password) {
+        try (Connection connection = sql2oDbHandler.getConnector().open()) {
+            String query = "Insert INTO project.customer(ACCOUNT,NAME,PHONE_NUMBER,PASSWORD) VALUES(:account,:name,:phone,:password)";
+
+                b=connection.createQuery(query)
+                .addParameter("account", account)
+                .addParameter("name", name)
+                .addParameter("phone", phone)
+                .addParameter("password", password)
+                .executeUpdate()
+                    .getKey(int.class);
+            if(b==0) {
+                return "success";
+            }
+            else{
+                return "Fail";
+            }
         }
     }
 }
