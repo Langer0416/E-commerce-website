@@ -46,4 +46,13 @@ public class ProductController {
     ){
         return productManager.updateProduct(name,stock, price,quantity, picture);
     }
+
+    @RequestMapping(value="/login", method=RequestMethod.GET)
+    @ResponseBody
+    public String login(
+        @RequestParam("account")  String account,
+        @RequestParam("password")  String password
+    ){
+        return productManager.loginProduct(account,password);
+    }
 }

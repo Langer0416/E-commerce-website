@@ -74,30 +74,31 @@
 <form id="login_form">
     <div class="form-group">
         <label for="account">帳號:</label>
-        <input type="text" id="game_name_text" aria-label="account_text">
+        <input type="text" id="account_text" aria-label="account_text">
     </div>
     <div class="form-group">
         <label for="password">密碼:</label>
-        <input type="text" id="password_text">
+        <input type="text" id="password_text" aria-label="password_text">
     </div>
     <button class="btn btn-outline-success" type="button" id="login_button">login</button>
 </form>
 <script>
 var i = 0;
-    $('#add_button').click( function(){
+    $('#login_button').click( function(){
+        //console.log(1);
         //$('#game_name_text').val(++i);
-        update_product();
+        login();
     });
 
-    function login_product()
+    function login()
     {
         $.ajax({
             // The URL for the request
-            url: "login_product" ,
+            url: "login" ,
 
             data: {
-                game_name : $('#account_text').val(),
-                img_url : $('#password_text').val(),
+                account : $('#account_text').val(),
+                password : $('#password_text').val(),
             },
 
             // Whether this is a POST or GET request
@@ -107,10 +108,13 @@ var i = 0;
             dataType : "text",
         })
         .done(function( text ) {
-            if(text == "Success")
-                alert("pass");
-            else
-                alert("fail");
+            if(text == "Success"){
+                alert("登入成功");
+                location.href='index.html';
+                }
+            else{
+                alert("密碼錯誤若無帳密請先註冊");
+                }
         })
         .fail( function(xhr, status, errorThrown) {
             console.log( "Sorry, there was a problem!" );

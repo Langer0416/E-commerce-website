@@ -5,6 +5,7 @@ import team.sep.teamsep.database.Sql2oDbHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.sql2o.Connection;
+import team.sep.teamsep.model.Worker;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,5 +72,21 @@ public class ProductService {
             return "success";
         }
     }
+    int count;
+    public String loginProduct(String account,String password) {
+        try (Connection connection = sql2oDbHandler.getConnector().open()) {
+            String query = "SELECT count(*) as total FROM project.worker WHERE ACCOUNT=:account and PASSWORD =:password";
 
+            count=connection.createQuery(query)
+                .addParameter("account", account)
+                .addParameter("password", password)
+                .executeScalar(Integer.class);
+        }
+        if(count>0) {
+            return "Success";
+        }
+        else{
+            return "fail";
+        }
+    }
 }
