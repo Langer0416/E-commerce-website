@@ -5,9 +5,7 @@ import team.sep.teamsep.database.Sql2oDbHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.sql2o.Connection;
-import team.sep.teamsep.model.Worker;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -26,7 +24,6 @@ public class ProductService {
             return connection.createQuery(query).executeAndFetch(Product.class);
         }
     }
-
     public List<Product> getProducts(String keyword) {
         try (Connection connection = sql2oDbHandler.getConnector().open()) {
             String query = "select PRODUCT_NAME name,PRODUCT_ID id,INSTOCK stock,PICTURE picture,PRICE price,QUANTITY quantity"
@@ -37,6 +34,21 @@ public class ProductService {
                 .executeAndFetch(Product.class);
         }
     }
+
+    //List<Product> first = 0;
+   /* public String InsertIntoCar1(Integer id) {
+        try (Connection connection = sql2oDbHandler.getConnector().open()) {
+            String query = "select PRODUCT_NAME name,PRODUCT_ID id,INSTOCK stock,PICTURE picture,PRICE price,QUANTITY quantity"
+                    + " FROM project.product where PRODUCT_ID = : id";
+
+            System.out.println(query);
+            connection.createQuery(query)
+                    .addParameter("id",id)
+                    .executeUpdate();
+
+            return "success";
+        }
+    }*/
 
 
     public String addProduct(String name, Integer stock,Integer price,Integer quantity,String picture) {
@@ -108,4 +120,5 @@ int b;
             }
         }
     }
+
 }
