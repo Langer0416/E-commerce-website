@@ -23,6 +23,12 @@ public class ProductController {
         return productManager.getProducts(keyword);
     }
 
+    /*@RequestMapping(value= "/index", method= RequestMethod.GET)
+    @ResponseBody
+    public String InsertIntoCar1(
+            @RequestParam("id")  Integer id
+    ){
+        return productManager.InsertIntoCar1(id);}*/
 
     @RequestMapping(value= "/add", method= RequestMethod.GET)
     @ResponseBody
