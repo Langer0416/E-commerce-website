@@ -1,6 +1,6 @@
 package team.sep.teamsep.model;
 
-public class Sellor {
+public class Seller {
 
   private String account;
 
@@ -10,10 +10,10 @@ public class Sellor {
 
   private String password;
 
-  public Sellor() {
+  public Seller() {
   }
 
-  public Sellor(String account, String name,int number,String password) {
+  public Seller(String account, String name,int number,String password) {
     this.account = account;
     this.name = name;
     this.number = number;
