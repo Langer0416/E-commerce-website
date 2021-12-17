@@ -56,6 +56,15 @@ public class ProductController {
         return productManager.loginProduct(account,password);
     }
 
+    @RequestMapping(value="/login1", method=RequestMethod.GET)
+    @ResponseBody
+    public String login1(
+        @RequestParam("account")  String account,
+        @RequestParam("password")  String password
+    ){
+        return productManager.loginProduct1(account,password);
+    }
+
     @RequestMapping(value="/register", method=RequestMethod.GET)
     @ResponseBody
     public String register(

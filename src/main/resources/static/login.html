@@ -108,7 +108,42 @@ var i = 0;
         .done(function( text ) {
             if(text == "Success"){
                 alert("登入成功");
-                location.href='index.html';
+                location.href='index1.html';
+                }
+            else{
+                //alert("密碼錯誤若無帳密請先註冊");
+                login1();
+                }
+        })
+        .fail( function(xhr, status, errorThrown) {
+            console.log( "Sorry, there was a problem!" );
+            console.log( "Error: " + errorThrown );
+            console.log( "Status: " + status );
+            console.dir( xhr );
+        })
+    }
+
+    function login1()
+    {
+        $.ajax({
+            // The URL for the request
+            url: "login1" ,
+
+            data: {
+                account : $('#account_text').val(),
+                password : $('#password_text').val(),
+            },
+
+            // Whether this is a POST or GET request
+            type: "GET",
+
+            // The type of data we expect back
+            dataType : "text",
+        })
+        .done(function( text ) {
+            if(text == "Success"){
+                alert("登入成功");
+                location.href='index2.html';
                 }
             else{
                 alert("密碼錯誤若無帳密請先註冊");

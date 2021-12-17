@@ -74,7 +74,7 @@ public class ProductService {
     int count;
     public String loginProduct(String account,String password) {
         try (Connection connection = sql2oDbHandler.getConnector().open()) {
-            String query = "SELECT count(*) as total FROM project.worker WHERE ACCOUNT=:account and PASSWORD =:password";
+            String query = "SELECT count(*) as total FROM project.customer WHERE ACCOUNT=:account and PASSWORD =:password";
 
             count=connection.createQuery(query)
                 .addParameter("account", account)
@@ -88,6 +88,25 @@ public class ProductService {
             return "fail";
         }
     }
+
+    int count1;
+    public String loginProduct1(String account,String password) {
+        try (Connection connection = sql2oDbHandler.getConnector().open()) {
+            String query = "SELECT count(*) as total FROM project.seller WHERE ACCOUNT=:account and PASSWORD =:password";
+
+            count1=connection.createQuery(query)
+                .addParameter("account", account)
+                .addParameter("password", password)
+                .executeScalar(Integer.class);
+        }
+        if(count1>0) {
+            return "Success";
+        }
+        else{
+            return "fail";
+        }
+    }
+
 int b;
     public String registerProduct(String account,String name,Integer phone,String password) {
         try (Connection connection = sql2oDbHandler.getConnector().open()) {
