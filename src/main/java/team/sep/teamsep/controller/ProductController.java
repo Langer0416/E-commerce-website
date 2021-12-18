@@ -20,15 +20,16 @@ public class ProductController {
 
     @GetMapping("/products/{keyword}")
     public List<Product>getProducts(@PathVariable("keyword") String keyword) {
+
         return productManager.getProducts(keyword);
     }
 
-    /*@RequestMapping(value= "/index", method= RequestMethod.GET)
-    @ResponseBody
+    @GetMapping(value= "/index1/{id}")
     public String InsertIntoCar1(
-            @RequestParam("id")  Integer id
+        @PathVariable("id")  long id
     ){
-        return productManager.InsertIntoCar1(id);}*/
+        System.out.println(id);
+        return productManager.InsertIntoCar1(id);}
 
     @RequestMapping(value= "/add", method= RequestMethod.GET)
     @ResponseBody

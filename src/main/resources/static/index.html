@@ -54,7 +54,7 @@
                     <a class="nav-link" href="#">會員中心</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">購物車(0)</a>
+                    <a class="nav-link" href="login.html">購物車(0)</a>
                 </li>
             </ul>
 
@@ -114,47 +114,41 @@
       alert("add number:" + number1);
       //console.log(number1);
       InsertIntoShopCar = number1 ;
-      //InsertIntoCar1();
+      const id = $('#InsertIntoShopCar').val();
+      InsertIntoCar1(InsertIntoShopCar,'index/'+InsertIntoShopCar);
       //emptyProducts();
       console.log(InsertIntoShopCar);
     }
 
-     /*function InsertIntoCar1() {
-      // Using the core $.ajax() method
-      $.ajax({
-          // The URL for the request
-          url: "index",
+    function InsertIntoCar1(InsertIntoShopCar,targetUrl)
+    {
+        $.ajax({
+            // The URL for the request
+            url: targetUrl,
 
-          // Whether this is a POST or GET request
-          type: "GET",
+            //data: {
+            //    id : $('#InsertIntoShopCar').val()
+            //},
 
-           data :{
-            id : InsertIntoShopCar
-          },
+            // Whether this is a POST or GET request
+            type: "GET",
 
-          // The type of data we expect back
-          dataType : "text",
-      })
-        // Code to run if the request succeeds (is done);
-        // The response is passed to the function
+            // The type of data we expect back
+            dataType : "text",
+        })
+
         .done(function( text ) {
-          // let products = json;
-          //addProducts(products);
-          console.log("success");
+               console.log("success");
         })
-        // Code to run if the request fails; the raw request and
-        // status codes are passed to the function
-        .fail(function( xhr, status, errorThrown ) {
-          console.log( "Sorry, there was a problem!" );
-          console.log( "Error: " + errorThrown );
-          console.log( "Status: " + status );
-          console.dir( xhr );
+        .fail( function(xhr, status, errorThrown) {
+            console.log( "Sorry, there was a problem!" );
+            console.log( "Error: " + errorThrown );
+            console.log( "Status: " + status );
+            console.dir( xhr );
         })
-        // Code to run regardless of success or failure;
-        .always(function( xhr, status ) {
-          //console.log( "The request is complete!" );
-        });
-    }*/
+    }
+
+
 
    function emptyProducts() {
       $('#productList').empty();
@@ -164,7 +158,7 @@
     var number = 0;
     function addProducts(products) {
       for ( let product of products ) {
-        number ++ ;
+        //number ++ ;
         let html = '<div class="card col-4">';
         html += '<img src="' + product. picture + '" title ="' + product.name + '" class="card-img-top" alt="' + product.name + '" width="250" height="350">';
         html += '<div class="card-body">';
@@ -173,7 +167,7 @@
         html += '<p class="card-text">' + "目前數量:" +  product.instock+ '</p>';
         html += '<p class="card-text">' + "商品價錢:" + product. price + '</p>';
         html += '<p class="card-text">' + "最低購入量:" + product.quantity + '</p>';
-        html += '<a href="#" id="'+number+'"  onclick ="show(id)" class="btn btn-primary">' + "加入購物車" + '</a>';
+        html += '<a href="login.html" class="btn btn-primary">' + "加入購物車" + '</a>'; + '</a>';
         html += '</div>';
         html += '</div>';
         $('#productList').append(html);
@@ -238,7 +232,7 @@
         html += '<p class="card-text">' + "目前數量:" +  product. instock+ '</p>';
         html += '<p class="card-text">' + "商品價錢:" + product. price + '</p>';
         html += '<p class="card-text">' + "最低購入量:" + product. quantity + '</p>';
-        html += '<a href="#" class="btn btn-primary">' + "加入購物車" + '</a>';
+        html += '<a href="login.html" class="btn btn-primary">' + "加入購物車" + '</a>';
         html += '</div>';
         html += '</div>';
         $('#productList').append(html);
