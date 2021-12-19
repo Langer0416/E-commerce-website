@@ -3,6 +3,7 @@ package team.sep.teamsep.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import team.sep.teamsep.model.Product;
+import team.sep.teamsep.model.ShopCar;
 import team.sep.teamsep.service.ProductService;
 
 import java.util.List;
@@ -18,6 +19,11 @@ public class ProductController {
         return productManager.getProducts();
     }
 
+    @GetMapping("/shopcar")
+    public List<ShopCar> getProducts1(){
+        return productManager.getProducts1();
+    }
+
     @GetMapping("/products/{keyword}")
     public List<Product>getProducts(@PathVariable("keyword") String keyword) {
 
@@ -26,30 +32,37 @@ public class ProductController {
 
     @GetMapping(value= "/index1/{id}")
     public String InsertIntoCar1(
-        @PathVariable("id")  long id
+            @PathVariable("id")  long id
     ){
         System.out.println(id);
         return productManager.InsertIntoCar1(id);}
 
+    @GetMapping(value= "/shopcar/{id}")
+    public String InsertIntoCar2(
+            @PathVariable("id")  long id
+    ){
+        System.out.println(id);
+        return productManager.InsertIntoCar2(id);}
+
     @RequestMapping(value= "/add", method= RequestMethod.GET)
     @ResponseBody
     public String add(
-        @RequestParam("name")  String name,
-        @RequestParam("stock")  Integer stock,
-        @RequestParam("price")  Integer price,
-        @RequestParam("quantity")  Integer quantity,
-        @RequestParam("picture")  String picture
+            @RequestParam("name")  String name,
+            @RequestParam("stock")  Integer stock,
+            @RequestParam("price")  Integer price,
+            @RequestParam("quantity")  Integer quantity,
+            @RequestParam("picture")  String picture
     ){
         return productManager.addProduct(name,stock, price,quantity, picture);}
 
     @RequestMapping(value="/update", method=RequestMethod.GET)
     @ResponseBody
     public String update(
-        @RequestParam("name")  String name,
-        @RequestParam("stock")  Integer stock,
-        @RequestParam("price")  Integer price,
-        @RequestParam("quantity")  Integer quantity,
-        @RequestParam("picture")  String picture
+            @RequestParam("name")  String name,
+            @RequestParam("stock")  Integer stock,
+            @RequestParam("price")  Integer price,
+            @RequestParam("quantity")  Integer quantity,
+            @RequestParam("picture")  String picture
     ){
         return productManager.updateProduct(name,stock, price,quantity, picture);
     }
@@ -57,8 +70,8 @@ public class ProductController {
     @RequestMapping(value="/login", method=RequestMethod.GET)
     @ResponseBody
     public String login(
-        @RequestParam("account")  String account,
-        @RequestParam("password")  String password
+            @RequestParam("account")  String account,
+            @RequestParam("password")  String password
     ){
         return productManager.loginProduct(account,password);
     }
@@ -66,8 +79,8 @@ public class ProductController {
     @RequestMapping(value="/login1", method=RequestMethod.GET)
     @ResponseBody
     public String login1(
-        @RequestParam("account")  String account,
-        @RequestParam("password")  String password
+            @RequestParam("account")  String account,
+            @RequestParam("password")  String password
     ){
         return productManager.loginProduct1(account,password);
     }
@@ -75,10 +88,10 @@ public class ProductController {
     @RequestMapping(value="/register", method=RequestMethod.GET)
     @ResponseBody
     public String register(
-        @RequestParam("account")  String account,
-        @RequestParam("name")  String name,
-        @RequestParam("phone")  Integer phone,
-        @RequestParam("password")  String password
+            @RequestParam("account")  String account,
+            @RequestParam("name")  String name,
+            @RequestParam("phone")  Integer phone,
+            @RequestParam("password")  String password
     ){
         return productManager.registerProduct(account,name,phone,password);
     }
