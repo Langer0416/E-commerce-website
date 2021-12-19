@@ -103,6 +103,21 @@ public class ProductService {
             return "Success";
         }
     }
+
+    public String changepassword(String account,String password) {
+        try (Connection connection = sql2oDbHandler.getConnector().open()) {
+            String query = "UPDATE project.customer SET PASSWORD =:password  WHERE ACCOUNT = :account";
+
+
+            connection.createQuery(query)
+                    .addParameter("password",password )
+                    .addParameter("account" ,account)
+                    .executeUpdate();
+            System.out.println(password);
+            System.out.println(account);
+            return "Success";
+        }
+    }
     int count;
     public String loginProduct(String account,String password) {
         try (Connection connection = sql2oDbHandler.getConnector().open()) {
