@@ -24,7 +24,7 @@ public class ProductController {
         return productManager.getProducts(keyword);
     }
 
-    @GetMapping(value= "/index1/{id}")
+    @GetMapping("/index1/{id}")
     public String InsertIntoCar1(
         @PathVariable("id")  long id
     ){

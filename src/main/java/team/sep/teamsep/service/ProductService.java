@@ -35,7 +35,7 @@ public class ProductService {
         }
     }
 
-    //List<Product> first = 0;
+    //List<Product> first = 0
    public String InsertIntoCar1(long id) {
         try (Connection connection = sql2oDbHandler.getConnector().open()) {
             String query = "Insert into project.productcar(PRODUCT_NAME,INSTOCK,PRICE,QUANTITY,PICTURE) select PRODUCT_NAME,INSTOCK,PRICE,QUANTITY,PICTURE FROM project.product where PRODUCT_ID = :id";
