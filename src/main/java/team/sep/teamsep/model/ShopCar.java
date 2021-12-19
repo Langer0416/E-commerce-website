@@ -1,75 +1,76 @@
-
 package team.sep.teamsep.model;
 
 public class ShopCar {
 
-    private String account;
+    private long id;
 
-    private int id;
+    private String name;
+
+    private int stock;
 
     private int price;
 
-    private String picture;
-
-    private  int instock;
-
     private int quantity;
+
+    private String picture;
 
     public ShopCar() {
     }
 
-    public ShopCar(String account, int id, int price,String picture,int instock, int quantity) {
-        this.account = account;
+    public ShopCar(long id, String name,int stock, int price,int quantity, String picture) {
         this.id = id;
-        this.price=price;
-        this.picture=picture;
-        this.instock=instock;
-        this.quantity=quantity;
-    }
-
-    public String getAccount() { return account; }
-
-    public void setAccount(String account) {
-        this.account = account;
-    }
-
-    public int getid() {
-        return id;
-    }
-
-    public void setid(int id) {
-        this.id = id;
-    }
-
-    public int getprice() {
-        return price;
-    }
-
-    public void setprice(int price) {
-        this.price = price;
-    }
-
-    public String getpicture() { return picture; }
-
-    public void setpicture(String picture) {
+        this.name = name;
+        this.stock = stock;
+        this.price =  price;
+        this.quantity = quantity;
         this.picture = picture;
     }
 
-    public int getinstock() {
-        return instock;
+    public long getId() {
+        return id;
     }
 
-    public void setinstock(int instock) {
-        this.instock = instock;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public int getquantity() {
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getInstock(){
+        return stock;
+    }
+
+    public void setInstock(int stock){
+        this.stock = stock;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public int getQuantity(){
         return quantity;
     }
 
-    public void setquantity(int quantity) {
+    public void setQuantity(int quantity){
         this.quantity = quantity;
     }
 
-}
+    public String getPicture() {
+        return picture;
+    }
 
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+}
