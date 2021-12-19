@@ -3,6 +3,7 @@ package team.sep.teamsep.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import team.sep.teamsep.model.Product;
+import team.sep.teamsep.model.ShopCar;
 import team.sep.teamsep.service.ProductService;
 
 import java.util.List;
@@ -18,18 +19,30 @@ public class ProductController {
         return productManager.getProducts();
     }
 
+    @GetMapping("/shopcar")
+    public List<ShopCar> getProducts1(){
+        return productManager.getProducts1();
+    }
+
     @GetMapping("/products/{keyword}")
     public List<Product>getProducts(@PathVariable("keyword") String keyword) {
 
         return productManager.getProducts(keyword);
     }
 
-    @GetMapping("/index1/{id}")
+    @GetMapping(value= "/index1/{id}")
     public String InsertIntoCar1(
         @PathVariable("id")  long id
     ){
         System.out.println(id);
         return productManager.InsertIntoCar1(id);}
+
+    @GetMapping(value= "/shopcar/{id}")
+    public String InsertIntoCar2(
+        @PathVariable("id")  long id
+    ){
+        System.out.println(id);
+        return productManager.InsertIntoCar2(id);}
 
     @RequestMapping(value= "/add", method= RequestMethod.GET)
     @ResponseBody
