@@ -5,7 +5,6 @@ import team.sep.teamsep.database.Sql2oDbHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.sql2o.Connection;
-import team.sep.teamsep.model.ShopCar;
 
 import java.util.List;
 
@@ -25,51 +24,32 @@ public class ProductService {
             return connection.createQuery(query).executeAndFetch(Product.class);
         }
     }
-
-    public List<ShopCar> getProducts1() {
-        try (Connection connection = sql2oDbHandler.getConnector().open()) {
-            String query = "SELECT PRODUCT_NAME name,PRODUCT_ID id,INSTOCK stock,PICTURE picture,PRICE price,QUANTITY quantity FROM project.productcar" ;
-
-            return connection.createQuery(query).executeAndFetch(ShopCar.class);
-        }
-    }
-
     public List<Product> getProducts(String keyword) {
         try (Connection connection = sql2oDbHandler.getConnector().open()) {
             String query = "select PRODUCT_NAME name,PRODUCT_ID id,INSTOCK stock,PICTURE picture,PRICE price,QUANTITY quantity"
-                    + " FROM project.product where PRODUCT_NAME like :keyword";
+                + " FROM project.product where PRODUCT_NAME like :keyword";
 
             return connection.createQuery(query)
-                    .addParameter("keyword", "%" + keyword + "%")
-                    .executeAndFetch(Product.class);
+                .addParameter("keyword", "%" + keyword + "%")
+                .executeAndFetch(Product.class);
         }
     }
 
     //List<Product> first = 0;
-    public String InsertIntoCar1(long id) {
+   /* public String InsertIntoCar1(Integer id) {
         try (Connection connection = sql2oDbHandler.getConnector().open()) {
-            String query = "Insert into project.productcar(PRODUCT_NAME,INSTOCK,PRICE,QUANTITY,PICTURE) select PRODUCT_NAME,INSTOCK,PRICE,QUANTITY,PICTURE FROM project.product where PRODUCT_ID = :id";
+            String query = "select PRODUCT_NAME name,PRODUCT_ID id,INSTOCK stock,PICTURE picture,PRICE price,QUANTITY quantity"
+                    + " FROM project.product where PRODUCT_ID = : id";
 
             System.out.println(query);
             connection.createQuery(query)
                     .addParameter("id",id)
                     .executeUpdate();
 
+            return "success";
         }
-        return "success";
-    }
-    public String InsertIntoCar2(long id) {
-        try (Connection connection = sql2oDbHandler.getConnector().open()) {
-            String query = "DELETE FROM project.productcar where PRODUCT_ID = :id";
+    }*/
 
-            System.out.println(query);
-            connection.createQuery(query)
-                .addParameter("id",id)
-                .executeUpdate();
-
-        }
-        return "success";
-    }
 
     public String addProduct(String name, Integer stock,Integer price,Integer quantity,String picture) {
         try (Connection connection = sql2oDbHandler.getConnector().open()) {
@@ -77,12 +57,12 @@ public class ProductService {
 
             System.out.println(query);
             connection.createQuery(query)
-                    .addParameter("name",name)
-                    .addParameter("stock",stock)
-                    .addParameter("price",price)
-                    .addParameter("quantity",quantity)
-                    .addParameter("picture",picture)
-                    .executeUpdate();
+                .addParameter("name",name)
+                .addParameter("stock",stock)
+                .addParameter("price",price)
+                .addParameter("quantity",quantity)
+                .addParameter("picture",picture)
+                .executeUpdate();
 
             return "success";
         }
@@ -94,12 +74,12 @@ public class ProductService {
 
 
             connection.createQuery(query)
-                    .addParameter("name",name)
-                    .addParameter("stock",stock)
-                    .addParameter("price",price)
-                    .addParameter("quantity",quantity)
-                    .addParameter("picture",picture)
-                    .executeUpdate();
+                .addParameter("name",name)
+                .addParameter("stock",stock)
+                .addParameter("price",price)
+                .addParameter("quantity",quantity)
+                .addParameter("picture",picture)
+                .executeUpdate();
             return "Success";
         }
     }
@@ -109,9 +89,9 @@ public class ProductService {
             String query = "SELECT count(*) as total FROM project.customer WHERE ACCOUNT=:account and PASSWORD =:password";
 
             count=connection.createQuery(query)
-                    .addParameter("account", account)
-                    .addParameter("password", password)
-                    .executeScalar(Integer.class);
+                .addParameter("account", account)
+                .addParameter("password", password)
+                .executeScalar(Integer.class);
         }
         if(count>0) {
             return "Success";
@@ -127,9 +107,9 @@ public class ProductService {
             String query = "SELECT count(*) as total FROM project.seller WHERE ACCOUNT=:account and PASSWORD =:password";
 
             count1=connection.createQuery(query)
-                    .addParameter("account", account)
-                    .addParameter("password", password)
-                    .executeScalar(Integer.class);
+                .addParameter("account", account)
+                .addParameter("password", password)
+                .executeScalar(Integer.class);
         }
         if(count1>0) {
             return "Success";
@@ -139,17 +119,17 @@ public class ProductService {
         }
     }
 
-    int b;
+int b;
     public String registerProduct(String account,String name,Integer phone,String password) {
         try (Connection connection = sql2oDbHandler.getConnector().open()) {
             String query = "Insert INTO project.customer(ACCOUNT,NAME,PHONE_NUMBER,PASSWORD) VALUES(:account,:name,:phone,:password)";
 
-            b=connection.createQuery(query)
-                    .addParameter("account", account)
-                    .addParameter("name", name)
-                    .addParameter("phone", phone)
-                    .addParameter("password", password)
-                    .executeUpdate()
+                b=connection.createQuery(query)
+                .addParameter("account", account)
+                .addParameter("name", name)
+                .addParameter("phone", phone)
+                .addParameter("password", password)
+                .executeUpdate()
                     .getKey(int.class);
             if(b==0) {
                 return "success";
