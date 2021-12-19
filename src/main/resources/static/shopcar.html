@@ -99,7 +99,7 @@
     function show(number1)
     {
       alert("add number:" + number1);
-      console.log(name);
+      //console.log(name);
       //console.log(number1);
       InsertIntoShopCar = number1 ;
       const id = $('#InsertIntoShopCar').val();
@@ -149,7 +149,7 @@
         html += '<p class="card-text">' + "目前數量:" +  shopcar.instock+ '</p>';
         html += '<p class="card-text">' + "商品價錢:" + shopcar. price + '</p>';
         html += '<p class="card-text">' + "最低購入量:" + shopcar.quantity + '</p>';
-       html += '<a href="#" id="'+number+'"  onclick ="show(id)" class="btn btn-primary">' + "結帳" + '</a>';
+       html += '<a href="#" id="'+shopcar.name+'"  onclick ="show(id)" class="btn btn-primary">' + "結帳" + '</a>';
         html += '</div>';
         html += '</div>';
         $('#shopcarList').append(html);

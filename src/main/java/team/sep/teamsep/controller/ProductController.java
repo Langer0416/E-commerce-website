@@ -39,7 +39,7 @@ public class ProductController {
 
     @GetMapping(value= "/shopcar/{id}")
     public String InsertIntoCar2(
-        @PathVariable("id")  long id
+        @PathVariable("id")  String id
     ){
         System.out.println(id);
         return productManager.InsertIntoCar2(id);}

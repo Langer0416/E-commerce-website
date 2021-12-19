@@ -58,9 +58,9 @@ public class ProductService {
         }
        return "success";
     }
-    public String InsertIntoCar2(long id) {
+    public String InsertIntoCar2(String id) {
         try (Connection connection = sql2oDbHandler.getConnector().open()) {
-            String query = "DELETE FROM project.productcar where PRODUCT_ID = :id";
+            String query = "DELETE FROM project.productcar where PRODUCT_NAME = :id";
 
             System.out.println(query);
             connection.createQuery(query)
