@@ -532,7 +532,7 @@ font-family: 'Pacifico', cursive;
                         <a href="#" style="font-family:Microsoft JhengHei;">忘記密碼 ?</a>
                     </div>
                     <br><br>
-                    <button class="btn btn-outline-success" type="button" id="login_button" style="width:500px;height:50px;font-family:Microsoft JhengHei;">登入</button>
+                    <button  onclick="to()" class="btn btn-outline-success" type="button" id="login_button" style="width:500px;height:50px;font-family:Microsoft JhengHei;">登入</button>
 
                 </form>
             </div>
@@ -559,6 +559,12 @@ var i = 0;
     $('#login_button').click( function(){
         login();
     });
+
+    function to(){
+    var getval = $('#account_text').val();
+    window.location.href="index1.html?valus"+getval;
+    //console.log(getval);
+    }
 
     function login()
     {
