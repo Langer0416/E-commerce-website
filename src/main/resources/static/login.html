@@ -10,7 +10,7 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <title>My Shop</title>
-<style>
+    <style>
     * {
   margin: 0;
   padding: 0;
@@ -127,7 +127,7 @@ img {
   position: relative;
 }
 .login .container h1 {
-  margin-top: 100px;
+  margin-top: 40px;
   font-size: 35px;
   font-weight: bolder;
 }
@@ -322,7 +322,7 @@ img {
   }
   .login .container h1 {
     font-size: 25px;
-    margin-top: 40px;
+    margin-top: 30px;
   }
   .login .container .login-form {
     margin-top: 90px;
@@ -508,31 +508,31 @@ font-family: 'Pacifico', cursive;
             <span></span>
             <span></span>
         </div>
-        <div style="position:absolute; top:270px;right:260px;color:	#E8FFFF;">
-            <h1><bea>Hello, Friend!</bea></h1>
+        <div style="position:absolute; top:350px;right:440px;color:#D4FFFF;">
+            <font size="25"><bea>Hello, Friend!</bea></font>
             </div>
     </div>
 
     <div class="login">
         <div class="container">
-            <h1><bea>Login</bea></h1>
-            <h2><bea>    access your account</bea></h2>
+            <h1><bea>Login<br><h2>Access your account</h2></bea></h1>
+            <br>
             <div class="login-form">
                 <form action="">
                     <label for="account"></label>
-                    <input type="text"required id="account_text" aria-label="account_text" placeholder="帳號">
+                    <input type="text"required id="account_text" aria-label="account_text" placeholder="帳號" style="box-shadow:2px 2px 2px #E8FFFF;font-family:Microsoft JhengHei;">
                     <label for="password"></label>
-                    <input type="password"required id="password_text" aria-label="password_text" placeholder="密碼">
+                    <input type="password"required id="password_text" aria-label="password_text" placeholder="密碼" style="box-shadow:2px 2px 2px #E8FFFF;font-family:Microsoft JhengHei;">
 
                     <div class="remember-form">
-                        <input type="checkbox">
+                        <input type="checkbox" style="font-family:Microsoft JhengHei;">
                         <span>記住我</span>
                     </div>
                     <div class="forget-pass">
-                        <a href="#">忘記密碼 ?</a>
+                        <a href="#" style="font-family:Microsoft JhengHei;">忘記密碼 ?</a>
                     </div>
                     <br><br>
-                    <button class="btn btn-outline-success" type="button" id="login_button" style="width:500px;height:50px">登入</button>
+                    <button class="btn btn-outline-success" type="button" id="login_button" style="width:500px;height:50px;font-family:Microsoft JhengHei;">登入</button>
 
                 </form>
             </div>
@@ -579,7 +579,7 @@ var i = 0;
         })
         .done(function( text ) {
             if(text == "Success"){
-                alert("登入成功");
+                alert("登入成功顧客");
                 location.href='index1.html';
                 }
             else{
@@ -614,7 +614,7 @@ var i = 0;
         })
         .done(function( text ) {
             if(text == "Success"){
-                alert("登入成功");
+                alert("登入成功賣家");
                 location.href='index2.html';
                 }
             else{
