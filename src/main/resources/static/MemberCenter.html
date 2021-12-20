@@ -54,8 +54,14 @@
                 <li class="nav-item">
                     <a class="btn" href="index.html">登出</a>
                 </li>
-                <li class="nav-item">
-                    <a onclick="tomember()" class="btn" >會員中心</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        會員中心
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="btn" onclick="tomember()">修改密碼</a></li>
+                        <li><a class="btn" onclick="tomember()">查看訂單</a></li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a onclick="tocar()" class="btn">購物車</a>
@@ -119,6 +125,7 @@
     }
         //return result;
     }
+
     function tohome(){
     var getval = result;
     window.location.href="index1.html?valus"+getval;
@@ -148,10 +155,12 @@
             {
                 change();
                 alert ("密碼修改成功");
+                history.go(0);
             }
             else
             {
                 alert ("兩次密碼不一致!");
+                history.go(0);
             }
             //change();
     });
