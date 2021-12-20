@@ -36,7 +36,7 @@
                         商品管理
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item link" href="#">新增商品</a></li>
+                        <li><a class="dropdown-item link" href="add_product.html">新增商品</a></li>
                         <li><a class="dropdown-item link" href="#">修改商品</a></li>
                     </ul>
                 </li>
@@ -46,10 +46,7 @@
             <ul class="navbar-nav mb-2 mb-lg-0 d-
             flex">
                 <li class="nav-item">
-                    <a class="nav-link" href="login.html">登入</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">註冊</a>
+                    <a class="nav-link" href="index.html">登出</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">會員中心</a>
@@ -83,7 +80,7 @@
     </form>
 
     <button class="btn btn-outline-success" type="button" id="UpdateProduct">Update</button>
-    <button class="btn btn-outline-success" type="button" onclick="location.href='index.html'" value="返回上一頁">返回上一頁</button>
+    <button class="btn btn-outline-success" type="button" onclick="history.go(-1)" value="返回上一頁">返回上一頁</button>
 
     <div class="mt-3 row" id="productList">
     </div>

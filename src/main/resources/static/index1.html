@@ -23,23 +23,26 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index1.html">首頁</a>
+                    <a onclick="tohome()" class="btn" aria-current="page">首頁</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">逢甲商城</a>
+                    <a class="btn" href="#">逢甲商城</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">一中商城</a>
+                    <a class="btn" href="#">一中商城</a>
                 </li>
             </ul>
 
 
             <ul class="navbar-nav mb-2 mb-lg-0 d-flex">
                 <li class="nav-item">
-                    <a onclick="to()" class="nav-link" >會員中心</a>
+                    <a class="btn" href="index.html">登出</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="shopcar.html">購物車</a>
+                    <a onclick="tomember()" class="btn" >會員中心</a>
+                </li>
+                <li class="nav-item">
+                    <a onclick="tocar()" class="btn" >購物車</a>
                 </li>
             </ul>
 
@@ -91,11 +94,22 @@
     }
         //return result;
     }
+    function tohome(){
+    var getval = result;
+    window.location.href="index1.html?valus"+getval;
+    //console.log(getval);
+    }
 
     //console.log(result);
-    function to(){
+    function tomember(){
     var getval = result;
     window.location.href="MemberCenter.html?valus"+getval;
+    //console.log(getval);
+    }
+
+    function tocar(){
+    var getval = result;
+    window.location.href="shopcar.html?valus"+getval;
     //console.log(getval);
     }
 

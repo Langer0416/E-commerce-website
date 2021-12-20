@@ -12,7 +12,7 @@
   <title>My Shop</title>
 </head>
 <body>
-
+<span id="show"></span>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">My Shop</a>
@@ -44,6 +44,9 @@
 
 
       <ul class="navbar-nav mb-2 mb-lg-0 d-flex">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">登出</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="#">會員中心</a>
         </li>
@@ -82,6 +85,22 @@
 -->
 
 <script>
+
+  $(function(){
+    $("#show").html(oneValues());
+    })
+
+    var result;
+    function oneValues(){
+    var url=window.location.search;
+    if(url.indexOf("?")!=-1)
+    {
+        result = url.substr(url.indexOf("=")+7);
+        //alert(result);
+    }
+        //return result;
+    }
+
   $( document ).ready( function() {
     console.log( "ready!" );
     emptyProducts();

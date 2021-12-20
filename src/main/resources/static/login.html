@@ -532,7 +532,7 @@ font-family: 'Pacifico', cursive;
                         <a href="#" style="font-family:Microsoft JhengHei;">忘記密碼 ?</a>
                     </div>
                     <br><br>
-                    <button  onclick="to()" class="btn btn-outline-success" type="button" id="login_button" style="width:500px;height:50px;font-family:Microsoft JhengHei;">登入</button>
+                    <button  class="btn btn-outline-success" type="button" id="login_button" style="width:500px;height:50px;font-family:Microsoft JhengHei;">登入</button>
 
                 </form>
             </div>
@@ -566,6 +566,12 @@ var i = 0;
     //console.log(getval);
     }
 
+    function to1(){
+    var getval = $('#account_text').val();
+    window.location.href="index2.html?valus"+getval;
+    //console.log(getval);
+    }
+
     function login()
     {
         $.ajax({
@@ -586,7 +592,8 @@ var i = 0;
         .done(function( text ) {
             if(text == "Success"){
                 alert("登入成功顧客");
-                location.href='index1.html';
+                to();
+                //location.href='index1.html';
                 }
             else{
                 //alert("密碼錯誤若無帳密請先註冊");
@@ -621,7 +628,8 @@ var i = 0;
         .done(function( text ) {
             if(text == "Success"){
                 alert("登入成功賣家");
-                location.href='index2.html';
+                to1();
+                //location.href='index2.html';
                 }
             else{
                 alert("密碼錯誤若無帳密請先註冊");
