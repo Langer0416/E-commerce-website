@@ -23,13 +23,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index1.html">首頁</a>
+                    <a onclick="tohome()" class="btn" aria-current="page">首頁</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">逢甲商城</a>
+                    <a class="btn" href="#">逢甲商城</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">一中商城</a>
+                    <a class="btn" href="#">一中商城</a>
                 </li>
                 <!--<li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -52,10 +52,23 @@
                     <a class="nav-link" href="#">註冊</a>
                 </li>-->
                 <li class="nav-item">
-                    <a class="nav-link" href="MemberCenter.html">會員中心</a>
+                    <a class="btn" href="index.html">登出</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        會員中心
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="btn" onclick="tomember()">修改密碼</a></li>
+                        <li><a class="btn" onclick="tomember()">查看訂單</a></li>
+                    </ul>
                 </li>
                 <li class="nav-item">
+<<<<<<< HEAD
                     <a class="nav-link" href="shopcar.html">購物車</a>
+=======
+                    <a onclick="tocar()" class="btn">購物車</a>
+>>>>>>> 14b2a0f4dca54620b189f0670a41ef52d97c3919
                 </li>
             </ul>
 
@@ -79,7 +92,7 @@
     </form>
 
     <button class="btn btn-outline-success" type="button" id="changepassword">Submit</button>
-    <button class="btn btn-outline-success" type="button" onclick="location.href='index1.html'" value="返回上一頁">返回首頁</button>
+    <!--<button class="btn btn-outline-success" type="button" onclick="returnlast()" value="返回上一頁">返回首頁</button>-->
 
 
     <div class="mt-3 row" id="productList">
@@ -101,19 +114,39 @@
 
 
 <script>
-    $(function(){
+   $(function(){
     $("#show").html(oneValues());
     })
 
-    var result1;
+    var result;
+    var getval;
     function oneValues(){
     var url=window.location.search;
     if(url.indexOf("?")!=-1)
     {
-        result1 = url.substr(url.indexOf("=")+7);
-        //alert(result1);
+        result = url.substr(url.indexOf("=")+7);
+        //alert(result);
     }
-        //return result1;
+        //return result;
+    }
+
+    function tohome(){
+    var getval = result;
+    window.location.href="index1.html?valus"+getval;
+    //console.log(getval);
+    }
+
+    //console.log(result);
+    function tomember(){
+    var getval = result;
+    window.location.href="MemberCenter.html?valus"+getval;
+    //console.log(getval);
+    }
+
+    function tocar(){
+    var getval = result;
+    window.location.href="shopcar.html?valus"+getval;
+    //console.log(getval);
     }
 
       $('#changepassword').click(function() {
@@ -126,10 +159,12 @@
             {
                 change();
                 alert ("密碼修改成功");
+                history.go(0);
             }
             else
             {
                 alert ("兩次密碼不一致!");
+                history.go(0);
             }
             //change();
     });
@@ -144,7 +179,7 @@
           type: "GET",
 
             data :{
-             account : result1,
+             account : result,
              password : $('#customernewps').val()
           },
           // The type of data we expect back

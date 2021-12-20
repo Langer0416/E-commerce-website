@@ -85,6 +85,15 @@ public class ProductController {
         return productManager.changepassword(account,password);
     }
 
+    @RequestMapping(value="/changesellerpassword", method=RequestMethod.GET)
+    @ResponseBody
+    public String changesellerpassword(
+            @RequestParam("account")  String account,
+            @RequestParam("password")  String password
+    ){
+        return productManager.sellerchangepassword(account,password);
+    }
+
     @RequestMapping(value="/login", method=RequestMethod.GET)
     @ResponseBody
     public String login(

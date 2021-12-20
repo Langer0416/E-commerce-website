@@ -12,7 +12,7 @@
     <title>FCU Shop</title>
 </head>
 <body>
-
+<span id="show"></span>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">FCU Shop</a>
@@ -23,7 +23,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index2.html">首頁</a>
+                    <a onclick="tohome()" class="btn" aria-current="page">首頁</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">逢甲商城</a>
@@ -36,8 +36,8 @@
                         商品管理
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item link" href="add_product">新增商品</a></li>
-                        <li><a class="dropdown-item link" href="update_product.html">修改商品</a></li>
+                        <li><a class="dropdown-item link" onclick="insertproduct()">新增商品</a></li>
+                        <li><a class="dropdown-item link" onclick="updateproduct()">修改商品</a></li>
                     </ul>
                 </li>
             </ul>
@@ -46,17 +46,14 @@
             <ul class="navbar-nav mb-2 mb-lg-0 d-
             flex">
                 <li class="nav-item">
-                    <a class="nav-link" href="login.html">登入</a>
+                    <a class="btn" href="index.html">登出</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">註冊</a>
+                    <a onclick="tomember()" class="btn" >會員中心</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">會員中心</a>
-                </li>
-                <li class="nav-item">
+                <!--<li class="nav-item">
                     <a class="nav-link" href="#">購物車(0)</a>
-                </li>
+                </li>-->
             </ul>
 
             <form class="d-flex">
@@ -82,8 +79,8 @@
         <input type="url" id="ppicture" name="ppicture" size="60" placeholder="輸入商品URL"><br><br>
     </form>
 
-    <button class="btn btn-outline-success" type="button" id="addProduct">Submit</button>
-    <button class="btn btn-outline-success" type="button" onclick="location.href='index.html'" value="返回上一頁">返回上一頁</button>
+    <button class="btn btn-outline-success" type="button" id="addProduct" onclick="toadd_product()">Submit</button>
+   <!-- <button class="btn btn-outline-success" type="button" onclick="history.go(-1)" value="返回上一頁">返回上一頁</button>-->
 
 
     <div class="mt-3 row" id="productList">
@@ -106,7 +103,51 @@
 
 <script>
 
+ $(function(){
+    $("#show").html(oneValues());
+    })
 
+    var result;
+    function oneValues(){
+    var url=window.location.search;
+    if(url.indexOf("?")!=-1)
+    {
+        result = url.substr(url.indexOf("=")+7);
+        //alert(result);
+    }
+        //return result;
+    }
+    function toadd_product(){
+    alert("新增成功!");
+    var getval = result;
+    window.location.href="add_product.html?valus"+getval;
+    //console.log(getval);
+    }
+
+    function tohome(){
+    var getval = result;
+    window.location.href="index2.html?valus"+getval;
+    //console.log(getval);
+    }
+
+    //console.log(result);
+    function tomember(){
+    var getval = result;
+    window.location.href="SellerMemberCenter.html?valus"+getval;
+    //console.log(getval);
+    }
+
+    function insertproduct(){
+    var getval = result;
+    window.location.href="add_product.html?valus"+getval;
+    //console.log(getval);
+    }
+
+    function updateproduct(){
+    var getval = result;
+    window.location.href="update_product.html?valus"+getval;
+    //console.log(getval);
+    }
 
       $('#addProduct').click(function() {
             //console.log(name);

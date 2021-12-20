@@ -12,7 +12,7 @@
     <title>My Shop</title>
 </head>
 <body>
-
+<span id="show"></span>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">My Shop</a>
@@ -23,13 +23,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index1.html">首頁</a>
+                    <a onclick="tohome()" class="btn" aria-current="page">首頁</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">逢甲商城</a>
+                    <a class="btn" href="#">逢甲商城</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">一中商城</a>
+                    <a class="btn" href="#">一中商城</a>
                 </li>
                 <!--<li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -45,10 +45,19 @@
 
             <ul class="navbar-nav mb-2 mb-lg-0 d-flex">
                 <li class="nav-item">
-                    <a class="nav-link" href="MemberCenter.html">會員中心</a>
+                    <a class="btn" href="index.html">登出</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        會員中心
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="btn" onclick="tomember()">修改密碼</a></li>
+                        <li><a class="btn" onclick="tomember()">查看訂單</a></li>
+                    </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="shopcar.html">購物車(0)</a>
+                    <a onclick="tocar()" class="btn">購物車</a>
                 </li>
             </ul>
 
@@ -85,6 +94,40 @@
 -->
 
 <script>
+
+  $(function(){
+    $("#show").html(oneValues());
+    })
+
+    var result;
+    function oneValues(){
+    var url=window.location.search;
+    if(url.indexOf("?")!=-1)
+    {
+        result = url.substr(url.indexOf("=")+7);
+        //alert(result);
+    }
+        //return result;
+    }
+    function tohome(){
+    var getval = result;
+    window.location.href="index1.html?valus"+getval;
+    //console.log(getval);
+    }
+
+    //console.log(result);
+    function tomember(){
+    var getval = result;
+    window.location.href="MemberCenter.html?valus"+getval;
+    //console.log(getval);
+    }
+
+    function tocar(){
+    var getval = result;
+    window.location.href="shopcar.html?valus"+getval;
+    //console.log(getval);
+    }
+
   $( document ).ready( function() {
     console.log( "ready!" );
     emptyProducts();
@@ -105,6 +148,7 @@
  var InsertIntoShopCar ;
     function show(number1)
     {
+      history.go(0);
       alert("add number:" + number1);
       //console.log(name);
       //console.log(number1);
@@ -158,7 +202,11 @@
         html += '<p class="card-text">' + "目前數量:" +  shopcar.instock+ '</p>';
         html += '<p class="card-text">' + "商品價錢:" + shopcar. price + '</p>';
         html += '<p class="card-text">' + "最低購入量:" + shopcar.quantity + '</p>';
+<<<<<<< HEAD
        html += '<a id="'+shopcar.name+'"  onclick ="show(id)" class="btn btn-primary">' + "結帳" + '</a>';
+=======
+        html += '<a href="#" id="'+shopcar.name+'"  onclick ="show(id)" class="btn btn-primary">' + "結帳" + '</a>';
+>>>>>>> 14b2a0f4dca54620b189f0670a41ef52d97c3919
         html += '</div>';
         html += '</div>';
         $('#shopcarList').append(html);

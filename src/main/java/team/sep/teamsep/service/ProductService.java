@@ -118,10 +118,28 @@ public class ProductService {
             return "Success";
         }
     }
-
+    Boolean correct;
     public String changepassword(String account,String password) {
         try (Connection connection = sql2oDbHandler.getConnector().open()) {
             String query = "UPDATE project.customer SET PASSWORD =:password  WHERE ACCOUNT = :account";
+
+
+
+                     connection.createQuery(query)
+                    .addParameter("password",password )
+                    .addParameter("account" ,account)
+                    .executeUpdate();
+            System.out.println(password);
+            System.out.println(account);
+            //System.out.println(correct);
+            return "success" ;
+        }
+    }
+
+    public String sellerchangepassword(String account,String password) {
+        try (Connection connection = sql2oDbHandler.getConnector().open()) {
+            String query = "UPDATE project.seller SET PASSWORD =:password  WHERE ACCOUNT = :account";
+
 
 
             connection.createQuery(query)
@@ -130,7 +148,8 @@ public class ProductService {
                     .executeUpdate();
             System.out.println(password);
             System.out.println(account);
-            return "Success";
+            //System.out.println(correct);
+            return "success" ;
         }
     }
     int count;
