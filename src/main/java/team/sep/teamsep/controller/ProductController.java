@@ -1,5 +1,6 @@
 package team.sep.teamsep.controller;
 
+import org.apache.coyote.http11.filters.SavedRequestInputFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import team.sep.teamsep.model.Product;
@@ -43,6 +44,14 @@ public class ProductController {
     ){
         System.out.println(id);
         return productManager.InsertIntoCar2(id);}
+
+    @GetMapping(value= "/pay")
+    public String send(
+        @RequestParam("account")  String account,
+         @RequestParam("password")  String picture
+    ){
+        System.out.println(account);
+        return productManager.pay(account,picture);}
 
     @RequestMapping(value= "/add", method= RequestMethod.GET)
     @ResponseBody
