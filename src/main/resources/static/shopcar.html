@@ -135,6 +135,12 @@
     //console.log(getval);
     }
 
+    function tocar(){
+    var getval = result;
+    window.location.href="shopcar.html?valus"+getval;
+    //console.log(getval);
+    }
+
   $( document ).ready( function() {
     console.log( "ready!" );
     emptyProducts();
@@ -148,7 +154,7 @@
  function to(InsertIntoShopCar){
     var getval = InsertIntoShopCar;
     //alert(getval);
-    window.location.href="pay.html?valus"+getval;
+    window.location.href="pay.html?valus"+result+"pn"+getval ;
     //console.log(getval);
     }
 

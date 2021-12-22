@@ -562,13 +562,15 @@ var i = 0;
 
     function to(){
     var getval = $('#account_text').val();
-    window.location.href="index1.html?valus"+getval;
+    var getps  = $('#password_text').val();
+    window.location.href="index1.html?valus"+getval +"&"+ getps;
     //console.log(getval);
     }
 
     function to1(){
     var getval = $('#account_text').val();
-    window.location.href="index2.html?valus"+getval;
+    var getps  = $('#password_text').val();
+    window.location.href="index2.html?valus"+getval  +"&"+ getps;
     //console.log(getval);
     }
 

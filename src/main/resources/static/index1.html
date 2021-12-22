@@ -91,12 +91,16 @@
     })
 
     var result;
+    var ary;
     function oneValues(){
     var url=window.location.search;
     if(url.indexOf("?")!=-1)
     {
         result = url.substr(url.indexOf("=")+7);
         //alert(result);
+        ary =result.split('&');
+        //alert(ary[0]);
+        //alert(ary[1]);
     }
         //return result;
     }
