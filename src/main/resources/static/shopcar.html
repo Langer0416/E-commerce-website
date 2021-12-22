@@ -111,7 +111,7 @@
     }
     function tohome(){
     var getval = result;
-    window.location.href="pay.html?valus"+getval;
+    window.location.href="index1.html?valus"+getval;
     //console.log(getval);
     }
 
@@ -202,6 +202,7 @@
         html += '<p class="card-text">' + "目前數量:" +  shopcar.instock+ '</p>';
         html += '<p class="card-text">' + "商品價錢:" + shopcar. price + '</p>';
         html += '<p class="card-text">' + "最低購入量:" + shopcar.quantity + '</p>';
+
        html += '<a id="'+shopcar.name+'"  onclick ="show(id)" class="btn btn-primary">' + "結帳" + '</a>';
         html += '</div>';
         html += '</div>';

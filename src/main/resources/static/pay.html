@@ -131,6 +131,7 @@ $('#send_button').click( function(){
           data :{
              account : $('#pay').find("option:selected").text(),
              password : $('#pay1').find("option:selected").text(),
+             name :  result,
           },
             // Whether this is a POST or GET request
             type: "GET",
@@ -140,7 +141,7 @@ $('#send_button').click( function(){
         })
         .done(function( text ) {
                 alert("付款成功");
-               //location.href='shopcar.html';
+               location.href='shopcar.html';
         })
         .fail( function(xhr, status, errorThrown) {
             console.log( "Sorry, there was a problem!" );
