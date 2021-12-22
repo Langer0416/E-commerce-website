@@ -78,7 +78,7 @@
         <option id="3">宅配</option>
         <option id="4">超商自取</option>
     </select>
-    <button class="btn btn-outline-success" type="button" id="send_button">Send</button>
+    <button onclick="tocar()" class="btn btn-outline-success" type="button" id="send_button">Send</button>
 </form>
 
 
@@ -103,13 +103,36 @@ $(function(){
     $("#show").html(oneValues());
     })
 
-    const result;
+    function tocar(){
+    alert("付款成功!");
+    var getval = ary1[0];
+    window.location.href="shopcar.html?valus"+ary[0]+"&"+getval;
+    //console.log(getval);
+    }
+
+    var result;
+    var ary1;
+    var ary;
     function oneValues(){
     var url=window.location.search;
     if(url.indexOf("?")!=-1)
     {
         result = url.substr(url.indexOf("=")+7);
-        alert(result);
+        //alert(result);
+        ary =result.split('&');
+        //alert(ary[0]);
+        //alert(ary[1]);
+        ary1 = ary[1].split('pn');
+        //alert(ary1[0]);
+        //alert(ary1[1]);
+        ary1[1] =decodeURI(ary1[1]);
+        //alert(ary1[1]);
+
+        //ary1[1] =decodeURI(ary1[1]);
+        //alert(ary1[0]);
+        //alert(ary1[1]);
+        //alert(result);
+        //alert(result);
     }
         //return result;
     }
@@ -131,6 +154,7 @@ $('#send_button').click( function(){
           data :{
              account : $('#pay').find("option:selected").text(),
              password : $('#pay1').find("option:selected").text(),
+             name :  ary1[1],
           },
             // Whether this is a POST or GET request
             type: "GET",
@@ -140,7 +164,7 @@ $('#send_button').click( function(){
         })
         .done(function( text ) {
                 alert("付款成功");
-               //location.href='shopcar.html';
+                //location.href='shopcar.html';
         })
         .fail( function(xhr, status, errorThrown) {
             console.log( "Sorry, there was a problem!" );

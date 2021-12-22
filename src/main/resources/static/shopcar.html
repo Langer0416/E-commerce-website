@@ -10,6 +10,13 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <title>My Shop</title>
+    <STYLE>
+        .footer {
+  background-color: #f1f1f1;
+  padding: 10px;
+  text-align: center;
+}
+    </STYLE>
 </head>
 <body>
 <span id="show"></span>
@@ -128,6 +135,12 @@
     //console.log(getval);
     }
 
+    function tocar(){
+    var getval = result;
+    window.location.href="shopcar.html?valus"+getval;
+    //console.log(getval);
+    }
+
   $( document ).ready( function() {
     console.log( "ready!" );
     emptyProducts();
@@ -141,7 +154,7 @@
  function to(InsertIntoShopCar){
     var getval = InsertIntoShopCar;
     //alert(getval);
-    window.location.href="pay.html?valus"+getval;
+    window.location.href="pay.html?valus"+result+"pn"+getval ;
     //console.log(getval);
     }
 
@@ -189,11 +202,21 @@
             console.dir( xhr );
         })
     }
-
+    var a=0
+    var sum = 0;
+    var total = 0;
     var number = 0;
     function addProducts(products) {
-      for ( let shopcar of products ) {
+        for ( let shopcar of products ) {
       number ++ ;
+      a = shopcar. quantity;
+      console.log(shopcar.price);
+      for(var j =0; j<shopcar.quantity;j++)
+      {
+      //console.log(j)
+      sum = sum +shopcar.price;
+      }
+      console.log(sum);
         let html = '<div class="card col-4">';
         html += '<img src="' + shopcar. picture + '" class="card-img-top" alt="' + shopcar.name + '" width="250" height="350">';
         html += '<div class="card-body">';
@@ -202,11 +225,15 @@
         html += '<p class="card-text">' + "目前數量:" +  shopcar.instock+ '</p>';
         html += '<p class="card-text">' + "商品價錢:" + shopcar. price + '</p>';
         html += '<p class="card-text">' + "最低購入量:" + shopcar.quantity + '</p>';
+
        html += '<a id="'+shopcar.name+'"  onclick ="show(id)" class="btn btn-primary">' + "結帳" + '</a>';
         html += '</div>';
         html += '</div>';
         $('#shopcarList').append(html);
       }
+         let html = '<div class="footer"> ';
+         html += '<p>' + "總金額:" +  sum +  '</p>';
+         $('#shopcarList').append(html);
     }
 
     function getProducts1(targetUrl) {
