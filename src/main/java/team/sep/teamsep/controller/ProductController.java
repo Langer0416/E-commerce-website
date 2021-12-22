@@ -44,6 +44,16 @@ public class ProductController {
         System.out.println(id);
         return productManager.InsertIntoCar2(id);}
 
+    @GetMapping(value= "/pay")
+    public String send(
+        @RequestParam("account")  String account,
+         @RequestParam("password")  String picture,
+        @RequestParam("name")  String name
+    ){
+
+        System.out.println(account);
+        return productManager.pay(account,picture,name);}
+
     @RequestMapping(value= "/add", method= RequestMethod.GET)
     @ResponseBody
     public String add(

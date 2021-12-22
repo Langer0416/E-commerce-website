@@ -145,6 +145,13 @@
       $('#shopcarList').empty();
     }
 
+ function to(InsertIntoShopCar){
+    var getval = InsertIntoShopCar;
+    //alert(getval);
+    window.location.href="pay.html?valus"+getval;
+    //console.log(getval);
+    }
+
  var InsertIntoShopCar ;
     function show(number1)
     {
@@ -152,11 +159,13 @@
       alert("add number:" + number1);
       //console.log(name);
       //console.log(number1);
+      //location.href='pay.html';
       InsertIntoShopCar = number1 ;
+      to(InsertIntoShopCar);
       const id = $('#InsertIntoShopCar').val();
       InsertIntoCar2(InsertIntoShopCar,'shopcar/'+InsertIntoShopCar);
       //emptyProducts();
-      console.log(InsertIntoShopCar);
+      //console.log(InsertIntoShopCar);
     }
 
     function InsertIntoCar2(InsertIntoShopCar,targetUrl)
@@ -210,7 +219,8 @@
         html += '<p class="card-text">' + "目前數量:" +  shopcar.instock+ '</p>';
         html += '<p class="card-text">' + "商品價錢:" + shopcar. price + '</p>';
         html += '<p class="card-text">' + "最低購入量:" + shopcar.quantity + '</p>';
-        html += '<a href="#" id="'+shopcar.name+'"  onclick ="show(id)" class="btn btn-primary">' + "結帳" + '</a>';
+
+       html += '<a id="'+shopcar.name+'"  onclick ="show(id)" class="btn btn-primary">' + "結帳" + '</a>';
         html += '</div>';
         html += '</div>';
         $('#shopcarList').append(html);

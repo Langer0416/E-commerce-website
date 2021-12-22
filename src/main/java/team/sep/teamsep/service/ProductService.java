@@ -58,6 +58,22 @@ public class ProductService {
         }
        return "success";
     }
+
+    public String pay(String account,String picture,String name) {
+        try (Connection connection = sql2oDbHandler.getConnector().open()) {
+            String query = "Insert INTO project.pay(pay,deliver,name) VALUES(:account,:password,:name)";
+
+            System.out.println(query);
+            connection.createQuery(query)
+                .addParameter("account",account)
+                .addParameter("password",picture)
+                .addParameter("name",name)
+                .executeUpdate();
+
+        }
+        return "success";
+    }
+
     public String InsertIntoCar2(String id) {
         try (Connection connection = sql2oDbHandler.getConnector().open()) {
             String query = "DELETE FROM project.productcar where PRODUCT_NAME = :id";
