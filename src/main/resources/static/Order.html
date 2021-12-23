@@ -60,7 +60,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="btn" onclick="tomember()">修改密碼</a></li>
-                        <li><a class="btn" onclick="toOrder()">查看訂單</a></li>
+                        <li><a class="btn" onclick="tomember()">查看訂單</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -135,12 +135,6 @@
     //console.log(getval);
     }
 
-    function toOrder(){
-    var getval = result;
-    window.location.href="Order.html?valus"+getval;
-    //console.log(getval);
-    }
-
     function tocar(){
     var getval = result;
     window.location.href="shopcar.html?valus"+getval;
@@ -150,7 +144,7 @@
   $( document ).ready( function() {
     console.log( "ready!" );
     emptyProducts();
-    getProducts1('shopcar')
+    getProductOrder('Order');
   });
 
    function emptyProducts() {
@@ -165,84 +159,50 @@
     }
 
  var InsertIntoShopCar ;
-    function show(number1)
-    {
-      history.go(0);
-      alert("add number:" + number1);
-      //console.log(name);
-      //console.log(number1);
-      //location.href='pay.html';
-      InsertIntoShopCar = number1 ;
-      to(InsertIntoShopCar);
-      const id = $('#InsertIntoShopCar').val();
-      InsertIntoCar2(InsertIntoShopCar,'shopcar/'+InsertIntoShopCar);
-      //emptyProducts();
-      //console.log(InsertIntoShopCar);
-    }
 
-    function InsertIntoCar2(InsertIntoShopCar,targetUrl)
-    {
-        $.ajax({
-            // The URL for the request
-            url: targetUrl,
 
-            //data: {
-            //    id : $('#InsertIntoShopCar').val()
-            //},
-
-            // Whether this is a POST or GET request
-            type: "GET",
-
-            // The type of data we expect back
-            dataType : "text",
-        })
-
-        .done(function( text ) {
-
-               console.log("success");
-        })
-        .fail( function(xhr, status, errorThrown) {
-            console.log( "Sorry, there was a problem!" );
-            console.log( "Error: " + errorThrown );
-            console.log( "Status: " + status );
-            console.dir( xhr );
-        })
-    }
     var a=0
     var sum = 0;
     var total = 0;
     var number = 0;
     function addProducts(products) {
-        for ( let shopcar of products ) {
-      number ++ ;
-      a = shopcar. quantity;
-      console.log(shopcar.price);
-      for(var j =0; j<shopcar.quantity;j++)
-      {
-      //console.log(j)
-      sum = sum +shopcar.price;
-      }
-      console.log(sum);
-        let html = '<div class="card col-4">';
-        html += '<img src="' + shopcar. picture + '" class="card-img-top" alt="' + shopcar.name + '" width="250" height="350">';
+        for (let order of products ) {
+        //console.log("first");
+        console.log(order.id);
+        //a+=order.id;
+        //console.log(a);
+        console.log(order.price);
+        let html = '<div class="card text-center">';
+        html += '<div class="card-header">';
+        html += '<h5 class="card-title">訂單編號: ' + order. id + '</h5>';
+        html += '</div>';
         html += '<div class="card-body">';
-        html += '<h5 class="card-title">' + shopcar.name + '</h5>';
-        //html += '<p class="card-text">' + shopcar.id + '</p>';
-        html += '<p class="card-text">' + "目前數量:" +  shopcar.instock+ '</p>';
-        html += '<p class="card-text">' + "商品價錢:" + shopcar. price + '</p>';
-        html += '<p class="card-text">' + "最低購入量:" + shopcar.quantity + '</p>';
-
-       html += '<a id="'+shopcar.name+'"  onclick ="show(id)" class="btn btn-primary">' + "結帳" + '</a>';
+        //html += '<h5 class="card-title">' + order. id + '</h5>';
+        //html += '<p class="card-text">' + order.deliver + '</p>';
+        html += '<p class="card-text">' + "付款方式:" + order.pay+ '</p>';
+        html += '<p class="card-text">' + "運送方式:" + order. deliver + '</p>';
+         html += '<p class="card-text">' + "商品名稱:" + order. name + '</p>';
+        //html += '<p class="card-text">' + "最低購入量:" + order. id + '</p>';
+        html += '</div>';
+        html += ' <div class="card-footer text-muted">';
+        html += '<p class="card-text">' + "總金額:" + order. price + '</p>';
         html += '</div>';
         html += '</div>';
         $('#shopcarList').append(html);
+        /*html += '<img src="' + shopcar. picture + '" class="card-img-top" alt="' + shopcar.name + '" width="250" height="350">';
+        html += '<div class="card-body">';
+        html += '<h5 class="card-title">' + pay. id + '</h5>';
+        html += '<p class="card-text">' + pay.deliver + '</p>';
+        html += '<p class="card-text">' + "目前數量:" +  pay.pay+ '</p>';
+        html += '<p class="card-text">' + "商品價錢:" + pay. deliver + '</p>';
+        html += '<p class="card-text">' + "最低購入量:" + pay. id + '</p>';
+        html += '</div>';
+        html += '</div>';*/
+
       }
-         let html = '<div class="footer"> ';
-         html += '<p>' + "總金額:" +  sum +  '</p>';
-         $('#shopcarList').append(html);
     }
 
-    function getProducts1(targetUrl) {
+    function getProductOrder(targetUrl) {
       // Using the core $.ajax() method
       $.ajax({
           // The URL for the request

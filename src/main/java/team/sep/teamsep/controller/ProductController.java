@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import team.sep.teamsep.model.Product;
 import team.sep.teamsep.model.ShopCar;
+import team.sep.teamsep.model.Order;
 import team.sep.teamsep.service.ProductService;
 
 import java.util.List;
@@ -22,6 +23,11 @@ public class ProductController {
     @GetMapping("/shopcar")
     public List<ShopCar> getProducts1(){
         return productManager.getProducts1();
+    }
+
+    @GetMapping("/Order")
+    public List<Product> getProductOrder(){
+        return productManager.getProductOrder();
     }
 
     @GetMapping("/products/{keyword}")
