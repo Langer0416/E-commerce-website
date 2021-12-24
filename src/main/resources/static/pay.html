@@ -15,7 +15,7 @@
 <span id="show"></span>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">My Shop</a>
+        <a class="navbar-brand" href="#">Langer Shop</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -23,7 +23,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index1.html">首頁</a>
+                    <a onclick="tohome()" class="nav-link active" aria-current="page" style="cursor:pointer">首頁</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">逢甲商城</a>
@@ -31,31 +31,31 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">一中商城</a>
                 </li>
-                <!--<li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        商品管理
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item link" href="add_product.html">新增商品</a></li>
-                        <li><a class="dropdown-item link" href="update_product.html">修改商品</a></li>
-                    </ul>
-                </li>-->
             </ul>
 
 
             <ul class="navbar-nav mb-2 mb-lg-0 d-flex">
                 <li class="nav-item">
-                    <a class="nav-link" href="MemberCenter.html">會員中心</a>
+                    <a class="nav-link" href="index.html">登出</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        會員中心
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="nav-link" onclick="tomember()" style="cursor:pointer">修改密碼</a></li>
+                        <li><a class="nav-link" onclick="toOrder()" style="cursor:pointer">查看訂單</a></li>
+                    </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="shopcar.html">購物車(0)</a>
+                    <a onclick="tocar()" class="nav-link"  style="cursor:pointer">購物車</a>
                 </li>
             </ul>
 
             <!--<form class="d-flex">
                 <input class="form-control " type="text" placeholder="商品名稱" aria-label="product name" aria-describedby="searchProduct" id="productKeyword">
                 <button class="btn btn-outline-success" type="button" id="searchProduct">Search</button>
-            </form> -->
+            </form>-->
         </div>
     </div>
 </nav>
@@ -100,8 +100,44 @@
 
 <script>
 $(function(){
-    $("#show").html(oneValues());
+   $("#show").html(oneValues());
     })
+
+    var result;
+    var ary;
+    function oneValues(){
+    var url=window.location.search;
+    if(url.indexOf("?")!=-1)
+    {
+        result = url.substr(url.indexOf("=")+7);
+        //alert(result);
+        ary =result.split('&');
+        //alert(ary[0]);
+        //alert(ary[1]); ary =result.split('&');
+        //alert(ary[0]);
+        //alert(ary[1]);
+    }
+        //return result;
+    }
+    function tohome(){
+    var getval = result;
+    window.location.href="index1.html?valus"+getval;
+    //console.log(getval);
+    }
+
+
+    //console.log(result);
+    function tomember(){
+    var getval = result;
+    window.location.href="MemberCenter.html?valus"+getval;
+    //console.log(getval);
+    }
+
+    function toOrder(){
+    var getval = result;
+    window.location.href="Order.html?valus"+getval;
+    //console.log(getval);
+    }
 
     function tocar(){
     alert("付款成功!");
@@ -152,8 +188,9 @@ $('#send_button').click( function(){
             url: "pay",
 
           data :{
-             account : $('#pay').find("option:selected").text(),
-             password : $('#pay1').find("option:selected").text(),
+             account : ary[0],
+             pay : $('#pay').find("option:selected").text(),
+             deliver : $('#pay1').find("option:selected").text(),
              name :  ary1[1],
           },
             // Whether this is a POST or GET request

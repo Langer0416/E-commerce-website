@@ -18,10 +18,12 @@ public class Product {
 
     private String deliver;
 
+    private String account;
+
     public Product() {
     }
 
-    public Product(long id, String name,int stock, int price,int quantity, String picture,String pay,String deliver) {
+    public Product(long id, String name,int stock, int price,int quantity, String picture,String pay,String deliver,String account) {
         this.id = id;
         this.name = name;
         this.stock = stock;
@@ -30,6 +32,7 @@ public class Product {
         this.picture = picture;
         this.pay =pay;
         this.deliver=deliver;
+        this.account =account;
     }
 
     public long getId() {
@@ -94,5 +97,13 @@ public class Product {
 
     public void setDeliver(String deliver) {
         this.deliver = deliver;
+    }
+
+    public String  getAccount(){
+        return  account;
+    }
+
+    public void setAccount(String account){
+        this.account =account;
     }
 }

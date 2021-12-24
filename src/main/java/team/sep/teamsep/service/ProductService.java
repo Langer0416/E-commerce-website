@@ -26,19 +26,21 @@ public class ProductService {
             return connection.createQuery(query).executeAndFetch(Product.class);
         }
     }
-    public List<Product> getProductOrder() {
-        try (Connection connection = sql2oDbHandler.getConnector().open()) {
-                String query = "select pay.id ,pay.name,pay.pay,pay.deliver,     product.PRICE from pay inner join product on pay.name = product.PRODUCT_NAME" ;
-
-            return connection.createQuery(query).executeAndFetch(Product.class);
-        }
-    }
 
     public List<ShopCar> getProducts1() {
         try (Connection connection = sql2oDbHandler.getConnector().open()) {
             String query = "SELECT PRODUCT_NAME name,PRODUCT_ID id,INSTOCK stock,PICTURE picture,PRICE price,QUANTITY quantity FROM project.productcar" ;
 
             return connection.createQuery(query).executeAndFetch(ShopCar.class);
+        }
+    }
+
+    public List<Product> getProductOrder() {
+        try (Connection connection = sql2oDbHandler.getConnector().open()) {
+            String query = "select pay.account,pay.id ,pay.name,pay.pay,pay.deliver,     product.PRICE from pay inner join product on pay.name = product.PRODUCT_NAME";
+
+            return connection.createQuery(query)
+                    .executeAndFetch(Product.class);
         }
     }
 
@@ -67,14 +69,15 @@ public class ProductService {
        return "success";
     }
 
-    public String pay(String account,String picture,String name) {
+    public String pay(String account,String pay,String deliver,String name) {
         try (Connection connection = sql2oDbHandler.getConnector().open()) {
-            String query = "Insert INTO project.pay(pay,deliver,name) VALUES(:account,:password,:name)";
+            String query = "Insert INTO project.pay(account,pay,deliver,name) VALUES(:account,:pay,:deliver,:name)";
 
             System.out.println(query);
             connection.createQuery(query)
                 .addParameter("account",account)
-                .addParameter("password",picture)
+                .addParameter("pay",pay)
+                    .addParameter("deliver",deliver)
                 .addParameter("name",name)
                 .executeUpdate();
 

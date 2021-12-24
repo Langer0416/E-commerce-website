@@ -2,6 +2,8 @@ package team.sep.teamsep.model;
 
 public class Order {
 
+    private String account;
+
     private String pay;
 
     private String deliver;
@@ -13,11 +15,19 @@ public class Order {
     public Order() {
     }
 
-    public Order(String pay, String deliver,int id,String name) {
+    public Order(String account,String pay, String deliver,int id,String name) {
+        this.account = account;
         this.pay = pay;
         this.deliver = deliver;
         this.id = id;
         this.name =  name;
+    }
+    public String getAccount(){
+        return account;
+    }
+
+    public void setAccount(String account){
+        this.account =account;
     }
 
     public String getpay() { return pay; }
