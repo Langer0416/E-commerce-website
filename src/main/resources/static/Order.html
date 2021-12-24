@@ -60,7 +60,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="btn" onclick="tomember()">修改密碼</a></li>
-                        <li><a class="btn" onclick="tomember()">查看訂單</a></li>
+                        <li><a class="btn" onclick="toOrder()">查看訂單</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -106,6 +106,18 @@
     $("#show").html(oneValues());
     })
 
+    function toOrder(){
+    var getval = result;
+    window.location.href="Order.html?valus"+getval;
+    //console.log(getval);
+    }
+
+    function tomember(){
+    var getval = result;
+    window.location.href="MemberCenter.html?valus"+getval;
+    //console.log(getval);
+    }
+
     var result;
     function oneValues(){
     var url=window.location.search;
@@ -113,6 +125,16 @@
     {
         result = url.substr(url.indexOf("=")+7);
         //alert(result);
+        //alert(result);
+        ary=result.split('&');
+
+         //alert(ary[0]);
+        //alert(ary[1]);
+        //alert(result);
+        //alert(result);
+        //ary =result.split('&');
+        //alert(ary[0]);
+        //alert(ary[1]);
     }
         //return result;
     }
@@ -135,11 +157,6 @@
     //console.log(getval);
     }
 
-    function tocar(){
-    var getval = result;
-    window.location.href="shopcar.html?valus"+getval;
-    //console.log(getval);
-    }
 
   $( document ).ready( function() {
     console.log( "ready!" );
@@ -167,8 +184,11 @@
     var number = 0;
     function addProducts(products) {
         for (let order of products ) {
+        if(ary[0]===order.account)
+        {
         //console.log("first");
         console.log(order.id);
+        console.log(order.account);
         //a+=order.id;
         //console.log(a);
         console.log(order.price);
@@ -189,6 +209,7 @@
         html += '</div>';
         html += '</div>';
         $('#shopcarList').append(html);
+        }
         /*html += '<img src="' + shopcar. picture + '" class="card-img-top" alt="' + shopcar.name + '" width="250" height="350">';
         html += '<div class="card-body">';
         html += '<h5 class="card-title">' + pay. id + '</h5>';

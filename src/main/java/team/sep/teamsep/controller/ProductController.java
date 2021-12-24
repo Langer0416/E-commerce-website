@@ -53,12 +53,13 @@ public class ProductController {
     @GetMapping(value= "/pay")
     public String send(
         @RequestParam("account")  String account,
-         @RequestParam("password")  String picture,
+        @RequestParam("pay") String pay,
+        @RequestParam("deliver")  String deliver,
         @RequestParam("name")  String name
     ){
 
         System.out.println(account);
-        return productManager.pay(account,picture,name);}
+        return productManager.pay(account,pay,deliver,name);}
 
     @RequestMapping(value= "/add", method= RequestMethod.GET)
     @ResponseBody
