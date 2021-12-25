@@ -1,76 +1,92 @@
 package team.sep.teamsep.model;
 
+/**
+ * 建立ShopCar.
+ */
+
 public class ShopCar {
 
-    private long id;
+  /**
+   * 宣告ShopCar的變數型態.
+   */
 
-    private String name;
+  private long id;
 
-    private int stock;
+  private String name;
 
-    private int price;
+  private int stock;
 
-    private int quantity;
+  private int price;
 
-    private String picture;
+  private int quantity;
 
-    public ShopCar() {
-    }
+  private String picture;
 
-    public ShopCar(long id, String name,int stock, int price,int quantity, String picture) {
-        this.id = id;
-        this.name = name;
-        this.stock = stock;
-        this.price =  price;
-        this.quantity = quantity;
-        this.picture = picture;
-    }
+  /**
+   * public Seller.
+   */
 
-    public long getId() {
-        return id;
-    }
+  public ShopCar() {
+  }
 
-    public void setId(long id) {
-        this.id = id;
-    }
+  /**
+   * ShopCar(long id, String name,int stock, int price,int quantity, String picture).
+   */
 
-    public String getName() {
-        return name;
-    }
+  public ShopCar(long id, String name, int stock, int price, int quantity, String picture) {
+    this.id = id;
+    this.name = name;
+    this.stock = stock;
+    this.price =  price;
+    this.quantity = quantity;
+    this.picture = picture;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public long getId() {
+    return id;
+  }
 
-    public int getInstock(){
-        return stock;
-    }
+  public void setId(long id) {
+    this.id = id;
+  }
 
-    public void setInstock(int stock){
-        this.stock = stock;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public int getPrice() {
-        return price;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public void setPrice(int price) {
-        this.price = price;
-    }
+  public int getInstock() {
+    return stock;
+  }
 
-    public int getQuantity(){
-        return quantity;
-    }
+  public void setInstock(int stock) {
+    this.stock = stock;
+  }
 
-    public void setQuantity(int quantity){
-        this.quantity = quantity;
-    }
+  public int getPrice() {
+    return price;
+  }
 
-    public String getPicture() {
-        return picture;
-    }
+  public void setPrice(int price) {
+    this.price = price;
+  }
 
-    public void setPicture(String picture) {
-        this.picture = picture;
-    }
+  public int getQuantity() {
+    return quantity;
+  }
+
+  public void setQuantity(int quantity) {
+    this.quantity = quantity;
+  }
+
+  public String getPicture() {
+    return picture;
+  }
+
+  public void setPicture(String picture) {
+    this.picture = picture;
+  }
 }
