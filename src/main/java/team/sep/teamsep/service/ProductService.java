@@ -37,7 +37,7 @@ public class ProductService {
 
     public List<Product> getProductOrder() {
         try (Connection connection = sql2oDbHandler.getConnector().open()) {
-            String query = "select pay.account,pay.id ,pay.name,pay.pay,pay.deliver,     product.PRICE from pay inner join product on pay.name = product.PRODUCT_NAME";
+            String query = "select pay.account,pay.id ,pay.name,pay.pay,pay.deliver,product.PRICE from pay inner join product on pay.name = product.PRODUCT_NAME order by pay.id" ;
 
             return connection.createQuery(query)
                     .executeAndFetch(Product.class);
