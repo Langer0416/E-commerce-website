@@ -14,7 +14,7 @@
     <STYLE>
 
 body {
-  background: url("https://images3.alphacoders.com/237/thumb-1920-23765.jpg");
+  background: url("https://images4.alphacoders.com/803/thumb-1920-80316.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
@@ -78,24 +78,12 @@ body {
         </div>
     </div>
 </nav>
-<body class="skin-light">
-<!--Main Navigation-->
-<header>
-    <div class="jumbotron color-grey-light mt-70">
-        <div class="d-flex align-items-center h-100">
-            <div class="container text-center py-5">
-                <h3 class="mb-0">Shopping cart</h3>
-            </div>
-        </div>
-    </div>
-</header>
-<!--Main Navigation-->
-</body>
+
 
 <div class="px-4 px-lg-0">
     <!-- For demo purpose -->
-    <div class="container text-white py-5 text-center">
-        <h1 class="display-4">Bootstrap 4 shopping cart</h1>
+    <div class="container text-white py-5 text-left">
+        <h1 class="display-4"><strong>Shop Cart</strong></h1>
     </div>
     <!-- End -->
 
@@ -110,16 +98,19 @@ body {
                             <thead>
                             <tr>
                                 <th scope="col" class="border-0 bg-light">
-                                    <div class="p-2 px-3 text-uppercase">Product</div>
+                                    <div class="p-2 px-3 text-uppercase">選擇</div>
                                 </th>
                                 <th scope="col" class="border-0 bg-light">
-                                    <div class="py-2 text-uppercase">Price</div>
+                                    <div class="p-2 px-3 text-uppercase">商品</div>
                                 </th>
                                 <th scope="col" class="border-0 bg-light">
-                                    <div class="py-2 text-uppercase">Quantity</div>
+                                    <div class="py-2 text-uppercase">價格</div>
                                 </th>
                                 <th scope="col" class="border-0 bg-light">
-                                    <div class="py-2 text-uppercase">Remove</div>
+                                    <div class="py-2 text-uppercase">數量</div>
+                                </th>
+                                <th scope="col" class="border-0 bg-light">
+                                    <div class="py-2 text-uppercase">移除</div>
                                 </th>
                             </tr>
                             </thead>
@@ -133,33 +124,32 @@ body {
 
             <div class="row py-5 p-4 bg-white rounded shadow-sm">
                 <div class="col-lg-6">
-                    <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Coupon code</div>
+                    <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">優惠券</div>
                     <div class="p-4">
-                        <p class="font-italic mb-4">If you have a coupon code, please enter it in the box below</p>
+                        <p class="font-italic mb-4">如果你有優惠券，請在下方輸入</p>
                         <div class="input-group mb-4 border rounded-pill p-2">
-                            <input type="text" placeholder="Apply coupon" aria-describedby="button-addon3" class="form-control border-0">
+                            <input type="text" placeholder="優惠券" aria-describedby="button-addon3" class="form-control border-0">
                             <div class="input-group-append border-0">
-                                <button id="button-addon3" type="button" class="btn btn-dark px-4 rounded-pill"><i class="fa fa-gift mr-2"></i>Apply coupon</button>
+                                <button id="button-addon3" type="button" class="btn btn-dark px-4 rounded-pill"><i class="fa fa-gift mr-2"></i>獲得優惠</button>
                             </div>
                         </div>
                     </div>
-                    <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Instructions for seller</div>
+                    <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">回饋表單</div>
                     <div class="p-4">
-                        <p class="font-italic mb-4">If you have some information for the seller you can leave them in the box below</p>
-                        <textarea name="" cols="30" rows="2" class="form-control"></textarea>
+                        <p class="font-italic mb-4">如果您對我們有任何疑慮，歡迎告訴我們!</p>
+                        <textarea name="" cols="30" rows="2" class="form-control" placeholder="無"></textarea>
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Order summary </div>
-                    <div class="p-4">
-                        <p class="font-italic mb-4">Shipping and additional costs are calculated based on values you have entered.</p>
+                    <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">訂單結算</div>
+                    <div class="p-4">*商品價格加上運費為總價</div></p>
                         <ul class="list-unstyled mb-4">
-                            <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Order Subtotal </strong><strong>$390.00</strong></li>
-                            <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Shipping and handling</strong><strong>$10.00</strong></li>
-                            <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
+                            <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">商品價格 </strong><strong>$390.00</strong></li>
+                            <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">運費</strong><strong>$10.00</strong></li>
+                            <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">總價</strong>
                                 <h5 class="font-weight-bold">$400.00</h5>
                             </li>
-                        </ul><a href="#" class="btn btn-dark rounded-pill py-2 btn-block">Procceed to checkout</a>
+                        </ul><a href="#" class="btn btn-dark rounded-pill py-2 btn-block">去買單</a>
                     </div>
                 </div>
             </div>
@@ -316,14 +306,19 @@ body {
       }
       console.log(sum);
         let html = '<tr>';
-        html += '<th scope="row">';
+        html += '<td class="ckbox" style="width: 80px;height: 25px;">';
+        html += '<input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">';
+        html += '<label class="form-check-label" for="flexSwitchCheckDefault">'+'</label>';
+        html += '</td>';
+        html += '<td scope="row">';
         html += '<div class="p-2">';
+
         html += '<img src="' + shopcar. picture + '" class="img-fluid rounded shadow-sm" alt=""  width="100" >';
         html += '<div class="ml-3 d-inline-block align-middle">';
 		html += '<h5 class="mb-0">' + shopcar.name + '</h5>';
 		html += '</div>';
 		html += '</div>';
-		html += '</th>';
+		html += '</td>';
 		html += '<td class="align-middle">'+ '<strong>' + "$" +shopcar.price + '</strong>' + '</td>';
 		html += '<td class="align-middle">'+ '<strong>' + shopcar.quantity + '</strong>'+'</td>';
 		html += '<td class="align-middle">'+'<a href="#" class="text-dark">'+'<i class="fa fa-trash-o">'+'</i>'+'</a>';
