@@ -1,109 +1,127 @@
 package team.sep.teamsep.model;
 
+/**
+ * 建立Product.
+ */
+
 public class Product {
 
-    private long id;
+  /**
+   * 宣告Product的變數型態.
+   */
 
-    private String name;
+  private long id;
 
-    private int stock;
+  private String name;
 
-    private int price;
+  private int stock;
 
-    private int quantity;
+  private int price;
 
-    private String picture;
+  private int quantity;
 
-    private String pay;
+  private String picture;
 
-    private String deliver;
+  private String pay;
 
-    private String account;
+  private String deliver;
 
-    public Product() {
-    }
+  private String account;
 
-    public Product(long id, String name,int stock, int price,int quantity, String picture,String pay,String deliver,String account) {
-        this.id = id;
-        this.name = name;
-        this.stock = stock;
-        this.price =  price;
-        this.quantity = quantity;
-        this.picture = picture;
-        this.pay =pay;
-        this.deliver=deliver;
-        this.account =account;
-    }
+  /**
+   * public Product.
+   */
 
-    public long getId() {
-        return id;
-    }
+  public Product() {
+  }
 
-    public void setId(long id) {
-        this.id = id;
-    }
+  /**
+   * Product(long id, String name,int stock, int price,int quantity, String picture,String
+   * pay,String deliver,String account).
+   */
 
-    public String getName() {
-        return name;
-    }
+  public Product(long id, String name, int stock, int price, int quantity,
+                 String picture, String pay, String deliver, String account) {
+    this.id = id;
+    this.name = name;
+    this.stock = stock;
+    this.price =  price;
+    this.quantity = quantity;
+    this.picture = picture;
+    this.pay = pay;
+    this.deliver = deliver;
+    this.account = account;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public long getId() {
+    return id;
+  }
 
-    public int getInstock(){
-        return stock;
-    }
+  public void setId(long id) {
+    this.id = id;
+  }
 
-    public void setInstock(int stock){
-        this.stock = stock;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public int getPrice() {
-        return price;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public void setPrice(int price) {
-        this.price = price;
-    }
+  public int getInstock() {
+    return stock;
+  }
 
-    public int getQuantity(){
-        return quantity;
-    }
+  public void setInstock(int stock) {
+    this.stock = stock;
+  }
 
-    public void setQuantity(int quantity){
-        this.quantity = quantity;
-    }
+  public int getPrice() {
+    return price;
+  }
 
-    public String getPicture() {
-        return picture;
-    }
+  public void setPrice(int price) {
+    this.price = price;
+  }
 
-    public void setPicture(String picture) {
-        this.picture = picture;
-    }
+  public int getQuantity() {
+    return quantity;
+  }
 
-    public String getPay() {
-        return pay;
-    }
+  public void setQuantity(int quantity) {
+    this.quantity = quantity;
+  }
 
-    public void setPay(String pay) {
-        this.pay = pay;
-    }
+  public String getPicture() {
+    return picture;
+  }
 
-    public String getDeliver() {
-        return deliver;
-    }
+  public void setPicture(String picture) {
+    this.picture = picture;
+  }
 
-    public void setDeliver(String deliver) {
-        this.deliver = deliver;
-    }
+  public String getPay() {
+    return pay;
+  }
 
-    public String  getAccount(){
-        return  account;
-    }
+  public void setPay(String pay) {
+    this.pay = pay;
+  }
 
-    public void setAccount(String account){
-        this.account =account;
-    }
+  public String getDeliver() {
+    return deliver;
+  }
+
+  public void setDeliver(String deliver) {
+    this.deliver = deliver;
+  }
+
+  public String  getAccount() {
+    return  account;
+  }
+
+  public void setAccount(String account) {
+    this.account = account;
+  }
 }
