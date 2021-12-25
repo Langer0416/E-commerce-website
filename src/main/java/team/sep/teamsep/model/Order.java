@@ -1,63 +1,78 @@
 package team.sep.teamsep.model;
 
+/**
+ * 建立Order.
+ */
+
 public class Order {
 
-    private String account;
+  /**
+   * 宣告Order的變數型態.
+   */
+  private String account;
 
-    private String pay;
+  private String pay;
 
-    private String deliver;
+  private String deliver;
 
-    private int id;
+  private int id;
 
-    private String name;
+  private String name;
 
-    public Order() {
-    }
+  /**
+   * public Order.
+   */
 
-    public Order(String account,String pay, String deliver,int id,String name) {
-        this.account = account;
-        this.pay = pay;
-        this.deliver = deliver;
-        this.id = id;
-        this.name =  name;
-    }
-    public String getAccount(){
-        return account;
-    }
+  public Order() {
+  }
 
-    public void setAccount(String account){
-        this.account =account;
-    }
+  /**
+   * public Order(String account,String pay, String deliver,int id,String name).
+   */
 
-    public String getpay() { return pay; }
+  public Order(String account, String pay, String deliver, int id, String name) {
+    this.account = account;
+    this.pay = pay;
+    this.deliver = deliver;
+    this.id = id;
+    this.name =  name;
+  }
+  public String getAccount(){
+    return account;
+  }
 
-    public void setpay(String pay) {
-        this.pay = pay;
-    }
+  public void setAccount(String account){
+    this.account =account;
+  }
 
-    public String getdeliver() {
-        return deliver;
-    }
+  public String getpay() { return pay; }
 
-    public void setdeliver(String deliver) {
-        this.deliver = deliver;
-    }
+  public void setpay(String pay) {
+    this.pay = pay;
+  }
 
-    public int getid(){
-        return id;
-    }
+  public String getdeliver() {
+    return deliver;
+  }
 
-    public void setid(int id){
-        this.id = id;
-    }
+  public void setdeliver(String deliver) {
+    this.deliver = deliver;
+  }
 
-    public String getname() {
-        return name;
-    }
+  public int getid(){
+    return id;
+  }
 
-    public void setPassword(String name) {
-        this.name =  name;
-    }
+  public void setid(int id){
+    this.id = id;
+  }
+
+  public String getname() {
+    return name;
+  }
+
+  public void setPassword(String name) {
+    this.name =  name;
+  }
 }
 
