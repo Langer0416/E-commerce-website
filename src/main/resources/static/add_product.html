@@ -9,8 +9,176 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-    <title>FCU Shop</title>
+    <title>Langer Shop</title>
 </head>
+<style>
+*, *:before, *:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-size: 62.5%;
+  height: 100%;
+  overflow: hidden;
+}
+@media (max-width: 768px) {
+  html, body {
+    font-size: 50%;
+  }
+}
+
+
+.cont {
+  position: relative;
+  height: 100%;
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/slider-2.jpg");
+  background-size: cover;
+  overflow: auto;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+}
+
+.demo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -15rem;
+  margin-top: -26.5rem;
+  width: 30rem;
+  height: 53rem;
+  overflow: hidden;
+}
+
+*{
+  margin:0;
+  padding:0;
+}
+
+body{
+
+  background-color:#f0f0f0;
+  font-family:helvetica;
+}
+
+
+#bg{
+  position:relative;
+  top:20px;
+  height:900px;
+  width:800px;
+  background:url('https://i.imgur.com/3eP9Z4O.png') center no-repeat;
+  background-size:cover;
+  margin-left:auto;
+  margin-right:auto;
+  border:#fff 15px solid;
+}
+
+.module{
+  position:relative;
+  top:15%;
+  height:70%;
+  width:450px;
+  margin-left:auto;
+  margin-right:auto;
+  border-radius:5px;
+  background:RGBA(255,255,255,1);
+
+  -webkit-box-shadow:  0px 0px 15px 0px rgba(0, 0, 0, .45);
+  box-shadow:  0px 0px 15px 0px rgba(0, 0, 0, .45);
+
+}
+
+.module ul{
+  list-style-type:none;
+  margin:0;
+}
+
+.tab{
+  float:left;
+  height:60px;
+  width:25%;
+  padding-top:20px;
+  box-sizing:border-box;
+  background:#eeeeee;
+  text-align:center;
+  cursor:pointer;
+  transition:background .4s;
+}
+
+.tab:first-child{
+  -webkit-border-radius: 5px 0px 0px 0px;
+  border-radius: 5px 0px 0px 0px;
+}
+
+.tab:last-child{
+  -webkit-border-radius: 0px 5px 0px 0px;
+  border-radius: 0px 5px 0px 0px;
+}
+
+.tab:hover{
+  background-color:rgba(0,0,0,.1);
+}
+
+.activeTab{
+  background:#fff;
+}
+
+.activeTab .icon{
+  opacity:1;
+}
+
+.icon{
+  height:24px;
+  width:24px;
+  opacity:.2;
+}
+
+.form{
+  float:left;
+  height:86%;
+  width:100%;
+  box-sizing:border-box;
+  padding:40px;
+}
+
+.textbox{
+  height:50px;
+  width:100%;
+  border-radius:3px;
+  border:rgba(0,0,0,.3) 2px solid;
+  box-sizing:border-box;
+  padding:10px;
+  margin-bottom:30px;
+}
+
+.textbox:focus{
+  outline:none;
+   border:rgba(24,149,215,1) 2px solid;
+   color:rgba(24,149,215,1);
+}
+
+.button{
+  height:50px;
+  width:100%;
+  border-radius:3px;
+  border:rgba(0,0,0,.3) 0px solid;
+  box-sizing:border-box;
+  padding:10px;
+  margin-bottom:30px;
+  background:#90c843;
+  color:#FFF;
+  font-weight:bold;
+  font-size: 12pt;
+  transition:background .4s;
+  cursor:pointer;
+}
+
+.button:hover{
+  background:#80b438;
+
+}
+</style>
 <body>
 <span id="show"></span>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -63,7 +231,37 @@
         </div>
     </div>
 </nav>
-<h3 class="mt-3">新增商品</h3>
+<div class="cont">
+    <div id="bg">
+        <div class="module">
+            <ul>
+                <li class="tab activeTab"><img src="https://i.imgur.com/Fk1Urva.png" alt="" class="icon"/></li>
+            </ul>
+
+            <form class="form">
+                <input type="text" id="pname" name="pname" placeholder="輸入商品名稱" class="textbox" />
+                <input type="number" id="pinstock" name="pinstock" placeholder="輸入商品庫存量" class="textbox" />
+                <input type="number" id="pprice" name="pprice" placeholder="輸入商品價錢" class="textbox" />
+                <input type="number" id="pquantity" name="pquantity" placeholder="輸入商品最低購買量" class="textbox" />
+                <input type="url" id="ppicture" name="ppicture" size="60" placeholder="輸入商品URL" class="textbox" />
+                <input type="button" value="Submit"  id="addProduct" onclick="toadd_product()" class="button" />
+                <!-- <label>商品名稱:  </label><br>
+        <input type="text" id="pname" name="pname" placeholder="輸入商品名稱"><br><br>
+        <label>商品庫存量:  </label><br>
+        <input type="number" id="pinstock" name="pinstock" placeholder="輸入商品庫存量"><br><br>
+        <label>商品價錢:  </label><br>
+        <input type="number" id="pprice" name="pprice" placeholder="輸入商品價錢"><br><br>
+        <label>商品最低入手量:  </label><br>
+        <input type="number" id="pquantity" name="pquantity" placeholder="輸入商品最低購買量"><br><br>
+        <label>商品圖片:  </label><br>
+        <input type="url" id="ppicture" name="ppicture" size="60" placeholder="輸入商品URL"><br><br>-->
+            </form>
+        </div>
+    </div>
+
+    <a href="http://dribbble.com/shots/1265587-Registration-Template-PSD?list=everyone" target="_blank">Design by: Asif Aleem</a>
+</div>
+<!--<h3 class="mt-3">新增商品</h3>
 <div class="container">
 
     <form>
@@ -80,12 +278,12 @@
     </form>
 
     <button class="btn btn-outline-success" type="button" id="addProduct" onclick="toadd_product()">Submit</button>
-   <!-- <button class="btn btn-outline-success" type="button" onclick="history.go(-1)" value="返回上一頁">返回上一頁</button>-->
+    <button class="btn btn-outline-success" type="button" onclick="history.go(-1)" value="返回上一頁">返回上一頁</button>-->
 
 
-    <div class="mt-3 row" id="productList">
+   <!-- <div class="mt-3 row" id="productList">
     </div>
-</div>
+</div>-->
 <!-- Optional JavaScript; choose one of the two! -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
@@ -102,6 +300,70 @@
 
 
 <script>
+$(document).ready(function() {
+
+  var animating = false,
+      submitPhase1 = 1100,
+      submitPhase2 = 400,
+      logoutPhase1 = 800,
+      $login = $(".login"),
+      $app = $(".app");
+
+  function ripple(elem, e) {
+    $(".ripple").remove();
+    var elTop = elem.offset().top,
+        elLeft = elem.offset().left,
+        x = e.pageX - elLeft,
+        y = e.pageY - elTop;
+    var $ripple = $("<div class='ripple'></div>");
+    $ripple.css({top: y, left: x});
+    elem.append($ripple);
+  };
+
+  $(document).on("click", ".login__submit", function(e) {
+    if (animating) return;
+    animating = true;
+    var that = this;
+    ripple($(that), e);
+    $(that).addClass("processing");
+    setTimeout(function() {
+      $(that).addClass("success");
+      setTimeout(function() {
+        $app.show();
+        $app.css("top");
+        $app.addClass("active");
+      }, submitPhase2 - 70);
+      setTimeout(function() {
+        $login.hide();
+        $login.addClass("inactive");
+        animating = false;
+        $(that).removeClass("success processing");
+      }, submitPhase2);
+    }, submitPhase1);
+  });
+
+  $(document).on("click", ".app__logout", function(e) {
+    if (animating) return;
+    $(".ripple").remove();
+    animating = true;
+    var that = this;
+    $(that).addClass("clicked");
+    setTimeout(function() {
+      $app.removeClass("active");
+      $login.show();
+      $login.css("top");
+      $login.removeClass("inactive");
+    }, logoutPhase1 - 120);
+    setTimeout(function() {
+      $app.hide();
+      animating = false;
+      $(that).removeClass("clicked");
+    }, logoutPhase1);
+  });
+
+});
+
+
 
  $(function(){
     $("#show").html(oneValues());
