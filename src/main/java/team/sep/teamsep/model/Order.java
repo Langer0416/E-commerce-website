@@ -37,15 +37,18 @@ public class Order {
     this.id = id;
     this.name =  name;
   }
-  public String getAccount(){
+
+  public String getAccount() {
     return account;
   }
 
-  public void setAccount(String account){
-    this.account =account;
+  public void setAccount(String account) {
+    this.account = account;
   }
 
-  public String getpay() { return pay; }
+  public String getpay() {
+    return pay;
+  }
 
   public void setpay(String pay) {
     this.pay = pay;
@@ -59,11 +62,11 @@ public class Order {
     this.deliver = deliver;
   }
 
-  public int getid(){
+  public int getid() {
     return id;
   }
 
-  public void setid(int id){
+  public void setid(int id) {
     this.id = id;
   }
 
