@@ -38,14 +38,14 @@ public class ProductController {
 
     @GetMapping(value= "/ChooseProductIntoShopCar/{id}")
     public List<Product> InsertIntoCar1(
-        @PathVariable("id") String id
+            @PathVariable("id") String id
     ){
         System.out.println(id);
         return productManager.InsertIntoCar1(id);}
 
     @GetMapping(value= "/shopcar/{id}")
     public String InsertIntoCar2(
-        @PathVariable("id")  String id
+            @PathVariable("id")  String id
     ){
         System.out.println(id);
         return productManager.InsertIntoCar2(id);}
@@ -74,10 +74,10 @@ public class ProductController {
 
     @GetMapping(value= "/pay")
     public String send(
-        @RequestParam("account")  String account,
-        @RequestParam("pay") String pay,
-        @RequestParam("deliver")  String deliver,
-        @RequestParam("name")  String name
+            @RequestParam("account")  String account,
+            @RequestParam("pay") String pay,
+            @RequestParam("deliver")  String deliver,
+            @RequestParam("name")  String name
     ){
 
         System.out.println(account);
@@ -86,22 +86,22 @@ public class ProductController {
     @RequestMapping(value= "/add", method= RequestMethod.GET)
     @ResponseBody
     public String add(
-        @RequestParam("name")  String name,
-        @RequestParam("stock")  Integer stock,
-        @RequestParam("price")  Integer price,
-        @RequestParam("quantity")  Integer quantity,
-        @RequestParam("picture")  String picture
+            @RequestParam("name")  String name,
+            @RequestParam("stock")  Integer stock,
+            @RequestParam("price")  Integer price,
+            @RequestParam("quantity")  Integer quantity,
+            @RequestParam("picture")  String picture
     ){
         return productManager.addProduct(name,stock, price,quantity, picture);}
 
     @RequestMapping(value="/update", method=RequestMethod.GET)
     @ResponseBody
     public String update(
-        @RequestParam("name")  String name,
-        @RequestParam("stock")  Integer stock,
-        @RequestParam("price")  Integer price,
-        @RequestParam("quantity")  Integer quantity,
-        @RequestParam("picture")  String picture
+            @RequestParam("name")  String name,
+            @RequestParam("stock")  Integer stock,
+            @RequestParam("price")  Integer price,
+            @RequestParam("quantity")  Integer quantity,
+            @RequestParam("picture")  String picture
     ){
         return productManager.updateProduct(name,stock, price,quantity, picture);
     }
@@ -127,8 +127,8 @@ public class ProductController {
     @RequestMapping(value="/login", method=RequestMethod.GET)
     @ResponseBody
     public String login(
-        @RequestParam("account")  String account,
-        @RequestParam("password")  String password
+            @RequestParam("account")  String account,
+            @RequestParam("password")  String password
     ){
         return productManager.loginProduct(account,password);
     }
@@ -136,8 +136,8 @@ public class ProductController {
     @RequestMapping(value="/login1", method=RequestMethod.GET)
     @ResponseBody
     public String login1(
-        @RequestParam("account")  String account,
-        @RequestParam("password")  String password
+            @RequestParam("account")  String account,
+            @RequestParam("password")  String password
     ){
         return productManager.loginProduct1(account,password);
     }
@@ -145,10 +145,10 @@ public class ProductController {
     @RequestMapping(value="/register", method=RequestMethod.GET)
     @ResponseBody
     public String register(
-        @RequestParam("account")  String account,
-        @RequestParam("name")  String name,
-        @RequestParam("phone")  Integer phone,
-        @RequestParam("password")  String password
+            @RequestParam("account")  String account,
+            @RequestParam("name")  String name,
+            @RequestParam("phone")  Integer phone,
+            @RequestParam("password")  String password
     ){
         return productManager.registerProduct(account,name,phone,password);
     }

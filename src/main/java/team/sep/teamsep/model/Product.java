@@ -1,6 +1,14 @@
 package team.sep.teamsep.model;
 
+/**
+ * 建立Product.
+ */
+
 public class Product {
+
+    /**
+     * 宣告Product的變數型態.
+     */
 
     private long id;
 
@@ -20,19 +28,29 @@ public class Product {
 
     private String account;
 
+    /**
+     * public Product.
+     */
+
     public Product() {
     }
 
-    public Product(long id, String name,int stock, int price,int quantity, String picture,String pay,String deliver,String account) {
+    /**
+     * Product(long id, String name,int stock, int price,int quantity, String picture,String
+     * pay,String deliver,String account).
+     */
+
+    public Product(long id, String name, int stock, int price, int quantity,
+                   String picture, String pay, String deliver, String account) {
         this.id = id;
         this.name = name;
         this.stock = stock;
         this.price =  price;
         this.quantity = quantity;
         this.picture = picture;
-        this.pay =pay;
-        this.deliver=deliver;
-        this.account =account;
+        this.pay = pay;
+        this.deliver = deliver;
+        this.account = account;
     }
 
     public long getId() {
@@ -51,11 +69,11 @@ public class Product {
         this.name = name;
     }
 
-    public int getInstock(){
+    public int getInstock() {
         return stock;
     }
 
-    public void setInstock(int stock){
+    public void setInstock(int stock) {
         this.stock = stock;
     }
 
@@ -67,11 +85,11 @@ public class Product {
         this.price = price;
     }
 
-    public int getQuantity(){
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity){
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
@@ -99,11 +117,11 @@ public class Product {
         this.deliver = deliver;
     }
 
-    public String  getAccount(){
+    public String  getAccount() {
         return  account;
     }
 
-    public void setAccount(String account){
-        this.account =account;
+    public void setAccount(String account) {
+        this.account = account;
     }
 }

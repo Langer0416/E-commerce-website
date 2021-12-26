@@ -1,6 +1,14 @@
 package team.sep.teamsep.model;
 
+/**
+ * 建立Customer.
+ */
+
 public class Customer {
+
+  /**
+   * 宣告Customer的變數型態.
+   */
 
   private String account;
 
@@ -10,17 +18,28 @@ public class Customer {
 
   private String password;
 
+  /**
+   * public Customer.
+   */
+
   public Customer() {
   }
 
-  public Customer(String account, String name,int number,String password) {
+  /**
+   * public Customer(String account, String name,int number,String password).
+   */
+
+  public Customer(String account, String name, int number, String password) {
+
     this.account = account;
     this.name = name;
     this.number = number;
     this.password =  password;
   }
 
-  public String getAccount() { return account; }
+  public String getAccount() {
+    return account;
+  }
 
   public void setAccount(String account) {
     this.account = account;
@@ -34,11 +53,11 @@ public class Customer {
     this.name = name;
   }
 
-  public int getNumber(){
+  public int getNumber() {
     return number;
   }
 
-  public void setNumber(int number){
+  public void setNumber(int number) {
     this.number = number;
   }
 

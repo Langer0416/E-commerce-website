@@ -1,7 +1,14 @@
 package team.sep.teamsep.model;
 
+/**
+ * 建立Order.
+ */
+
 public class Order {
 
+    /**
+     * 宣告Order的變數型態.
+     */
     private String account;
 
     private String pay;
@@ -12,10 +19,18 @@ public class Order {
 
     private String name;
 
+    /**
+     * public Order.
+     */
+
     public Order() {
     }
 
-    public Order(String account,String pay, String deliver,int id,String name) {
+    /**
+     * public Order(String account,String pay, String deliver,int id,String name).
+     */
+
+    public Order(String account, String pay, String deliver, int id, String name) {
         this.account = account;
         this.pay = pay;
         this.deliver = deliver;

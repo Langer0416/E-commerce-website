@@ -1,6 +1,14 @@
 package team.sep.teamsep.model;
 
+/**
+ * 建立Seller.
+ */
+
 public class Seller {
+
+  /**
+   * 宣告Seller的變數型態.
+   */
 
   private String account;
 
@@ -10,17 +18,27 @@ public class Seller {
 
   private String password;
 
+  /**
+   * public Seller.
+   */
+
   public Seller() {
   }
 
-  public Seller(String account, String name,int number,String password) {
+  /**
+   * Seller(String account, String name,int number,String password).
+   */
+
+  public Seller(String account, String name, int number, String password) {
     this.account = account;
     this.name = name;
     this.number = number;
-    this.password =  password;
+    this.password = password;
   }
 
-  public String getAccount() { return account; }
+  public String getAccount() {
+    return account;
+  }
 
   public void setAccount(String account) {
     this.account = account;
@@ -34,11 +52,11 @@ public class Seller {
     this.name = name;
   }
 
-  public int getNumber(){
+  public int getNumber() {
     return number;
   }
 
-  public void setNumber(int number){
+  public void setNumber(int number) {
     this.number = number;
   }
 
