@@ -140,16 +140,16 @@ body {
                         <textarea name="" cols="30" rows="2" class="form-control" placeholder="無"></textarea>
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-6" id="totalprice" >
                     <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">訂單結算</div>
                     <div class="p-4">*商品價格加上運費為總價</div></p>
-                        <ul class="list-unstyled mb-4">
+                      <!--  <ul class="list-unstyled mb-4" >
                             <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">商品價格 </strong><strong>$390.00</strong></li>
                             <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">運費</strong><strong>$10.00</strong></li>
                             <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">總價</strong>
                                 <h5 class="font-weight-bold">$400.00</h5>
                             </li>
-                        </ul><a href="#" class="btn btn-dark rounded-pill py-2 btn-block">去買單</a>
+                        </ul><a href="#" class="btn btn-dark rounded-pill py-2 btn-block">去買單</a>-->
                     </div>
                 </div>
             </div>
@@ -328,10 +328,18 @@ body {
 
       //html += '<a id="'+shopcar.name+'"  onclick ="show(id)" class="btn btn-primary">' + "結帳" + '</a>';
         $('#shopcarList').append(html);
+
+
       }
-         /*let html = '<div class="footer"> ';
-         html += '<p>' + "總金額:" +  sum +  '</p>';
-         $('#shopcarList').append(html);*/
+let ht = '<ul class="list-unstyled mb-4">';
+      ht += '<li class="d-flex justify-content-between py-3 border-bottom">'+ '<strong class="text-muted">' + "商品價格" + '</strong>'+'<strong>' + "$390.00" + '</strong>'+'</li>';
+      ht += '<li class="d-flex justify-content-between py-3 border-bottom">'+ '<strong class="text-muted">' + "運費" + '</strong>'+'<strong>' + "$10.00" + '</strong>'+'</li>';
+      ht += '<li class="d-flex justify-content-between py-3 border-bottom">'+ '<strong class="text-muted">' + "總價" + '</strong>';
+      ht += '<h5 class="font-weight-bold">'+"$400"+'</h5>';
+      ht += '</li>';
+      ht += '</ul>';
+      ht += '<a href="#" class="btn btn-dark rounded-pill py-2 btn-block">'+"去買單"+'</a>';
+      $('#totalprice').append(ht);
     }
 
     function getProducts1(targetUrl) {
