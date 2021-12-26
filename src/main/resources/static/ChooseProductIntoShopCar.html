@@ -3106,40 +3106,42 @@ $(function(){
     {
         result = url.substr(url.indexOf("=")+7);
         //alert(result);
-        ary =result.split('&');
+        ary =result.split('pi');
         //alert(ary[0]);
+        ary1 = ary[0].split('&');
+        //alert (ary1[0]);
         //alert(ary[1]);
     }
         //return result;
     }
     function tohome(){
     var getval = result;
-    window.location.href="index1.html?valus"+getval;
+    window.location.href="index1.html?valus"+ary[0];
     //console.log(getval);
     }
 
      function Order(){
     var getval = result;
-    window.location.href="Order.html?valus"+getval;
+    window.location.href="Order.html?valus"+ary[0];
     //console.log(getval);
     }
 
     //console.log(result);
     function tomember(){
     var getval = result;
-    window.location.href="MemberCenter.html?valus"+getval;
+    window.location.href="MemberCenter.html?valus"+ary[0];
     //console.log(getval);
     }
 
     function tocar(){
     var getval = result;
-    window.location.href="shopcar.html?valus"+getval;
+    window.location.href="shopcar.html?valus"+ary[0];
     //console.log(getval);
     }
 
     function toOrder(){
     var getval = result;
-    window.location.href="Order.html?valus"+getval;
+    window.location.href="Order.html?valus"+ary[0];
     //console.log(getval);
     }
 
@@ -3162,38 +3164,93 @@ $(function(){
       }
     });
     var InsertIntoShopCar ;
-    function show(number1)
+    var pamount ;
+    function show(number1,count)
     {
-      alert("add number:" + number1);
+      //alert("what");
+      //alert ("add number:" + number1 + "productamount:" + count );
       //console.log(number1);
       InsertIntoShopCar = number1 ;
+      pamount  = count;
       const id = $('#InsertIntoShopCar').val();
-      InsertIntoCar1(InsertIntoShopCar,'index1/'+InsertIntoShopCar);
+      const amount = $('#productamount').val();
+      emptyProducts();
+      InsertIntoCar1('ChooseProductIntoShopCar/'+InsertIntoShopCar );
+      CheckShopCar();
       //emptyProducts();
-      console.log(InsertIntoShopCar);
+      console.log(price);
+      console.log(pamount);
+      console.log(picture);
+      console.log(product_name);
+      if(pamount == 0)
+      {
+        alert ("請先選擇數量!");
+      }
+      if(pamount != 0)
+      {
+      StuffIntoCar();
+      }
+      //console.log(InsertIntoShopCar);
     }
 
+    function CheckShopCar() {
+      // Using the core $.ajax() method
+      $.ajax({
+          // The URL for the request
+          url: "CheckShopCar",
 
+          // Whether this is a POST or GET request
+          type: "GET",
 
-    function InsertIntoCar1(InsertIntoShopCar,targetUrl)
+            data :{
+             account : ary1[0],
+             name : product_name,
+          },
+          // The type of data we expect back
+          dataType : "text",
+      })
+        // Code to run if the request succeeds (is done);
+        // The response is passed to the function
+        .done(function( text ) {
+          console.log("success");
+          //console.log(account);
+          //console.log(password);
+          //alert("修改成功");
+          //location.href='index2.html';
+        })
+        // Code to run if the request fails; the raw request and
+        // status codes are passed to the function
+        .fail(function( xhr, status, errorThrown ) {
+          console.log( "Sorry, there was a problem!" );
+          console.log( "Error: " + errorThrown );
+          console.log( "Status: " + status );
+          console.dir( xhr );
+        })
+        // Code to run regardless of success or failure;
+        .always(function( xhr, status ) {
+          console.log( "The request is complete!" );
+        });
+    }
+
+    function InsertIntoCar1(targetUrl)
     {
+        //console.log("in");
         $.ajax({
             // The URL for the request
             url: targetUrl,
 
-            //data: {
-            //    id : $('#InsertIntoShopCar').val()
-            //},
 
             // Whether this is a POST or GET request
             type: "GET",
 
             // The type of data we expect back
-            dataType : "text",
+            dataType : "json",
         })
 
-        .done(function( text ) {
-               console.log("success");
+        .done(function( json ) {
+          //console.log("success");
+          let products = json;
+          addProducts(products);
         })
         .fail( function(xhr, status, errorThrown) {
             console.log( "Sorry, there was a problem!" );
@@ -3205,15 +3262,64 @@ $(function(){
 
    function choose (number2)
     {
-        var getval = number;
+        var getval = result;
         console.log(number2);
-        window.location.href="ChooseProductIntoShopCar.html?valus"+result + "pi" + number2;
+        window.location.href="ChooseProductIntiShopCar.html?valus"+getval + "pi" + number2;;
     }
 
    function emptyProducts() {
       $('#productList').empty();
     }
+    var count;
+    function adder(){
+    count=$("#countnum").text();
+    count=parseInt(count)+1;
+    console.log(count);
+    $("#countnum").text(count);
+}
 
+function minuser(){
+    count=$("#countnum").text();
+    if(count<=0){
+        count=0;
+    }else{
+        count=parseInt(count)-1;
+    }
+    $("#countnum").text(count);
+    console.log(count);
+}
+ function StuffIntoCar()
+    {
+        $.ajax({
+            // The URL for the request
+            url: "StuffIntoCar",
+
+          data :{
+             price : price,
+             picture : picture,
+             instock : instock,
+             quantity :  pamount,
+             name : product_name,
+             account : ary1[0],
+          },
+            // Whether this is a POST or GET request
+            type: "GET",
+
+            // The type of data we expect back
+            dataType : "text",
+        })
+        .done(function( text ) {
+                alert("插入成功!");
+                //location.href='shopcar.html';
+        })
+        .fail( function(xhr, status, errorThrown) {
+            console.log( "Sorry, there was a problem!" );
+            console.log( "Error: " + errorThrown );
+            console.log( "Status: " + status );
+            console.dir( xhr );
+        })
+    }
+    var price,picture,instock,quantity,product_name;
     //card-img-top
     var flag =0;
     var counter = 0;
@@ -3221,8 +3327,15 @@ $(function(){
     function addProducts(products) {
       for ( let product of products ) {
         number ++ ;
-        let html = '<div class="card col-4">';
-        html += ' <button type="button" id="'+product.id+'" onclick="choose(id)" class="btn btn-outline-light">';
+        //console.log(product.id);
+        if(product.id==ary[1])
+        {
+        price =product.price;
+        picture = product.picture;
+        instock = product.instock;
+        product_name = product.name;
+        let html = '<div class="card col-4" >';
+        //html += ' <button type="button" id="'+product.id+'" onclick="choose(id)" class="btn btn-outline-light">';
         html += '<img src="' + product. picture + '" title ="' + product.name + '" class="card-img-top" alt="' + product.name + '" width="250" height="350">';
         html += '<div class="card-body">';
         html += '<h5 class="card-title">' + product.name + '</h5>';
@@ -3230,22 +3343,22 @@ $(function(){
         html += '<p class="card-text">' + "目前數量:" +  product.instock+ '</p>';
         html += '<p class="card-text">' + "商品價錢:" + product. price + '</p>';
         //html += '<p class="card-text">' + "最低購入量:" + product.quantity + '</p>';
-        //html += '<a href="#" id="'+product.id+'"  onclick ="show(id)" class="btn btn-primary">' + "加入購物車" + '</a>';
-        html += '</button>';
+        html += '<ul class="counter">';
+        //console.log(product.id);
+        html += ' <input type="button" onclick="minuser()" value="-"/>';
+        html += ' <span id="countnum">0</span>';
+        html += '<input type="button" onclick="adder()" value="+"/>';
+        //html += '<a id="'+shopcar.name+'"  onclick ="show(id)" class="btn btn-primary">' + "結帳" + '</a>';
+        html += '</ul>';
+        html += '<a href="#" id="'+product.name+'"  onclick ="show(id,count)" class="btn btn-primary">' + "加入購物車" + '</a>';
+        //html += '</button>';
         //console.log(product.id);
         html += '</div>';
         html += '</div>';
         counter ++;
-        if(counter<7&&flag==0)
-        {
-            $('#productList').append(html);
-        }
-        if(flag ==1)
-        {
-            $('#productList').append(html);
+        $('#productList').append(html);
         }
       }
-      flag =0;
     }
 
     function getProducts(targetUrl) {

@@ -36,9 +36,9 @@ public class ProductController {
         return productManager.getProducts(keyword);
     }
 
-    @GetMapping(value= "/index1/{id}")
-    public String InsertIntoCar1(
-        @PathVariable("id")  long id
+    @GetMapping(value= "/ChooseProductIntoShopCar/{id}")
+    public List<Product> InsertIntoCar1(
+        @PathVariable("id") String id
     ){
         System.out.println(id);
         return productManager.InsertIntoCar1(id);}
@@ -49,6 +49,28 @@ public class ProductController {
     ){
         System.out.println(id);
         return productManager.InsertIntoCar2(id);}
+    @GetMapping(value ="/StuffIntoCar")
+    public String StuffIn(
+            @RequestParam("price") long price,
+            @RequestParam("picture") String picture,
+            @RequestParam("instock") long instock,
+            @RequestParam("quantity") long quantity,
+            @RequestParam("name") String name,
+            @RequestParam("account") String account
+    ){
+        System.out.println(price);
+        return productManager.StuffIntoCar(price,picture,instock,quantity,name,account);
+    }
+
+    /*@GetMapping(value = "/CheckShopCar")
+    public String CheckShopCar(
+            @RequestParam ("account") String account,
+            @RequestParam ("name") String name
+    ){
+        System.out.println(account);
+        System.out.println(name);
+        return  productManager
+    }*/
 
     @GetMapping(value= "/pay")
     public String send(

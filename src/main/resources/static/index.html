@@ -11,6 +11,13 @@
 
     <title>Langer Shop</title>
     <style>
+
+ul,li{margin:0; padding:0; }
+.counter li{float:left; list-style-type:none; width:30px; height:30px; text-align:center; line-height:30px; border:#999 thin solid; background-color:#fff}
+.counter li input{font-size:20px; width:100%; height:100%; outline:none; -webkit-appearance:none; background:none; margin:0; padding:0; border: 1px solid transparent; border-radius: 0;}
+#countnum{ border-left:hidden; border-right:hidden; color:#666}
+
+
     /*=== MEDIA QUERY ===*/
 @import url("https://fonts.googleapis.com/css?family=Muli:300,400,600,700,800,900");
 body {
@@ -2834,6 +2841,7 @@ form textarea {
 
         </div>
     </div>
+    </div>
     <!-- Container End -->
 </section>
 
@@ -3080,7 +3088,6 @@ form textarea {
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>
 <script src="plugins/google-map/gmap.js"></script>
 <script src="js/script.js"></script>
-
 </body>
 
 <!--<div class="container">
@@ -3108,6 +3115,9 @@ form textarea {
 -->
 
 <script>
+
+
+
   $( document ).ready( function() {
     console.log( "ready!" );
     emptyProducts();
@@ -3137,6 +3147,11 @@ form textarea {
       console.log(InsertIntoShopCar);
     }
 
+    function choose (number2)
+    {
+        console.log(number2);
+    }
+
     function InsertIntoCar1(InsertIntoShopCar,targetUrl)
     {
         $.ajax({
@@ -3164,7 +3179,22 @@ form textarea {
             console.dir( xhr );
         })
     }
-
+function adder(number){
+    console.log(number);
+    var count=$("#countnum").text();
+    count=parseInt(count)+1;
+    console.log(count);
+    $("#countnum").text(count);
+}
+function minuser(id){
+    var count=$("#countnum").text();
+    if(count<=0){
+        count=0;
+    }else{
+        count=parseInt(count)-1;
+    }
+    $("#countnum").text(count);
+}
 
 
    function emptyProducts() {
@@ -3176,8 +3206,9 @@ form textarea {
     var counter=0;
     function addProducts(products) {
       for ( let product of products ) {
-        //number ++ ;
+        number ++ ;
         let html = '<div class="card col-4">';
+        html += ' <button type="button" id="'+product.id+'" onclick="choose(id)" class="btn btn-outline-light">';
         html += '<img src="' + product. picture + '" title ="' + product.name + '" class="card-img-top" alt="' + product.name + '" width="250" height="350">';
         html += '<div class="card-body">';
         html += '<h5 class="card-title">' + product.name + '</h5>';
@@ -3185,9 +3216,19 @@ form textarea {
         html += '<p class="card-text">' + "目前數量:" +  product.instock+ '</p>';
         html += '<p class="card-text">' + "商品價錢:" + product. price + '</p>';
         html += '<p class="card-text">' + "最低購入量:" + product.quantity + '</p>';
+       /* html += '<ul class="counter">';
+        //console.log(product.id);
+        var first ;
+        html += ' <li id="'+product.id+'"><input type="button" onclick="minuser(id)" value="-"/></li>';
+        html += ' <li id="countnum">0</li>';
+        html += ' <li id="'+product.id+'"><input type="button" onclick="adder(id)" value="+"/></li>';
+        //html += '<a id="'+shopcar.name+'"  onclick ="show(id)" class="btn btn-primary">' + "結帳" + '</a>';
+        html += '</ul>';*/
         html += '<a href="login.html" class="btn btn-primary">' + "加入購物車" + '</a>'; + '</a>';
+            html += '</button>';
         html += '</div>';
         html += '</div>';
+
         $('#productList').append(html);
         counter++;
         if(counter==6)
