@@ -25,6 +25,16 @@ public class ProductController {
         return productManager.getProducts1();
     }
 
+    @GetMapping(value = "/CheckShopCar")
+    public List<ShopCar> CheckShopCar(
+            @RequestParam ("account") String account,
+            @RequestParam ("name") String name
+    ){
+        //System.out.println(account);
+        //System.out.println(name);
+        return  productManager.CheckShopCar(account,name);
+    }
+
     @GetMapping("/Order")
     public List<Product> getProductOrder(){
         return productManager.getProductOrder();
@@ -40,7 +50,7 @@ public class ProductController {
     public List<Product> InsertIntoCar1(
             @PathVariable("id") String id
     ){
-        System.out.println(id);
+        //System.out.println(id);
         return productManager.InsertIntoCar1(id);}
 
     @GetMapping(value= "/shopcar/{id}")
@@ -62,15 +72,6 @@ public class ProductController {
         return productManager.StuffIntoCar(price,picture,instock,quantity,name,account);
     }
 
-    /*@GetMapping(value = "/CheckShopCar")
-    public String CheckShopCar(
-            @RequestParam ("account") String account,
-            @RequestParam ("name") String name
-    ){
-        System.out.println(account);
-        System.out.println(name);
-        return  productManager
-    }*/
 
     @GetMapping(value= "/pay")
     public String send(
@@ -104,6 +105,18 @@ public class ProductController {
             @RequestParam("picture")  String picture
     ){
         return productManager.updateProduct(name,stock, price,quantity, picture);
+    }
+
+    @RequestMapping(value="/UpdateShopCarProduct", method=RequestMethod.GET)
+    @ResponseBody
+    public String update(
+            @RequestParam("id")  Integer id,
+            @RequestParam("price")  Integer price,
+            @RequestParam("quantity")  String quantity,
+            @RequestParam("name") String name,
+            @RequestParam("account") String account
+    ){
+        return productManager.updateShopcarProduct(id,price,quantity,name,account);
     }
 
     @RequestMapping(value="/change", method=RequestMethod.GET)

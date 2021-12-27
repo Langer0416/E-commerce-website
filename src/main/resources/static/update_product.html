@@ -11,6 +11,158 @@
 
     <title>FCU Shop</title>
 </head>
+<style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto";
+  font-size: 14px;
+  background-size: 200% 100% !important;
+  -webkit-animation: move 10s ease infinite;
+          animation: move 10s ease infinite;
+  transform: translate3d(0, 0, 0);
+  background: linear-gradient(45deg, #49D49D 10%, #A2C7E5 90%);
+  height: 100vh;
+}
+
+.user {
+  width: 90%;
+  max-width: 340px;
+  margin: 10vh auto;
+}
+
+.user__header {
+  text-align: center;
+  opacity: 0;
+  transform: translate3d(0, 500px, 0);
+  -webkit-animation: arrive 500ms ease-in-out 0.7s forwards;
+          animation: arrive 500ms ease-in-out 0.7s forwards;
+}
+
+.user__title {
+  font-size: 14px;
+  margin-bottom: -10px;
+  font-weight: 500;
+  color: white;
+}
+
+.form {
+  margin-top: 40px;
+  border-radius: 6px;
+  overflow: hidden;
+  opacity: 0;
+  transform: translate3d(0, 500px, 0);
+  -webkit-animation: arrive 500ms ease-in-out 0.9s forwards;
+          animation: arrive 500ms ease-in-out 0.9s forwards;
+}
+
+.form--no {
+  -webkit-animation: NO 1s ease-in-out;
+          animation: NO 1s ease-in-out;
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.form__input {
+  display: block;
+  width: 100%;
+  padding: 20px;
+  font-family: "Roboto";
+  -webkit-appearance: none;
+  border: 0;
+  outline: 0;
+  transition: 0.3s;
+}
+.form__input:focus {
+  background: #f7f7f7;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: 20px;
+  font-family: "Roboto";
+  -webkit-appearance: none;
+  outline: 0;
+  border: 0;
+  color: white;
+  background: #ABA194;
+  transition: 0.3s;
+}
+.btn:hover {
+  background: #a09486;
+}
+
+@-webkit-keyframes NO {
+  from, to {
+    transform: translate3d(0, 0, 0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translate3d(-10px, 0, 0);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translate3d(10px, 0, 0);
+  }
+}
+
+@keyframes NO {
+  from, to {
+    transform: translate3d(0, 0, 0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translate3d(-10px, 0, 0);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translate3d(10px, 0, 0);
+  }
+}
+@-webkit-keyframes arrive {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 50px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes arrive {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 50px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+@-webkit-keyframes move {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+@keyframes move {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+</style>
 <body>
 <span id="show"></span>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -26,13 +178,13 @@
                     <a onclick="tohome()" class="btn" aria-current="page" style="cursor:pointer">首頁</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">逢甲商城</a>
+                    <a class="btn" href="#">逢甲商城</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">一中商城</a>
+                    <a class="btn" href="#">一中商城</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="btn" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" style="cursor:pointer" aria-expanded="false">
                         商品管理
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -63,10 +215,38 @@
         </div>
     </div>
 </nav>
-<h3 class="mt-3">修改商品</h3>
 <div class="container">
+    <div class="user">
+        <header class="user__header">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3219/logo.svg" alt="" />
+            <h1 class="user__title">A Update Product form</h1>
+        </header>
 
-    <form>
+        <form class="form">
+            <div class="form__group">
+                <input type="text" id="pname" name="pname" placeholder="輸入商品名稱" class="form__input" /><br>
+            </div>
+
+            <div class="form__group">
+                <input type="number" id="pinstock" name="pinstock" placeholder="輸入商品庫存量" class="form__input" /><br>
+            </div>
+
+            <div class="form__group">
+                <input type="number" id="pprice" name="pprice" placeholder="輸入商品價錢" class="form__input" /><br>
+            </div>
+
+            <div class="form__group">
+                <input type="number" id="pquantity" name="pquantity" placeholder="輸入商品最低購買量" class="form__input" /><br>
+            </div>
+
+            <div class="form__group">
+                <input type="url" id="ppicture" name="ppicture"  placeholder="輸入商品URL" class="form__input" /><br>
+            </div>
+
+            <button id="UpdateProduct" onclick="toupdate_product()" class="btn" type="button">Submit and Update</button>
+        </form>
+    </div>
+    <!--<form>
         <label>商品名稱:  </label><br>
         <input type="text" id="pname" name="pname" placeholder="輸入商品名稱"><br><br>
         <label>商品庫存量:  </label><br>
@@ -80,7 +260,7 @@
     </form>
 
     <button class="btn btn-outline-success" type="button" id="UpdateProduct" onclick="toupdate_product()">Update</button>
-    <!--<button class="btn btn-outline-success" type="button" onclick="history.go(-1)" value="返回上一頁">返回上一頁</button>-->
+    <button class="btn btn-outline-success" type="button" onclick="history.go(-1)" value="返回上一頁">返回上一頁</button>-->
 
     <div class="mt-3 row" id="productList">
     </div>
@@ -101,6 +281,14 @@
 -->
 
 <script>
+const button = document.querySelector('.btn')
+const form   = document.querySelector('.form')
+
+button.addEventListener('click', function() {
+   form.classList.add('form--no')
+});
+
+
 
      $(function(){
     $("#show").html(oneValues());
