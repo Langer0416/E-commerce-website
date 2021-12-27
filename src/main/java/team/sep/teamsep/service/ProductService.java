@@ -1,6 +1,5 @@
 package team.sep.teamsep.service;
 
-import team.sep.teamsep.model.Order;
 import team.sep.teamsep.model.Product;
 import team.sep.teamsep.database.Sql2oDbHandler;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +33,20 @@ public class ProductService {
             return connection.createQuery(query).executeAndFetch(ShopCar.class);
         }
     }
+    public List<ShopCar> CheckShopCar(String account,String name){
+        try (Connection connection = sql2oDbHandler.getConnector().open()) {
+            String query = "SELECT ACCOUNT account,PRODUCT_NAME name,PRODUCT_ID id,INSTOCK stock,PICTURE picture,PRICE price,QUANTITY quantity FROM project.productcar "
+                          + "where PRODUCT_NAME = :name and ACCOUNT =:account";
+
+            //System.out.println(query);
+            //System.out.println(account);
+            //System.out.println(name);
+            return connection.createQuery(query)
+                    .addParameter("name",name)
+                    .addParameter("account",account)
+                    .executeAndFetch(ShopCar.class);
+        }
+    }
 
     public List<Product> getProductOrder() {
         try (Connection connection = sql2oDbHandler.getConnector().open()) {
@@ -43,6 +56,7 @@ public class ProductService {
                     .executeAndFetch(Product.class);
         }
     }
+
 
     public List<Product> getProducts(String keyword) {
         try (Connection connection = sql2oDbHandler.getConnector().open()) {
@@ -56,17 +70,48 @@ public class ProductService {
     }
 
     //List<Product> first = 0;
-   public String InsertIntoCar1(long id) {
+   public List<Product> InsertIntoCar1(String id) {
         try (Connection connection = sql2oDbHandler.getConnector().open()) {
-            String query = "Insert into project.productcar(PRODUCT_NAME,INSTOCK,PRICE,QUANTITY,PICTURE) select PRODUCT_NAME,INSTOCK,PRICE,QUANTITY,PICTURE FROM project.product where PRODUCT_ID = :id";
+            //String query = "Insert into project.productcar(PRODUCT_NAME,INSTOCK,PRICE,PICTURE) select PRODUCT_NAME,INSTOCK,PRICE,PICTURE FROM project.product where PRODUCT_NAME = :id";
+
+           // String query1 ="Insert into project.productcar(QUANTITY) VALUES(:amount) where PRODUCT_NAME =':id'";
+            String query2 = "select PRODUCT_NAME name,PRODUCT_ID id,INSTOCK stock,PICTURE picture,PRICE price,QUANTITY quantity"
+                    + " FROM project.product where PRODUCT_NAME =:id";
+
+
+            return connection.createQuery(query2)
+                    .addParameter("id",id)
+                    .executeAndFetch(Product.class);
+            //System.out.println(query2);
+            /*connection.createQuery(query1)
+                            .addParameter("amount",amount)
+                            .addParameter("id",id)
+                            .executeUpdate();*/
+            //System.out.println(query);
+            //System.out.println(id);
+          /*connection.createQuery(query)
+                    .addParameter("id",id)
+                    //.addParameter("amount",amount)
+                    .executeUpdate();*/
+
+        }
+    }
+    public String StuffIntoCar(long price,String picture,long instock,long quantity,String name,String account) {
+        try (Connection connection = sql2oDbHandler.getConnector().open()) {
+            String query = "Insert INTO project.productcar(PRICE,PICTURE,INSTOCK,QUANTITy,PRODUCT_NAME,ACCOUNT) VALUES(:price,:picture,:instock,:quantity,:name,:account)";
 
             System.out.println(query);
-           connection.createQuery(query)
-                    .addParameter("id",id)
+            connection.createQuery(query)
+                    .addParameter("price",price)
+                    .addParameter("picture",picture)
+                    .addParameter("instock",instock)
+                    .addParameter("quantity",quantity)
+                    .addParameter("name",name)
+                    .addParameter("account",account)
                     .executeUpdate();
 
         }
-       return "success";
+        return "success";
     }
 
     public String pay(String account,String pay,String deliver,String name) {
@@ -124,6 +169,21 @@ public class ProductService {
                 .executeUpdate();
 
             return "success";
+        }
+    }
+    public String updateShopcarProduct(Integer id, Integer price,String quantity,String name,String account) {
+        try (Connection connection = sql2oDbHandler.getConnector().open()) {
+            String query = "UPDATE project.productcar SET PRODUCT_ID =:id, PRICE =:price,QUANTITY = :quantity  WHERE PRODUCT_NAME = :name and ACCOUNT=:account";
+
+
+            connection.createQuery(query)
+                    .addParameter("id",id)
+                    .addParameter("price",price)
+                    .addParameter("quantity",quantity)
+                    .addParameter("name", name)
+                    .addParameter("account",account)
+                    .executeUpdate();
+            return "Success";
         }
     }
 

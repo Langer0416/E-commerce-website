@@ -1,6 +1,14 @@
 package team.sep.teamsep.model;
 
+/**
+ * 建立ShopCar.
+ */
+
 public class ShopCar {
+
+    /**
+     * 宣告ShopCar的變數型態.
+     */
 
     private long id;
 
@@ -14,16 +22,27 @@ public class ShopCar {
 
     private String picture;
 
+    private String account;
+
+    /**
+     * public Seller.
+     */
+
     public ShopCar() {
     }
 
-    public ShopCar(long id, String name,int stock, int price,int quantity, String picture) {
+    /**
+     * ShopCar(long id, String name,int stock, int price,int quantity, String picture).
+     */
+
+    public ShopCar(long id, String name, int stock, int price, int quantity, String picture,String account) {
         this.id = id;
         this.name = name;
         this.stock = stock;
         this.price =  price;
         this.quantity = quantity;
         this.picture = picture;
+        this.account =account;
     }
 
     public long getId() {
@@ -42,11 +61,11 @@ public class ShopCar {
         this.name = name;
     }
 
-    public int getInstock(){
+    public int getInstock() {
         return stock;
     }
 
-    public void setInstock(int stock){
+    public void setInstock(int stock) {
         this.stock = stock;
     }
 
@@ -58,11 +77,11 @@ public class ShopCar {
         this.price = price;
     }
 
-    public int getQuantity(){
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity){
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
@@ -72,5 +91,13 @@ public class ShopCar {
 
     public void setPicture(String picture) {
         this.picture = picture;
+    }
+
+    public String getAccount() {
+        return account;
+    }
+
+    public void setAccount(String account) {
+        this.account = account;
     }
 }
