@@ -72,6 +72,14 @@ public class ProductController {
     ){
         return productManager.addProduct(name,stock, price,quantity, picture);}
 
+    @RequestMapping(value="/shown", method=RequestMethod.GET)
+    @ResponseBody
+    public String shown(
+        @RequestParam("id")  String name
+    ){
+        return productManager.shownProduct(name);
+    }
+
     @RequestMapping(value="/update", method=RequestMethod.GET)
     @ResponseBody
     public String update(
