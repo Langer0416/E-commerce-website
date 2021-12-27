@@ -33,6 +33,20 @@ public class ProductService {
             return connection.createQuery(query).executeAndFetch(ShopCar.class);
         }
     }
+    public List<ShopCar> CheckShopCar(String account,String name){
+        try (Connection connection = sql2oDbHandler.getConnector().open()) {
+            String query = "SELECT ACCOUNT account,PRODUCT_NAME name,PRODUCT_ID id,INSTOCK stock,PICTURE picture,PRICE price,QUANTITY quantity FROM project.productcar "
+                          + "where PRODUCT_NAME = :name and ACCOUNT =:account";
+
+            //System.out.println(query);
+            //System.out.println(account);
+            //System.out.println(name);
+            return connection.createQuery(query)
+                    .addParameter("name",name)
+                    .addParameter("account",account)
+                    .executeAndFetch(ShopCar.class);
+        }
+    }
 
     public List<Product> getProductOrder() {
         try (Connection connection = sql2oDbHandler.getConnector().open()) {
@@ -42,6 +56,7 @@ public class ProductService {
                     .executeAndFetch(Product.class);
         }
     }
+
 
     public List<Product> getProducts(String keyword) {
         try (Connection connection = sql2oDbHandler.getConnector().open()) {
@@ -142,6 +157,21 @@ public class ProductService {
                 .executeUpdate();
 
             return "success";
+        }
+    }
+    public String updateShopcarProduct(Integer id, Integer price,String quantity,String name,String account) {
+        try (Connection connection = sql2oDbHandler.getConnector().open()) {
+            String query = "UPDATE project.productcar SET PRODUCT_ID =:id, PRICE =:price,QUANTITY = :quantity  WHERE PRODUCT_NAME = :name and ACCOUNT=:account";
+
+
+            connection.createQuery(query)
+                    .addParameter("id",id)
+                    .addParameter("price",price)
+                    .addParameter("quantity",quantity)
+                    .addParameter("name", name)
+                    .addParameter("account",account)
+                    .executeUpdate();
+            return "Success";
         }
     }
 
