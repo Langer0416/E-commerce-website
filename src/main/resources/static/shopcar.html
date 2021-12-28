@@ -143,13 +143,13 @@ body {
                 <div class="col-lg-6" id="totalprice" >
                     <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">訂單結算</div>
                     <div class="p-4">*商品價格加上運費為總價</div></p>
-                      <ul class="list-unstyled mb-4" >
-                          <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">商品價格 </strong><strong>$0.00</strong></li>
-                          <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">運費</strong><strong>$10.00</strong></li>
-                          <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">總價</strong>
-                              <h5 class="font-weight-bold">$10.00</h5>
-                          </li>
-                      </ul><a href="#" class="btn btn-dark rounded-pill py-2 btn-block">去買單</a>
+                    <ul class="list-unstyled mb-4" >
+                        <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">商品價格 </strong><strong>$0.00</strong></li>
+                        <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">運費</strong><strong>$10.00</strong></li>
+                        <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">總價</strong>
+                            <h5 class="font-weight-bold">$10.00</h5>
+                        </li>
+                    </ul><a href="#" class="btn btn-dark rounded-pill py-2 btn-block">去買單</a>
                 </div>
             </div>
         </div>
@@ -189,11 +189,13 @@ body {
     })
 
     var result;
+    var ary;
     function oneValues(){
     var url=window.location.search;
     if(url.indexOf("?")!=-1)
     {
         result = url.substr(url.indexOf("=")+7);
+        ary = result.split('&');
         //alert(result);
     }
         //return result;
@@ -239,7 +241,7 @@ body {
       $('#shopcarList').empty();
     }
 
- function to(InsertIntoShopCar){
+function to(InsertIntoShopCar){
     var getval = InsertIntoShopCar;
     //alert(getval);
     window.location.href="pay.html?valus"+result+"pn"+getval ;
@@ -300,7 +302,8 @@ body {
 <!--      sum = sum +shopcar.price;-->
         let html = '<tr>';
         html += '<td class="ckbox" style="width: 80px;height: 25px;">';
-        html += '<input class="form-check-input" type="checkbox" value="'+shopcar.price+'" name="divide[]" onclick="show1()" >';
+        html += '<input class="form-check-input" id="'+shopcar.name+'" type="checkbox" value="'+shopcar.price+'" name="divide[]" onclick="show1(id)" >';
+        //html += '<input class="form-check-input" type="checkbox" value="'+shopcar.name+'" name="divide1[]" onclick="show1()" >';
         html += '<label class="form-check-label" for="flexSwitchCheckDefault">'+'</label>';
         html += '</td>';
         html += '<td scope="row">';
@@ -371,7 +374,7 @@ body {
       $('#totalprice').append(ht);
       }
     function show1(id){
-<!--    console.log(id);-->
+    console.log(id);
 <!--        var CheckBox = $('input[name = hobby]');-->
 <!--        for(var i = 33; i < CheckBox.length+33; i++)-->
 <!--            {-->
@@ -382,13 +385,16 @@ body {
 <!--                console.log("false");-->
 <!--            }-->
 <!--            }-->
+
         var divs= $("input[name='divide[]']:checked").map(function() { return $(this).val(); }).get();
+        var divs1= $("input[name='divide[]']:checked").map(function() { return $(this).val(); }).get();
         sum=0;
         for(var i=0;i<divs.length;i++){
             sum+=parseInt(divs[i],10);
         }
         pay_money(sum);
-        console.log(divs[0]);
+        console.log(divs);
+        console.log(divs1);
         console.log(sum);
     }
     function getProducts1(targetUrl) {
@@ -397,6 +403,9 @@ body {
           // The URL for the request
           url: targetUrl,
 
+          data:{
+          account : ary[0],
+          },
           // Whether this is a POST or GET request
           type: "GET",
 
