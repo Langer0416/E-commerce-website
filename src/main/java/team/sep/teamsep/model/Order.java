@@ -71,8 +71,7 @@ public class Order {
         return name;
     }
 
-    public void setPassword(String name) {
+    public void setName(String name) {
         this.name =  name;
     }
 }
-
