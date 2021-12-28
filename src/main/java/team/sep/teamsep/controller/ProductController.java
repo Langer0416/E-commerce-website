@@ -21,8 +21,9 @@ public class ProductController {
     }
 
     @GetMapping("/shopcar")
-    public List<ShopCar> getProducts1(){
-        return productManager.getProducts1();
+    public List<ShopCar> getProducts1( @RequestParam("account") String account)
+    {
+        return productManager.getProducts1(account);
     }
 
     @GetMapping(value = "/CheckShopCar")
@@ -98,7 +99,7 @@ public class ProductController {
     @RequestMapping(value="/shown", method=RequestMethod.GET)
     @ResponseBody
     public String shown(
-        @RequestParam("id")  String name
+            @RequestParam("id")  String name
     ){
         return productManager.shownProduct(name);
     }
