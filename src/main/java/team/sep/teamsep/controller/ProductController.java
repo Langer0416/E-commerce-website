@@ -15,9 +15,17 @@ public class ProductController {
     @Autowired
     ProductService productManager;
 
+    @GetMapping("/Countproducts")
+    public List<Product> getCountProducts( )
+    {
+        return productManager.getCountProducts();
+    }
+
+
     @GetMapping("/products")
-    public List<Product> getProduct(){
-        return productManager.getProducts();
+    public List<Product> getProduct( @RequestParam("id") long id)
+    {
+        return productManager.getProducts(id);
     }
 
     @GetMapping("/shopcar")
@@ -100,7 +108,7 @@ public class ProductController {
     @RequestMapping(value="/shown", method=RequestMethod.GET)
     @ResponseBody
     public String shown(
-        @RequestParam("id")  String name
+            @RequestParam("id")  String name
     ){
         return productManager.shownProduct(name);
     }

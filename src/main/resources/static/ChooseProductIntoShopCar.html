@@ -2799,7 +2799,7 @@ img {
 	left: -2.5em;
 	display: grid;
 	grid-template-rows: 1fr;
-	width: 70%;
+	width: 65%;
 	height: 100%;
 	border-radius: 6px;
 	box-shadow: 4px 60px 25px -2px rgba(0, 0, 0, 0.3);
@@ -2873,7 +2873,7 @@ img {
 	margin: 1.5em 0;
 	color: #4c4c4c;
 	font-size: 1.2em;
-
+font-weight: 400;
 	spann {
 		padding-left: 0.15em;
 		font-size: 2.9em;
@@ -2911,6 +2911,7 @@ img {
 	clear: left;
 	margin: 2em 0;
 color: #a6a6a6;
+font-weight: 400;
 	h3 {
 		margin-bottom: 1em;
 	}
@@ -2928,11 +2929,11 @@ color: #a6a6a6;
 }
 
 .buy--btn {
-	padding: 1.5em 3.1em;
+	padding: 0.5em ;
 	border: none;
 	border-radius: 7px;
-	font-size: 0.8em;
-	font-weight: 700;
+	font-size: 18px;
+	font-weight: 900;
 	letter-spacing: 1.3px;
 	color: #fff;
 	background-color: 	#5672f9;
@@ -3349,7 +3350,7 @@ $(function(){
   $( document ).ready( function() {
     console.log( "ready!" );
     emptyProducts();
-    getProducts('products')
+    getCountProduct();
   });
 
     $('#searchProduct').click(function() {
@@ -3594,7 +3595,7 @@ function minuser(){
     function addProducts(products) {
       for ( let product of products ) {
         number ++ ;
-        //console.log(product.id);
+        console.log(product.id);
         if(product.id==ary[1])
         {
         price =product.price;
@@ -3603,28 +3604,28 @@ function minuser(){
         product_name = product.name;
          let html = '<div class="product__photo" >';
         html += '<div class="photo-container" >';
-        html += '<div class="photo-main" >';
-        html += '<div class="controls" >';
-        html += '<ii class="material-icons" >'+'<img src="https://img.icons8.com/small/24/fa314a/filled-like.png"/>'+'</ii>';
-        html += '<ii class="material-icons" >'+'<img src="https://img.icons8.com/small/24/000000/share.png"/>'+'</ii>';
-        html += '</div>';
+        //html += '<div class="photo-main" >';
+        //html += '<div class="controls" >';
+        //html += '<ii class="material-icons" >'+'<img src="https://img.icons8.com/small/24/fa314a/filled-like.png"/>'+'</ii>';
+        //html += '<ii class="material-icons" >'+'<img src="https://img.icons8.com/small/24/000000/share.png"/>'+'</ii>';
+        //html += '</div>';
         html += '<img src="' + product. picture + '" title ="' + product.name + '" class="card-img-top" alt="' + product.name + '" width="250" height="350">';
-        html += '</div>';
+        //html += '</div>';
 
         html += '</div>';
         html += '</div>';
         html += '<div class="product__info">';
         html += '<div class="title">';
-        html += '<h1>' + product.name + '</h1>';
+        html += '<h1>' +'<img src="https://img.icons8.com/external-flat-satawat-anukul/42/000000/external-shop-travel-flat-satawat-anukul-2.png"/>'+"&ensp;"+product.name + '</h1>';
         html += '</div>';
         html += '<div class="price">';
         html += '<spann>' +"商品價錢&emsp;&emsp;" + product. price + "元"+'</spann>';
         html += '</div>';
         html += '<div class="price">';
-        html += '<spann>' +"運送&emsp;&emsp;&emsp;&emsp;"+"10元&emsp;"+ '<img src="https://img.icons8.com/small/32/26e07f/deliver-food.png"/>'+'</spann>';
+        html += '<spann>' +"運送&emsp;&emsp;&emsp;&emsp;"+"10元&emsp;"+ '<img src="https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/24/000000/external-delivery-truck-interface-kiranshastry-lineal-color-kiranshastry-2.png"/>'+'</spann>';
         html += '</div>';
         html += '<div class="descripition">';
-        html += '<ul>' + '<li>'+ "目前數量&emsp;&emsp;&emsp;&emsp;&ensp;" +  product.instock+ '</li>'+'</ul>';
+        html += '<ul>' + '<li>'+ "目前數量&emsp;&emsp;&emsp;&ensp;&ensp;" +  product.instock+ '</li>'+'</ul>';
         html += '</div>';
         html += '<br>';
         html += '<ul class="counter">';
@@ -3633,8 +3634,8 @@ function minuser(){
         html += '<input type="button" onclick="adder()" value="+"/>';
         html += '</ul>';
          html += '<br>';
-        html += '<button href="#" id="'+product.name+'"  onclick ="show(id,count)" class="buy--btn">' + "加入購物車" + '</button>';
-
+        html += '<button href="#" id="'+product.name+'"  onclick ="show(id,count)" class="buy--btn">' + '<img src="https://img.icons8.com/windows/32/ffffff/fast-cart.png"/>'+"&ensp;加入購物車" + '</button>';
+        html += "&emsp;&emsp;&ensp;"+'<buttom href="#" style="text-decoration:none;padding: 0.76em ;border: none;border-radius: 7px;font-size: 18px;font-weight: 900;letter-spacing: 1.3px;color: #fff;background-color: #FF5959;box-shadow: 2px 2px 25px -7px $color-primary;cursor: pointer;">' + '<img src="https://img.icons8.com/external-those-icons-fill-those-icons/32/ffffff/external-share-network-sharing-those-icons-fill-those-icons.png"/>'+"&ensp;分享商品吧" + '</buttom>';
         html += '</div>';
         counter ++;
         $('#productList').append(html);
@@ -3642,11 +3643,12 @@ function minuser(){
       }
     }
 
-    function getProducts(targetUrl) {
+     function getCountProduct(targetUrl) {
       // Using the core $.ajax() method
       $.ajax({
           // The URL for the request
-          url: targetUrl,
+          url: "Countproducts",
+
 
           // Whether this is a POST or GET request
           type: "GET",

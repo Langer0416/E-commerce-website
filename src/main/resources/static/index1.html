@@ -3143,10 +3143,17 @@ $(function(){
     //console.log(getval);
     }
 
+   var page =1;
+  var page1 =2;
+  var page2 =3;
   $( document ).ready( function() {
+    page =1;
+    page1 =2;
+    page2 =3;
     console.log( "ready!" );
     emptyProducts();
-    getProducts('products')
+    getProducts('products');
+    getCountProduct();
   });
 
     $('#searchProduct').click(function() {
@@ -3223,6 +3230,7 @@ $(function(){
         number ++ ;
         let html = '<div class="card col-4">';
         html += ' <button type="button" id="'+product.id+'" onclick="choose(id)" class="btn btn-outline-light">';
+        console.log(product.id);
         html += '<img src="' + product. picture + '" title ="' + product.name + '" class="card-img-top" alt="' + product.name + '" width="250" height="350">';
         html += '<div class="card-body">';
         html += '<h5 class="card-title">' + product.name + '</h5>';
@@ -3236,23 +3244,67 @@ $(function(){
         html += '</div>';
         html += '</div>';
         counter ++;
-        if(counter<7&&flag==0)
-        {
-            $('#productList').append(html);
-        }
-        if(flag ==1)
-        {
-            $('#productList').append(html);
-        }
+        $('#productList').append(html);
       }
+      let htm = '<nav aria-label="Page navigation example">';
+         htm += '<br>';
+         htm += '<ul class="pagination justify-content-center">';
+         if(page==1)
+         {
+         htm += '  <li class="page-item disabled"> ';
+         htm += '<a class="page-link" href="#" tabindex="-1" aria-disabled="true">&laquo</a>';
+         htm += ' </li>';
+         }
+         if(page!=1)
+         {
+         htm += '    <li class="page-item">';
+         htm += ' <a class="page-link" onclick="pageChange(page-1)" href="#" >&laquo</a>';
+         htm += '</li>';
+         }
+         htm += '  <li class="page-item"><a class="page-link" href="#" onclick="pageChange(page)">'+ page +'</a></li>';
+         if(page1 > max_page)
+         {
+         htm += ' <li class="page-item disabled"><a class="page-link" href="#" onclick="pageChange(page1)">'+ page1 +'</a></li>';
+         }
+         if(page1 <= max_page)
+         {
+         htm += ' <li class="page-item"><a class="page-link" href="#" onclick="pageChange(page1)">'+ page1 +'</a></li>';
+         }
+         if(page2 > max_page)
+         {
+         htm += '   <li class="page-item disabled"><a class="page-link" href="#" onclick="pageChange(page2)">'+ page2 +'</a></li>';
+         }
+         if(page2 <= max_page)
+         {
+          htm += '   <li class="page-item"><a class="page-link" href="#" onclick="pageChange(page2)">'+ page2 +'</a></li>';
+         }
+         if(page==max_page)
+         {
+         htm += '  <li class="page-item disabled"> ';
+         htm += '<a class="page-link" href="#" tabindex="-1" aria-disabled="true">&raquo</a>';
+         htm += '</li>';
+         }
+         if(page!=max_page)
+         {
+         htm += '    <li class="page-item">';
+         htm += ' <a class="page-link" onclick="pageChange(page+1)" href="#" >&raquo</a>';
+         htm += '</li>';
+         }
+         htm += '</ul>';
+         htm += '</nav>';
+         $('#productList').append(htm);
       flag =0;
     }
 
-    function getProducts(targetUrl) {
+   function getProducts(targetUrl) {
       // Using the core $.ajax() method
       $.ajax({
           // The URL for the request
           url: targetUrl,
+
+          data:{
+          id: (page)*6,
+          },
 
           // Whether this is a POST or GET request
           type: "GET",
@@ -3282,50 +3334,66 @@ $(function(){
 
 
 
-  // Using the core $.ajax() method
-  /*$.ajax({
-      // The URL for the request
-      url: "products",
 
-      // Whether this is a POST or GET request
-      type: "GET",
 
-      // The type of data we expect back
-      dataType : "json",
-  })
-    // Code to run if the request succeeds (is done);
-    // The response is passed to the function
-    .done(function( json ) {
-      let products = json;
+ var product_count=0;
+    var max_page = 0;
+    function addProductsCount(products) {
       for ( let product of products ) {
-        let html = '<div class="card col-4">';
-        html += '<img src="' + product. picture + '" class="card-img-top" alt="' + product.name + '" width="250" height="350">';
-        html += '<div class="card-body">';
-        html += '<h5 class="card-title">' + product.name + '</h5>';
-        html += '<p class="card-text">' + product.id + '</p>';
-        html += '<p class="card-text">' + "目前數量:" +  product. instock+ '</p>';
-        html += '<p class="card-text">' + "商品價錢:" + product. price + '</p>';
-        html += '<p class="card-text">' + "最低購入量:" + product. quantity + '</p>';
-        html += '<a href="login.html" class="btn btn-primary">' + "加入購物車" + '</a>';
-        html += '</div>';
-        html += '</div>';
-        $('#productList').append(html);
+        product_count+=1;
       }
+       max_page  = product_count /6;
+       max_page = Math.ceil(max_page);
+       //max_page = max_page +1;
+       console.log(max_page);
+       //console.log(product_count);
+      }
+    //card-img-top
 
-    })
-    // Code to run if the request fails; the raw request and
-    // status codes are passed to the function
-    .fail(function( xhr, status, errorThrown ) {
-      alert( "Sorry, there was a problem!" );
-      console.log( "Error: " + errorThrown );
-      console.log( "Status: " + status );
-      console.dir( xhr );
-    })
-    // Code to run regardless of success or failure;
-    .always(function( xhr, status ) {
-      //alert( "The request is complete!" );
-    });*/
 
+
+    var nowpage;
+    function pageChange(nowpage){
+        console.log(nowpage);
+        page = nowpage;
+        page1 =page + 1;
+        page2 = page + 2;
+        emptyProducts();
+        getProducts('products');
+    }
+
+    function getCountProduct(targetUrl) {
+      // Using the core $.ajax() method
+      $.ajax({
+          // The URL for the request
+          url: "Countproducts",
+
+
+          // Whether this is a POST or GET request
+          type: "GET",
+
+          // The type of data we expect back
+          dataType : "json",
+      })
+        // Code to run if the request succeeds (is done);
+        // The response is passed to the function
+        .done(function( json ) {
+          let products = json;
+          addProductsCount(products);
+        })
+        // Code to run if the request fails; the raw request and
+        // status codes are passed to the function
+        .fail(function( xhr, status, errorThrown ) {
+          console.log( "Sorry, there was a problem!" );
+          console.log( "Error: " + errorThrown );
+          console.log( "Status: " + status );
+          console.dir( xhr );
+        })
+        // Code to run regardless of success or failure;
+        .always(function( xhr, status ) {
+          console.log( "The request is complete!" );
+        });
+    }
 </script>
 </body>
 </html>
