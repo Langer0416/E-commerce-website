@@ -17,12 +17,27 @@ public class ProductService {
     public ProductService() {
 
     }
-
-    public List<Product> getProducts() {
+    public List<Product> getCountProducts() {
         try (Connection connection = sql2oDbHandler.getConnector().open()) {
-            String query = "SELECT PRODUCT_NAME name,PRODUCT_ID id,INSTOCK stock,PICTURE picture,PRICE price,QUANTITY quantity FROM project.product" ;
+            String query = "SELECT PRODUCT_ID id,PRODUCT_NAME name,INSTOCK stock,PICTURE picture,PRICE price,QUANTITY quantity FROM project.product ";
 
-            return connection.createQuery(query).executeAndFetch(Product.class);
+
+            return connection.createQuery(query)
+                    .executeAndFetch(Product.class);
+        }
+    }
+
+
+
+    public List<Product> getProducts(long id) {
+        try (Connection connection = sql2oDbHandler.getConnector().open()) {
+            String query = "SELECT PRODUCT_ID id,PRODUCT_NAME name,INSTOCK stock,PICTURE picture,PRICE price,QUANTITY quantity FROM project.product "
+                     + "where PRODUCT_ID <= :id and PRODUCT_ID >= :id-5";
+
+            //System.out.println(id);
+            return connection.createQuery(query)
+                    .addParameter("id",id)
+                    .executeAndFetch(Product.class);
         }
     }
 

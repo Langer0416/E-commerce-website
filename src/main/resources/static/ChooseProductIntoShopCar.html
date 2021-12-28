@@ -3349,7 +3349,7 @@ $(function(){
   $( document ).ready( function() {
     console.log( "ready!" );
     emptyProducts();
-    getProducts('products')
+    getCountProduct();
   });
 
     $('#searchProduct').click(function() {
@@ -3594,7 +3594,7 @@ function minuser(){
     function addProducts(products) {
       for ( let product of products ) {
         number ++ ;
-        //console.log(product.id);
+        console.log(product.id);
         if(product.id==ary[1])
         {
         price =product.price;
@@ -3642,11 +3642,12 @@ function minuser(){
       }
     }
 
-    function getProducts(targetUrl) {
+     function getCountProduct(targetUrl) {
       // Using the core $.ajax() method
       $.ajax({
           // The URL for the request
-          url: targetUrl,
+          url: "Countproducts",
+
 
           // Whether this is a POST or GET request
           type: "GET",
