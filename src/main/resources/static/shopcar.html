@@ -231,17 +231,22 @@ body {
     //console.log(getval);
     }
 
+    function topay(){
+    var getval = result;
+    window.location.href="pay.html?valus"+getval;
+    //console.log(getval);
+    }
   $( document ).ready( function() {
     console.log( "ready!" );
     emptyProducts();
     getProducts1('shopcar')
   });
 
-   function emptyProducts() {
+   function emptyProducts(){
       $('#shopcarList').empty();
     }
 
-function to(InsertIntoShopCar){
+ function to(InsertIntoShopCar){
     var getval = InsertIntoShopCar;
     //alert(getval);
     window.location.href="pay.html?valus"+result+"pn"+getval ;
@@ -302,8 +307,9 @@ function to(InsertIntoShopCar){
 <!--      sum = sum +shopcar.price;-->
         let html = '<tr>';
         html += '<td class="ckbox" style="width: 80px;height: 25px;">';
-        html += '<input class="form-check-input" id="'+shopcar.name+'" type="checkbox" value="'+shopcar.price+'" name="divide[]" onclick="show1(id)" >';
-        //html += '<input class="form-check-input" type="checkbox" value="'+shopcar.name+'" name="divide1[]" onclick="show1()" >';
+        html += '<input class="form-check-input" type="checkbox" value="'+shopcar.price+'" name="divide[]" onclick="show1()" >';
+        html += '<input class="form-check-input" type="hidden" value="'+shopcar.name+'" name="divide1[]" onclick="show1()" >';
+        html += '<input class="form-check-input" type="hidden" value="'+shopcar.price+'" name="divide2[]" onclick="show1()" >';
         html += '<label class="form-check-label" for="flexSwitchCheckDefault">'+'</label>';
         html += '</td>';
         html += '<td scope="row">';
@@ -317,13 +323,15 @@ function to(InsertIntoShopCar){
         html += '</td>';
         html += '<td class="align-middle">'+ '<strong>' + "$" +shopcar.price + '</strong>' + '</td>';
         html += '<td class="align-middle">'+ '<strong>' + shopcar.quantity + '</strong>'+'</td>';
-        html += '<td class="align-middle">'+'<a href="#" class="text-dark">'+'<i class="fa fa-trash-o" onclick="shown(id)" id="'+shopcar.name+'">'+'</i>'+'</a>';
+        html += '<td class="align-middle">'+'<a class="text-dark">'+'<i class="fa fa-trash-o" onclick="shown(id)" id="'+shopcar.name+'">'+'</i>'+'</a>';
         html += '</tr>';
         //html += '<p class="card-text">' + shopcar.id + '</p>';
 
 
       //html += '<a id="'+shopcar.name+'"  onclick ="show(id)" class="btn btn-primary">' + "結帳" + '</a>';
         $('#shopcarList').append(html);
+
+
       }
     }
     function shown(id){
@@ -345,6 +353,7 @@ function to(InsertIntoShopCar){
         // The response is passed to the function
         .done(function( text ) {
             console.log(1);
+            //location.href="shopcar.html";
             tocar();
         })
         // Code to run if the request fails; the raw request and
@@ -357,6 +366,8 @@ function to(InsertIntoShopCar){
         })
     }
     function pay_money(sum){
+        var arrayJSON = JSON.stringify(sum);
+        sessionStorage.setItem("tabledata1",arrayJSON);
     $('#totalprice').empty();
       let ht ='<div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">'+"訂單結算"+'</div>';
       ht +='<div class="p-4">'+"*商品價格加上運費為總價"+'</div>'+'</p>';
@@ -368,11 +379,10 @@ function to(InsertIntoShopCar){
       ht += '<h5 class="font-weight-bold">'+" $ " + sum +'</h5>';
       ht += '</li>';
       ht += '</ul>';
-      ht += '<a href="pay.html" class="btn btn-dark rounded-pill py-2 btn-block">'+"去買單"+'</a>';
+      ht += '<a onclick="topay()" class="btn btn-dark rounded-pill py-2 btn-block">'+"去買單"+'</a>';
       $('#totalprice').append(ht);
       }
-    function show1(id){
-    console.log(id);
+    function show1(){
 <!--        var CheckBox = $('input[name = hobby]');-->
 <!--        for(var i = 33; i < CheckBox.length+33; i++)-->
 <!--            {-->
@@ -385,15 +395,30 @@ function to(InsertIntoShopCar){
 <!--            }-->
 
         var divs= $("input[name='divide[]']:checked").map(function() { return $(this).val(); }).get();
-        var divs1= $("input[name='divide[]']:checked").map(function() { return $(this).val(); }).get();
+        var divs1= $("input[name='divide1[]']").map(function() { return $(this).val(); }).get();
+        var divs2= $("input[name='divide2[]']").map(function() { return $(this).val(); }).get();
+        var array=$("input[name='divide3[]']").map(function() { return $(this).val(); }).get();
         sum=0;
+        for(var i=0;i<divs2.length;i++){
+            for(var j=0;j<divs2.length;j++){
+                if(divs[i]==divs2[j]){
+                    array[i]=divs1[j];
+                }
+        }
+        }
+        var arrayJSON = JSON.stringify(array);
+        sessionStorage.setItem("tabledata",arrayJSON);
+
+
         for(var i=0;i<divs.length;i++){
             sum+=parseInt(divs[i],10);
         }
         pay_money(sum);
         console.log(divs);
         console.log(divs1);
-        console.log(sum);
+        console.log(divs2);
+        console.log(array);
+        //console.log(sum);
     }
     function getProducts1(targetUrl) {
       // Using the core $.ajax() method
