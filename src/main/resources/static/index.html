@@ -2876,6 +2876,25 @@ form textarea {
 
         </div>
     </div>
+    <br><br>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
 </section>
 
 
@@ -3216,19 +3235,10 @@ function minuser(id){
         html += '<p class="card-text">' + "目前數量:" +  product.instock+ '</p>';
         html += '<p class="card-text">' + "商品價錢:" + product. price + '</p>';
         html += '<p class="card-text">' + "最低購入量:" + product.quantity + '</p>';
-       /* html += '<ul class="counter">';
-        //console.log(product.id);
-        var first ;
-        html += ' <li id="'+product.id+'"><input type="button" onclick="minuser(id)" value="-"/></li>';
-        html += ' <li id="countnum">0</li>';
-        html += ' <li id="'+product.id+'"><input type="button" onclick="adder(id)" value="+"/></li>';
-        //html += '<a id="'+shopcar.name+'"  onclick ="show(id)" class="btn btn-primary">' + "結帳" + '</a>';
-        html += '</ul>';*/
         html += '<a href="login.html" class="btn btn-primary">' + "加入購物車" + '</a>'; + '</a>';
-            html += '</button>';
+        html += '</button>';
         html += '</div>';
         html += '</div>';
-
         $('#productList').append(html);
         counter++;
         if(counter==6)
@@ -3236,6 +3246,19 @@ function minuser(id){
         break;
         }
       }
+         let htm = '<nav aria-label="Page navigation example">';
+         htm += '<ul class="pagination justify-content-center">';
+         htm += '  <li class="page-item disabled"> ';
+         htm += '<a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>';
+         htm += ' </li>';
+         htm += '  <li class="page-item"><a class="page-link" href="#">1</a></li>';
+         htm += ' <li class="page-item"><a class="page-link" href="#">2</a></li>';
+         htm += '   <li class="page-item"><a class="page-link" href="#">3</a></li>';
+         htm += '    <li class="page-item">';
+         htm += ' <a class="page-link" href="#">Next</a>';
+         htm += '</li>';
+         htm += '</ul>';
+         htm += '</nav>';
     }
 
     function getProducts(targetUrl) {
