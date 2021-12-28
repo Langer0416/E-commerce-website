@@ -324,8 +324,6 @@ function to(InsertIntoShopCar){
 
       //html += '<a id="'+shopcar.name+'"  onclick ="show(id)" class="btn btn-primary">' + "結帳" + '</a>';
         $('#shopcarList').append(html);
-
-
       }
     }
     function shown(id){
@@ -347,7 +345,7 @@ function to(InsertIntoShopCar){
         // The response is passed to the function
         .done(function( text ) {
             console.log(1);
-            location.href="shopcar.html";
+            tocar();
         })
         // Code to run if the request fails; the raw request and
         // status codes are passed to the function

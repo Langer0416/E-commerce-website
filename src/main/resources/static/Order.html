@@ -79,7 +79,7 @@
 <div class="container">
     <h1 class="mt-3">My Shop</h1>
 
-    <div class="mt-3 row" id="shopcarList">
+    <div class="mt-3 row" id="orderList">
     </div>
 </div>
 
@@ -165,7 +165,7 @@
   });
 
    function emptyProducts() {
-      $('#shopcarList').empty();
+      $('#orderList').empty();
     }
 
  function to(InsertIntoShopCar){
@@ -208,7 +208,7 @@
         html += '<p class="card-text">' + "總金額:" + order. price + '</p>';
         html += '</div>';
         html += '</div>';
-        $('#shopcarList').append(html);
+        $('#orderList').append(html);
         }
         /*html += '<img src="' + shopcar. picture + '" class="card-img-top" alt="' + shopcar.name + '" width="250" height="350">';
         html += '<div class="card-body">';

@@ -1,5 +1,6 @@
 package team.sep.teamsep.service;
 
+import team.sep.teamsep.model.Order;
 import team.sep.teamsep.model.Product;
 import team.sep.teamsep.database.Sql2oDbHandler;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,12 +67,12 @@ public class ProductService {
         }
     }
 
-    public List<Product> getProductOrder() {
+    public List<Order> getProductOrder() {
         try (Connection connection = sql2oDbHandler.getConnector().open()) {
             String query = "select pay.account,pay.id ,pay.name,pay.pay,pay.deliver,product.PRICE from pay inner join product on pay.name = product.PRODUCT_NAME order by pay.id" ;
 
             return connection.createQuery(query)
-                    .executeAndFetch(Product.class);
+                    .executeAndFetch(Order.class);
         }
     }
 

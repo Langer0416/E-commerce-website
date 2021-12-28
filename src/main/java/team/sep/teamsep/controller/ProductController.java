@@ -45,7 +45,7 @@ public class ProductController {
     }
 
     @GetMapping("/Order")
-    public List<Product> getProductOrder(){
+    public List<Order> getProductOrder(){
         return productManager.getProductOrder();
     }
 
