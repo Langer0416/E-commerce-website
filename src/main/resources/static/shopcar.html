@@ -143,13 +143,13 @@ body {
                 <div class="col-lg-6" id="totalprice" >
                     <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">訂單結算</div>
                     <div class="p-4">*商品價格加上運費為總價</div></p>
-                    <!--  <ul class="list-unstyled mb-4" >
-                          <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">商品價格 </strong><strong>$390.00</strong></li>
+                      <ul class="list-unstyled mb-4" >
+                          <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">商品價格 </strong><strong>$0.00</strong></li>
                           <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">運費</strong><strong>$10.00</strong></li>
                           <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">總價</strong>
-                              <h5 class="font-weight-bold">$400.00</h5>
+                              <h5 class="font-weight-bold">$10.00</h5>
                           </li>
-                      </ul><a href="#" class="btn btn-dark rounded-pill py-2 btn-block">去買單</a>-->
+                      </ul><a href="#" class="btn btn-dark rounded-pill py-2 btn-block">去買單</a>
                 </div>
             </div>
         </div>
@@ -297,17 +297,10 @@ body {
     function addProducts(products) {
         for ( let shopcar of products ) {
       number ++ ;
-      a = shopcar. quantity;
-      console.log(shopcar.price);
-      for(var j =0; j<shopcar.quantity;j++)
-      {
-      //console.log(j)
-      sum = sum +shopcar.price;
-      }
-      console.log(sum);
+<!--      sum = sum +shopcar.price;-->
         let html = '<tr>';
         html += '<td class="ckbox" style="width: 80px;height: 25px;">';
-        html += '<input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">';
+        html += '<input class="form-check-input" type="checkbox" value="'+shopcar.price+'" name="divide[]" onclick="show1()" >';
         html += '<label class="form-check-label" for="flexSwitchCheckDefault">'+'</label>';
         html += '</td>';
         html += '<td scope="row">';
@@ -315,13 +308,13 @@ body {
 
         html += '<img src="' + shopcar. picture + '" class="img-fluid rounded shadow-sm" alt=""  width="100" >';
         html += '<div class="ml-3 d-inline-block align-middle">';
-		html += '<h5 class="mb-0">' + shopcar.name + '</h5>';
-		html += '</div>';
-		html += '</div>';
-		html += '</td>';
-		html += '<td class="align-middle">'+ '<strong>' + "$" +shopcar.price + '</strong>' + '</td>';
-		html += '<td class="align-middle">'+ '<strong>' + shopcar.quantity + '</strong>'+'</td>';
-		html += '<td class="align-middle">'+'<a href="#" class="text-dark">'+'<i class="fa fa-trash-o">'+'</i>'+'</a>';
+        html += '<h5 class="mb-0">' + shopcar.name + '</h5>';
+        html += '</div>';
+        html += '</div>';
+        html += '</td>';
+        html += '<td class="align-middle">'+ '<strong>' + "$" +shopcar.price + '</strong>' + '</td>';
+        html += '<td class="align-middle">'+ '<strong>' + shopcar.quantity + '</strong>'+'</td>';
+        html += '<td class="align-middle">'+'<a href="#" class="text-dark">'+'<i class="fa fa-trash-o" onclick="shown(id)" id="'+shopcar.name+'">'+'</i>'+'</a>';
         html += '</tr>';
         //html += '<p class="card-text">' + shopcar.id + '</p>';
 
@@ -331,17 +324,73 @@ body {
 
 
       }
-let ht = '<ul class="list-unstyled mb-4">';
-      ht += '<li class="d-flex justify-content-between py-3 border-bottom">'+ '<strong class="text-muted">' + "商品價格" + '</strong>'+'<strong>' + "$390.00" + '</strong>'+'</li>';
-      ht += '<li class="d-flex justify-content-between py-3 border-bottom">'+ '<strong class="text-muted">' + "運費" + '</strong>'+'<strong>' + "$10.00" + '</strong>'+'</li>';
+    }
+    function shown(id){
+        // Using the core $.ajax() method
+      $.ajax({
+          // The URL for the request
+          url: "shown",
+
+          // Whether this is a POST or GET request
+          type: "GET",
+
+          data :{
+             id : id
+          },
+          // The type of data we expect back
+          dataType : "text",
+      })
+        // Code to run if the request succeeds (is done);
+        // The response is passed to the function
+        .done(function( text ) {
+            console.log(1);
+            location.href="shopcar.html";
+        })
+        // Code to run if the request fails; the raw request and
+        // status codes are passed to the function
+        .fail(function( xhr, status, errorThrown ) {
+          console.log( "Sorry, there was a problem!" );
+          console.log( "Error: " + errorThrown );
+          console.log( "Status: " + status );
+          console.dir( xhr );
+        })
+    }
+    function pay_money(sum){
+    $('#totalprice').empty();
+      let ht ='<div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">'+"訂單結算"+'</div>';
+      ht +='<div class="p-4">'+"*商品價格加上運費為總價"+'</div>'+'</p>';
+      ht += '<ul class="list-unstyled mb-4">';
+      ht += '<li class="d-flex justify-content-between py-3 border-bottom">'+ '<strong class="text-muted">' + "商品價格" + '</strong>'+'<strong>' +" $ " + sum + '</strong>'+'</li>';
+      ht += '<li class="d-flex justify-content-between py-3 border-bottom">'+ '<strong class="text-muted">' + "運費" + '</strong>'+'<strong>' + "$ 10.00" + '</strong>'+'</li>';
       ht += '<li class="d-flex justify-content-between py-3 border-bottom">'+ '<strong class="text-muted">' + "總價" + '</strong>';
-      ht += '<h5 class="font-weight-bold">'+"$400"+'</h5>';
+      sum=sum+10;
+      ht += '<h5 class="font-weight-bold">'+" $ " + sum +'</h5>';
       ht += '</li>';
       ht += '</ul>';
-      ht += '<a href="#" class="btn btn-dark rounded-pill py-2 btn-block">'+"去買單"+'</a>';
+      ht += '<a href="pay.html" class="btn btn-dark rounded-pill py-2 btn-block">'+"去買單"+'</a>';
       $('#totalprice').append(ht);
+      }
+    function show1(id){
+<!--    console.log(id);-->
+<!--        var CheckBox = $('input[name = hobby]');-->
+<!--        for(var i = 33; i < CheckBox.length+33; i++)-->
+<!--            {-->
+<!--            if($("input:checkbox[value=id]").prop('checked')){-->
+<!--                console.log("true");-->
+<!--            }-->
+<!--            else{-->
+<!--                console.log("false");-->
+<!--            }-->
+<!--            }-->
+        var divs= $("input[name='divide[]']:checked").map(function() { return $(this).val(); }).get();
+        sum=0;
+        for(var i=0;i<divs.length;i++){
+            sum+=parseInt(divs[i],10);
+        }
+        pay_money(sum);
+        console.log(divs[0]);
+        console.log(sum);
     }
-
     function getProducts1(targetUrl) {
       // Using the core $.ajax() method
       $.ajax({
