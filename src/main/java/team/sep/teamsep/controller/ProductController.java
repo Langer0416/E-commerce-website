@@ -45,7 +45,7 @@ public class ProductController {
     }
 
     @GetMapping("/Order")
-    public List<Product> getProductOrder(){
+    public List<Order> getProductOrder(){
         return productManager.getProductOrder();
     }
 
@@ -87,11 +87,12 @@ public class ProductController {
             @RequestParam("account")  String account,
             @RequestParam("pay") String pay,
             @RequestParam("deliver")  String deliver,
-            @RequestParam("name")  String name
+            @RequestParam("name")  String name,
+            @RequestParam("money")  Integer money
     ){
 
         System.out.println(account);
-        return productManager.pay(account,pay,deliver,name);}
+        return productManager.pay(account,pay,deliver,name,money);}
 
     @RequestMapping(value= "/add", method= RequestMethod.GET)
     @ResponseBody

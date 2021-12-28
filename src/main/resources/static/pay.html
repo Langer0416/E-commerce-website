@@ -383,7 +383,7 @@ p.credit {
 
             <div class="row-payment-method payment-row">
                 <div class="select-icon">
-                    <input type="radio" id="radio1" name="radios" value="pp">
+                    <input type="radio" id="radio1" name="radios" value="超商自取">
                     <label for="radio1"></label>
                 </div>
                 <div class="select-txt">
@@ -408,8 +408,8 @@ p.credit {
 
             <div class="row-payment-method payment-row-last">
                 <div class="select-icon hr">
-                    <input type="radio" id="radio2" name="radios" value="pp" checked>
-                    <label for="radio2"></label>
+                    <input type="radio" id="radio1" name="radios" value="宅配" checked>
+                    <label for="radio1"></label>
                 </div>
                 <div class="select-txt hr">
                     <p class="pymt-type-name">宅配</p>
@@ -443,8 +443,8 @@ p.credit {
 
                 <div class="row-payment-method payment-row">
                     <div class="select-icon">
-                        <input type="radio" id="radio3" name="radios" value="pp">
-                        <label for="radio3"></label>
+                        <input type="radio" id="radio2" name="radios1" value="現金付款">
+                        <label for="radio2"></label>
                     </div>
                     <div class="select-txt">
                         <p class="pymt-type-name">現金付款</p>
@@ -461,8 +461,8 @@ p.credit {
 
                 <div class="row-payment-method payment-row-last">
                     <div class="select-icon hr">
-                        <input type="radio" id="radio4" name="radios" value="pp" checked>
-                        <label for="radio4"></label>
+                        <input type="radio" id="radio2" name="radios1" value="信用卡付款" checked>
+                        <label for="radio2"></label>
                     </div>
                     <div class="select-txt hr">
                         <p class="pymt-type-name">信用卡付款</p>
@@ -556,7 +556,7 @@ p.credit {
             <div class="button-master-container">
                 <div class="button-container"><a href="#">返回選擇運送方式</a>
                 </div>
-                <div class="button-container button-finish" ><a onclick="tocar()" type="button" id="send_button">結帳</a>
+                <div class="button-container button-finish" ><a type="button" id="send_button">結帳</a>
             </div>
         </form>
     </section>
@@ -641,7 +641,7 @@ $(function(){
     }
 
     function tocar(){
-    alert("付款成功!");
+    //alert("付款成功!");
     var getval = ary1[0];
     window.location.href="shopcar.html?valus"+ary[0]+"&"+getval;
     //console.log(getval);
@@ -674,14 +674,12 @@ $(function(){
         //return result;
     }
 $('#send_button').click( function(){
-        console.log(1);
-        const final=$('#pay').find("option:selected").text();
-        const final1=$('#deliver').find("option:selected").text();
-        console.log(final);
-        console.log(final1);
         pay();
     });
-
+    var tableData = JSON.parse(sessionStorage.getItem("tabledata"));
+    var abc=tableData.join(' ')
+    var tableData1 = JSON.parse(sessionStorage.getItem("tabledata1"));
+    console.log(tableData1);
     function pay()
     {
         $.ajax({
@@ -690,9 +688,10 @@ $('#send_button').click( function(){
 
           data :{
              account : ary[0],
-             pay : $('#pay').find("option:selected").text(),
-             deliver : $('#pay1').find("option:selected").text(),
-             name :  ary1[1],
+             pay : $('input[name=radios]:checked').val(),
+             deliver : $('input[name=radios1]:checked').val(),
+             name :  abc,
+             money :  tableData1,
           },
             // Whether this is a POST or GET request
             type: "GET",
