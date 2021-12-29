@@ -701,6 +701,7 @@ $('#send_button').click( function(){
         })
         .done(function( text ) {
                 alert("付款成功");
+                tocar();
                 //location.href='shopcar.html';
         })
         .fail( function(xhr, status, errorThrown) {
