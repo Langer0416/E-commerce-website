@@ -143,6 +143,11 @@ public class ProductService {
                 .addParameter("money",money)
                 .executeUpdate();
 
+            String query1 = "DELETE FROM project.productcar where PRODUCT_NAME = :name";
+          System.out.println(query1);
+          connection.createQuery(query1)
+              .addParameter("name",name)
+              .executeUpdate();
         }
         return "success";
     }
