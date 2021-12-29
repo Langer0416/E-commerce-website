@@ -12,6 +12,32 @@
 
     <title>Langer Shop</title>
     <style>
+
+
+#minus , #plus{
+    height:25px;
+    width:25px;
+    border-style: hidden;
+    background-color:#ffc7ff;
+    border:1px black solid;
+    border-radius:50%;
+}
+#minus:hover{
+    background-color:red;
+    border:none;
+}
+#plus:hover{
+    background-color:green;
+    border:none;
+}
+#countnum {
+    font-family:PMingLiU;
+    margin-left:40px;
+    margin-right:40px;
+}
+
+
+
     /*=== MEDIA QUERY ===*/
 @import url("https://fonts.googleapis.com/css?family=Muli:300,400,600,700,800,900");
 body {
@@ -3538,9 +3564,17 @@ function checkProducts(shopcars) {
     }
     var count=0;
 function adder(){
+    console.log(1);
+    if(count+1>current_stock)
+    {
+        alert("商品選擇數量已達上限!");
+    }
+    else
+    {
     count=$("#countnum").text();
     count=parseInt(count)+1;
     $("#countnum").text(count);
+    }
 }
 
 function minuser(){
@@ -3592,12 +3626,14 @@ function minuser(){
     var flag =0;
     var counter = 0;
     var number = 0;
+    var current_stock;
     function addProducts(products) {
       for ( let product of products ) {
         number ++ ;
         console.log(product.id);
         if(product.id==ary[1])
         {
+        current_stock = product. instock;
         price =product.price;
         picture = product.picture;
         instock = product.instock;
@@ -3628,12 +3664,20 @@ function minuser(){
         html += '<ul>' + '<li>'+ "目前數量&emsp;&emsp;&emsp;&ensp;&ensp;" +  product.instock+ '</li>'+'</ul>';
         html += '</div>';
         html += '<br>';
-        html += '<ul class="counter">';
+
+        html += '<div id="mainDiv">';
+        html += '<button id="minus" onclick="minuser()">-</button>';
+        html += '<span id="countnum">'+count+'</span>';
+        html += '<button id="plus" onclick="adder()">+</button>';
+        html += ' </div>';
+
+        /*html += '<ul class="counter">';
         html += ' <input type="button" onclick="minuser()" value="-"/>';
         html += ' <div id="countnum"  width="200" height="100" style="display:inline;border: 1px solid #666666;">'+count+'</div>';
         html += '<input type="button" onclick="adder()" value="+"/>';
-        html += '</ul>';
-         html += '<br>';
+        html += '</ul>';*/
+
+        html += '<br>';
         html += '<button href="#" id="'+product.name+'"  onclick ="show(id,count)" class="buy--btn">' + '<img src="https://img.icons8.com/windows/32/ffffff/fast-cart.png"/>'+"&ensp;加入購物車" + '</button>';
         html += "&emsp;&emsp;&ensp;"+'<buttom href="#" style="text-decoration:none;padding: 0.76em ;border: none;border-radius: 7px;font-size: 18px;font-weight: 900;letter-spacing: 1.3px;color: #fff;background-color: #FF5959;box-shadow: 2px 2px 25px -7px $color-primary;cursor: pointer;">' + '<img src="https://img.icons8.com/external-those-icons-fill-those-icons/32/ffffff/external-share-network-sharing-those-icons-fill-those-icons.png"/>'+"&ensp;分享商品吧" + '</buttom>';
         html += '</div>';
