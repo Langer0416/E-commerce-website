@@ -6,84 +6,87 @@ package team.sep.teamsep.model;
 
 public class Order {
 
-    /**
-     * 宣告Order的變數型態.
-     */
-    private String account;
+  /**
+   * 宣告Order的變數型態.
+   */
+  private String account;
 
-    private String pay;
+  private String pay;
 
-    private String deliver;
+  private String deliver;
 
-    private int id;
+  private int id;
 
-    private String name;
+  private String name;
 
-    private Integer money;
+  private Integer money;
 
-    /**
-     * public Order.
-     */
+  /**
+   * public Order.
+   */
 
-    public Order() {
-    }
+  public Order() {
+  }
 
-    /**
-     * public Order(String account,String pay, String deliver,int id,String name).
-     */
+  /**
+   * public Order(String account,String pay, String deliver,int id,String name).
+   */
 
-    public Order(String account, String pay, String deliver, int id, String name,Integer money) {
-        this.account = account;
-        this.pay = pay;
-        this.deliver = deliver;
-        this.id = id;
-        this.name =  name;
-        this.money =  money;
-    }
-    public String getAccount(){
-        return account;
-    }
+  public Order(String account, String pay, String deliver, int id, String name, Integer money) {
+    this.account = account;
+    this.pay = pay;
+    this.deliver = deliver;
+    this.id = id;
+    this.name =  name;
+    this.money =  money;
+  }
 
-    public void setAccount(String account){
-        this.account =account;
-    }
+  public String getAccount() {
+    return account;
+  }
 
-    public String getpay() { return pay; }
+  public void setAccount(String account) {
+    this.account = account;
+  }
 
-    public void setpay(String pay) {
-        this.pay = pay;
-    }
+  public String getpay() {
+    return pay;
+  }
 
-    public String getdeliver() {
-        return deliver;
-    }
+  public void setpay(String pay) {
+    this.pay = pay;
+  }
 
-    public void setdeliver(String deliver) {
-        this.deliver = deliver;
-    }
+  public String getdeliver() {
+    return deliver;
+  }
 
-    public int getid(){
-        return id;
-    }
+  public void setdeliver(String deliver) {
+    this.deliver = deliver;
+  }
 
-    public void setid(int id){
-        this.id = id;
-    }
+  public int getid() {
+    return id;
+  }
 
-    public String getname() {
-        return name;
-    }
+  public void setid(int id) {
+    this.id = id;
+  }
 
-    public void setname(String name) {
-        this.name =  name;
-    }
+  public String getname() {
+    return name;
+  }
 
-    public Integer getmoney() {
-        return money;
-    }
+  public void setname(String name) {
+    this.name =  name;
+  }
 
-    public void setmoney(Integer money) {
-        this.money = money;
-    }
+  public Integer getmoney() {
+    return money;
+  }
+
+  public void setmoney(Integer money) {
+    this.money = money;
+  }
 }
 
