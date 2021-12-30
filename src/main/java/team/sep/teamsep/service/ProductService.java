@@ -416,7 +416,7 @@ public class ProductService {
     }
   }
 
-  int b;
+  int bb;
 
   /**
    * registerProduct.
@@ -428,14 +428,14 @@ public class ProductService {
                 +
                 "VALUES(:account,:name,:phone,:password)";
 
-      b = connection.createQuery(query)
+      bb = connection.createQuery(query)
                 .addParameter("account", account)
                 .addParameter("name", name)
                 .addParameter("phone", phone)
                 .addParameter("password", password)
                 .executeUpdate()
                     .getKey(int.class);
-      if (b == 0) {
+      if (bb == 0) {
         return "success";
       } else {
         return "Fail";
