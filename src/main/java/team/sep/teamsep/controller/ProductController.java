@@ -37,14 +37,14 @@ public class ProductController {
    * checkshopcar.
    */
 
-  @GetMapping(value = "/CheckShopCar")
-    public List<ShopCar> CheckShopCar(
+  @GetMapping(value = "/checkshopcar")
+    public List<ShopCar> checkshopcar(
             @RequestParam ("account") String account,
             @RequestParam ("name") String name
   ) {
     //System.out.println(account);
     //System.out.println(name);
-    return  productManager.CheckShopCar(account, name);
+    return  productManager.checkshopcar(account, name);
   }
 
   @GetMapping("/Order")
@@ -59,23 +59,23 @@ public class ProductController {
   }
 
   @GetMapping(value = "/ChooseProductIntoShopCar/{id}")
-    public List<Product> InsertIntoCar1(
+    public List<Product> insertintocar1(
             @PathVariable("id") String id
   ) {
     //System.out.println(id);
-    return productManager.InsertIntoCar1(id);
+    return productManager.insertintocar1(id);
   }
 
   @GetMapping(value = "/shopcar/{id}")
-    public String InsertIntoCar2(
+    public String insertintocar2(
             @PathVariable("id")  String id
   ) {
     System.out.println(id);
-    return productManager.InsertIntoCar2(id);
+    return productManager.insertintocar2(id);
   }
 
-  @GetMapping(value = "/StuffIntoCar")
-    public String StuffIn(
+  @GetMapping(value = "/stuffintocar")
+    public String stuffin(
             @RequestParam("price") long price,
             @RequestParam("picture") String picture,
             @RequestParam("instock") long instock,
@@ -84,7 +84,7 @@ public class ProductController {
             @RequestParam("account") String account
   ) {
     System.out.println(price);
-    return productManager.StuffIntoCar(price, picture, instock, quantity, name, account);
+    return productManager.stuffintocar(price, picture, instock, quantity, name, account);
   }
 
   /**
