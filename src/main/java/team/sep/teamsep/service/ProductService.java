@@ -109,7 +109,7 @@ public class ProductService {
    * CheckShopCar.
    */
 
-  public List<ShopCar> CheckShopCar(String account, String name) {
+  public List<ShopCar> checkshopcar(String account, String name) {
     try (Connection connection = sql2oDbHandler.getConnector().open()) {
       String query = "SELECT ACCOUNT account,PRODUCT_NAME name,PRODUCT_ID id,"
                 +
@@ -148,7 +148,7 @@ public class ProductService {
    */
 
   //List<Product> first = 0;
-  public List<Product> InsertIntoCar1(String id) {
+  public List<Product> insertintocar1(String id) {
     try (Connection connection = sql2oDbHandler.getConnector().open()) {
       //String query = "Insert into project.productcar(PRODUCT_NAME,INSTOCK,PRICE,PICTURE)
       // select PRODUCT_NAME,INSTOCK,PRICE,PICTURE FROM project.product where PRODUCT_NAME = :id";
@@ -183,7 +183,7 @@ public class ProductService {
    * StuffIntoCar.
    */
 
-  public String StuffIntoCar(long price, String picture, long instock, long
+  public String stuffintocar(long price, String picture, long instock, long
         quantity, String name, String account) {
     try (Connection connection = sql2oDbHandler.getConnector().open()) {
       String query = "Insert INTO project.productcar(PRICE,PICTURE,"
@@ -272,7 +272,7 @@ public class ProductService {
    * InsertIntoCar2.
    */
 
-  public String InsertIntoCar2(String id) {
+  public String insertintocar2(String id) {
     try (Connection connection = sql2oDbHandler.getConnector().open()) {
       String query = "DELETE FROM project.productcar where PRODUCT_NAME = :id";
 
@@ -461,7 +461,7 @@ public class ProductService {
     }
   }
 
-  int b;
+  int bb;
 
   /**
    * registerProduct.
@@ -473,14 +473,14 @@ public class ProductService {
                 +
                 "VALUES(:account,:name,:phone,:password)";
 
-      b = connection.createQuery(query)
+      bb = connection.createQuery(query)
                 .addParameter("account", account)
                 .addParameter("name", name)
                 .addParameter("phone", phone)
                 .addParameter("password", password)
                 .executeUpdate()
                     .getKey(int.class);
-      if (b == 0) {
+      if (bb == 0) {
         return "success";
       } else {
         return "Fail";

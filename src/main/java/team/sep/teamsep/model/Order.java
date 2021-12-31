@@ -42,6 +42,7 @@ public class Order {
         this.id = id;
         this.name =  name;
         this.money =  money;
+        this.quantity = quantity;
     }
     public String getAccount(){
         return account;
@@ -98,4 +99,3 @@ public class Order {
     }
 
 }
-
