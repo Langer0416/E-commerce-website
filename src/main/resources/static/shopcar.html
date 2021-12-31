@@ -322,7 +322,7 @@ body {
         html += '</div>';
         html += '</td>';
         html += '<td class="align-middle">'+ '<strong>' + "$" +shopcar.price + '</strong>' + '</td>';
-        html += '<td class="align-middle">'+ '<strong>' + shopcar.quantity + '</strong>'+'</td>';
+        html += '<td class="align-middle" >'+ '<strong>' + '<input type="hidden" name="divide4[]" onclick="show2()" value="'+shopcar.quantity+'" id="'+shopcar.quantity+'">' + shopcar.quantity + '</strong>'+'</td>';
         html += '<td class="align-middle">'+'<a class="text-dark">'+'<i class="fa fa-trash-o" onclick="shown(id)" id="'+shopcar.name+'">'+'</i>'+'</a>';
         html += '</tr>';
         //html += '<p class="card-text">' + shopcar.id + '</p>';
@@ -397,17 +397,23 @@ body {
         var divs= $("input[name='divide[]']:checked").map(function() { return $(this).val(); }).get();
         var divs1= $("input[name='divide1[]']").map(function() { return $(this).val(); }).get();
         var divs2= $("input[name='divide2[]']").map(function() { return $(this).val(); }).get();
+        var divs3= $("input[name='divide4[]']").map(function() { return $(this).val(); }).get();
         var array=$("input[name='divide3[]']").map(function() { return $(this).val(); }).get();
+        var array1=$("input[name='divide5[]']").map(function() { return $(this).val(); }).get();
         sum=0;
         for(var i=0;i<divs2.length;i++){
             for(var j=0;j<divs2.length;j++){
                 if(divs[i]==divs2[j]){
                     array[i]=divs1[j];
+                    array1[i]=divs3[j];
                 }
         }
         }
         var arrayJSON = JSON.stringify(array);
         sessionStorage.setItem("tabledata",arrayJSON);
+
+        var arrayJSON = JSON.stringify(array1);
+        sessionStorage.setItem("tabledata2",arrayJSON);
 
 
         for(var i=0;i<divs.length;i++){
@@ -417,9 +423,12 @@ body {
         console.log(divs);
         console.log(divs1);
         console.log(divs2);
+        console.log(divs3);
         console.log(array);
+        console.log(array1);
         //console.log(sum);
     }
+
     function getProducts1(targetUrl) {
       // Using the core $.ajax() method
       $.ajax({

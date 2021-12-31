@@ -3152,8 +3152,8 @@ $(function(){
     page2 =3;
     console.log( "ready!" );
     emptyProducts();
-    getProducts('products');
     getCountProduct();
+    //getProducts('products');
   });
 
     $('#searchProduct').click(function() {
@@ -3264,6 +3264,7 @@ $(function(){
          htm += '  <li class="page-item"><a class="page-link" href="#" onclick="pageChange(page)">'+ page +'</a></li>';
          if(page1 > max_page)
          {
+         console.log("max_page:" + max_page);
          htm += ' <li class="page-item disabled"><a class="page-link" href="#" onclick="pageChange(page1)">'+ page1 +'</a></li>';
          }
          if(page1 <= max_page)
@@ -3272,6 +3273,7 @@ $(function(){
          }
          if(page2 > max_page)
          {
+         console.log("max_page:" + max_page);
          htm += '   <li class="page-item disabled"><a class="page-link" href="#" onclick="pageChange(page2)">'+ page2 +'</a></li>';
          }
          if(page2 <= max_page)
@@ -3380,6 +3382,7 @@ $(function(){
         .done(function( json ) {
           let products = json;
           addProductsCount(products);
+          getProducts('products');
         })
         // Code to run if the request fails; the raw request and
         // status codes are passed to the function
