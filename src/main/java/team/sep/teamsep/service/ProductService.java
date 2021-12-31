@@ -22,6 +22,18 @@ public class ProductService {
 
   }
 
+  public List<Product> InstockByProductname(String name) {
+    try (Connection connection = sql2oDbHandler.getConnector().open()) {
+      String query = "SELECT INSTOCK  stock,PRODUCT_NAME name FROM project.product where PRODUCT_NAME =:name";
+
+      System.out.println(query);
+
+      return connection.createQuery(query)
+              .addParameter("name",name)
+              .executeAndFetch(Product.class);
+    }
+  }
+
   /**
    *  getCountProducts.
    */
@@ -197,7 +209,7 @@ public class ProductService {
    * pay.
    */
 
-  public String pay(String account, String pay, String deliver, String name, Integer money) {
+  public String pay(String account, String pay, String deliver, String name, Integer money, String quantity) {
     try (Connection connection = sql2oDbHandler.getConnector().open()) {
       String query = "Insert INTO project.pay(account,pay,deliver,name,money) "
                 +
@@ -207,16 +219,36 @@ public class ProductService {
       connection.createQuery(query)
                 .addParameter("account", account)
                 .addParameter("pay", pay)
-                    .addParameter("deliver", deliver)
+                 .addParameter("deliver", deliver)
                 .addParameter("name", name)
                 .addParameter("money", money)
                 .executeUpdate();
 
-      String query1 = "DELETE FROM project.productcar where PRODUCT_NAME = :name";
-      System.out.println(query1);
-      connection.createQuery(query1)
-              .addParameter("name", name)
-              .executeUpdate();
+      String name1 = name;
+      String stock = quantity ;
+      int k =0;
+      //System.out.println(name1);
+      String[] tokens = name1.split(" ");
+      String[] tokens1 =stock.split(" ");
+      for (String token:tokens)
+      {
+        System.out.println(token);
+        String query1 = "DELETE FROM project.productcar where PRODUCT_NAME =:token and ACCOUNT =:account";
+        System.out.println(query1);
+        connection.createQuery(query1)
+                .addParameter("account",account)
+                .addParameter("token",token)
+                .executeUpdate();
+      }
+      int j=0;
+      for (String token1:tokens1)
+      {
+
+        System.out.println(tokens[j]);
+        System.out.println(token1);
+        //String query2 = "UPDATE project.product SET INSTOCK = :INSTOCK-:token1  WHERE PRODUCT_NAME =:tokens[j]";
+        j++;
+      }
     }
     return "success";
   }
@@ -298,6 +330,19 @@ public class ProductService {
                     .addParameter("name", name)
                     .addParameter("account", account)
                     .executeUpdate();
+      return "Success";
+    }
+  }
+
+  public String updatestock(String name, Integer stock) {
+    try (Connection connection = sql2oDbHandler.getConnector().open()) {
+      String query = "UPDATE project.product SET INSTOCK =:stock  WHERE PRODUCT_NAME = :name";
+
+
+      connection.createQuery(query)
+              .addParameter("name", name)
+              .addParameter("stock", stock)
+              .executeUpdate();
       return "Success";
     }
   }

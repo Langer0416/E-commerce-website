@@ -21,6 +21,9 @@ public class Order {
 
     private Integer money;
 
+    private String quantity;
+
+
     /**
      * public Order.
      */
@@ -32,7 +35,7 @@ public class Order {
      * public Order(String account,String pay, String deliver,int id,String name).
      */
 
-    public Order(String account, String pay, String deliver, int id, String name,Integer money) {
+    public Order(String account, String pay, String deliver, int id, String name,Integer money,String quantity) {
         this.account = account;
         this.pay = pay;
         this.deliver = deliver;
@@ -85,5 +88,14 @@ public class Order {
     public void setmoney(Integer money) {
         this.money = money;
     }
+
+    public String getquantity() {
+        return quantity;
+    }
+
+    public void setquantity(String quantity) {
+        this.quantity =  quantity;
+    }
+
 }
 

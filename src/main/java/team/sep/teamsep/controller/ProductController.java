@@ -47,6 +47,13 @@ public class ProductController {
     return  productManager.CheckShopCar(account, name);
   }
 
+  @GetMapping(value = "/InstockByProductname")
+  public List<Product> InstockByProductname(
+          @RequestParam("name") String name) {
+    System.out.println(name);
+    return productManager.InstockByProductname(name);
+  }
+
   @GetMapping("/Order")
     public List<Order> getProductOrder() {
     return productManager.getProductOrder();
@@ -97,11 +104,12 @@ public class ProductController {
             @RequestParam("pay") String pay,
             @RequestParam("deliver")  String deliver,
             @RequestParam("name")  String name,
-            @RequestParam("money")  Integer money
+            @RequestParam("money")  Integer money,
+           @RequestParam("quantity") String quantity
   ) {
 
-    System.out.println(account);
-    return productManager.pay(account, pay, deliver, name, money);
+   // System.out.println(nowstock);
+    return productManager.pay(account, pay, deliver, name, money ,quantity);
   }
 
   @RequestMapping(value = "/add", method = RequestMethod.GET)
@@ -122,6 +130,15 @@ public class ProductController {
             @RequestParam("id")  String name
   ) {
     return productManager.shownProduct(name);
+  }
+
+  @RequestMapping(value = "/updatestock", method = RequestMethod.GET)
+  @ResponseBody
+  public String updatestock(
+          @RequestParam("name")  String name,
+          @RequestParam("stock")  Integer stock
+  ) {
+    return productManager.updatestock(name, stock);
   }
 
   @RequestMapping(value = "/update", method = RequestMethod.GET)
@@ -147,6 +164,8 @@ public class ProductController {
   ) {
     return productManager.updateShopcarProduct(id, price, quantity, name, account);
   }
+
+
 
   @RequestMapping(value = "/change", method = RequestMethod.GET)
   @ResponseBody
