@@ -470,7 +470,7 @@ font-family: 'Pacifico', cursive;
                     <a class="nav-link" href="#">會員中心</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">購物車(0)</a>
+                    <a class="nav-link" href="#">購物車</a>
                 </li>
             </ul>
 
@@ -482,7 +482,9 @@ font-family: 'Pacifico', cursive;
     </div>
 </nav>
 
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<!-- 若需相容 IE11，要加載 Promise Polyfill-->
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
 <!-- Optional JavaScript; choose one of the two! -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
@@ -553,6 +555,7 @@ font-family: 'Pacifico', cursive;
     </div>
     <button class="btn btn-outline-success" type="button" id="register_button">註冊</button>
 </form>-->
+
 <script>
 var i = 0;
     $('#register_button').click( function(){
@@ -579,15 +582,32 @@ var i = 0;
             // The type of data we expect back
             dataType : "text",
         })
-        .done(function( text ) {
+         .done(function( text ) {
             if(text == "success"){
-                alert("註冊成功");
-                location.href='index.html';
+                Swal.fire({
+                  title: 'Congratulation',
+                  text: "註冊成功!",
+                  icon: 'success',
+                  confirmButtonColor: '#3085d6',
+                }).then((result) => {
+                if(result.isConfirmed) {
+                       location.href='index.html';
+                   }
+                })
+
                 }
             else{
-                alert("此帳號已被註冊過");
-                location.href='index.html';
-                }
+                Swal.fire({
+                  title: 'Error',
+                  text: "賣家已註冊過!",
+                  icon: 'error',
+                  confirmButtonColor: '#3085d6',
+                }).then((result) => {
+                if(result.isConfirmed) {
+                       location.href='index.html';
+                   }
+                })
+               }
         })
         .fail( function(xhr, status, errorThrown) {
             console.log( "Sorry, there was a problem!" );
