@@ -126,9 +126,10 @@ public class ProductController {
           @RequestParam("stock")  Integer stock,
           @RequestParam("price")  Integer price,
           @RequestParam("quantity")  Integer quantity,
-          @RequestParam("picture")  String picture
+          @RequestParam("picture")  String picture,
+          @RequestParam("account") String account
   ) {
-    return productManager.addProduct(name, stock, price, quantity, picture);
+    return productManager.addProduct(name, stock, price, quantity, picture, account);
   }
 
   @RequestMapping(value = "/shown", method = RequestMethod.GET)
@@ -155,9 +156,10 @@ public class ProductController {
           @RequestParam("stock")  Integer stock,
           @RequestParam("price")  Integer price,
           @RequestParam("quantity")  Integer quantity,
-          @RequestParam("picture")  String picture
+          @RequestParam("picture")  String picture,
+          @RequestParam("account") String account
   ) {
-    return productManager.updateProduct(name, stock, price, quantity, picture);
+    return productManager.updateProduct(name, stock, price, quantity, picture, account);
   }
 
   @RequestMapping(value = "/UpdateShopCarProduct", method = RequestMethod.GET)
@@ -190,6 +192,15 @@ public class ProductController {
           @RequestParam("password")  String password
   ) {
     return productManager.sellerchangepassword(account, password);
+  }
+
+  @RequestMapping(value = "/check_your_product", method = RequestMethod.GET)
+  @ResponseBody
+  public String check_your_product(
+          @RequestParam("name")  String name,
+          @RequestParam("account")  String account
+  ) {
+    return productManager.check_your_product(name, account);
   }
 
   @RequestMapping(value = "/login", method = RequestMethod.GET)

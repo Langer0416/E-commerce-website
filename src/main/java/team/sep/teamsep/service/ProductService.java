@@ -302,13 +302,13 @@ public class ProductService {
    */
 
   public String addProduct(String name, Integer stock,
-                           Integer price, Integer quantity, String picture) {
+                           Integer price, Integer quantity, String picture, String account) {
     try (Connection connection = sql2oDbHandler.getConnector().open()) {
       String query = "Insert INTO project.product(PRODUCT_NAME,INSTOCK,PRICE"
               +
-              ",QUANTITY,PICTURE) "
+              ",QUANTITY,PICTURE,account) "
               +
-              "VALUES(:name,:stock,:price,:quantity,:picture)";
+              "VALUES(:name,:stock,:price,:quantity,:picture,:account)";
 
       System.out.println(query);
       connection.createQuery(query)
@@ -317,6 +317,7 @@ public class ProductService {
               .addParameter("price", price)
               .addParameter("quantity", quantity)
               .addParameter("picture", picture)
+              .addParameter("account", account)
               .executeUpdate();
 
       return "success";
@@ -362,13 +363,14 @@ public class ProductService {
   /**
    * updateProduct.
    */
+ int check_account= 0;
 
   public String updateProduct(String name, Integer stock,
-                              Integer price, Integer quantity, String picture) {
+                              Integer price, Integer quantity, String picture,String account) {
     try (Connection connection = sql2oDbHandler.getConnector().open()) {
       String query = "UPDATE project.product SET INSTOCK =:stock, PRICE = :price,"
               +
-              "QUANTITY = :quantity ,PICTURE = :picture WHERE PRODUCT_NAME = :name";
+              "QUANTITY = :quantity ,PICTURE = :picture WHERE PRODUCT_NAME = :name and account = :account";
 
 
       connection.createQuery(query)
@@ -377,7 +379,9 @@ public class ProductService {
               .addParameter("price", price)
               .addParameter("quantity", quantity)
               .addParameter("picture", picture)
+              .addParameter("account", account)
               .executeUpdate();
+
       return "Success";
     }
   }
@@ -422,6 +426,24 @@ public class ProductService {
       System.out.println(account);
       //System.out.println(correct);
       return "success";
+    }
+  }
+
+  public String check_your_product(String name, String account) {
+    try (Connection connection = sql2oDbHandler.getConnector().open()) {
+      String query = "SELECT count(*) as total FROM project.product "
+              +
+              "WHERE ACCOUNT=:account and PRODUCT_NAME =:name";
+
+      count = connection.createQuery(query)
+              .addParameter("name", name)
+              .addParameter("account", account)
+              .executeScalar(Integer.class);
+    }
+    if (count > 0) {
+      return "Success";
+    } else {
+      return "fail";
     }
   }
 

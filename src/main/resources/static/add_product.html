@@ -362,11 +362,14 @@ $(document).ready(function() {
     })
 
     var result;
+    var account_str;
     function oneValues(){
     var url=window.location.search;
     if(url.indexOf("?")!=-1)
     {
         result = url.substr(url.indexOf("=")+7);
+        account_str = result.split('&');
+        //console.log(account_str[0]);
         //alert(result);
     }
         //return result;
@@ -422,7 +425,8 @@ $(document).ready(function() {
              stock : $('#pinstock').val(),
              price :　$('#pprice').val(),
              quantity : $('#pquantity').val(),
-             picture : $('#ppicture').val()
+             picture : $('#ppicture').val(),
+             account : account_str[0],
           },
           // The type of data we expect back
           dataType : "text",
