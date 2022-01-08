@@ -3151,8 +3151,10 @@ form textarea {
 
   $( document ).ready( function() {
     console.log( "ready!" );
+    var strAry = result.split('&');
+    //alert(strAry[0]);
     emptyProducts();
-    getCountProduct();
+    getCountProduct1(strAry);
   });
 
     $('#searchProduct').click(function() {
@@ -3175,7 +3177,7 @@ form textarea {
 var flag =0;
     var counter = 0;
     var number = 0;
-    function addProductsCount(products) {
+    function addProductsCount1(products) {
       for ( let product of products ) {
         let html = '<div class="card col-4">';
         html += '<img src="' + product. picture + '" class="card-img-top" alt="' + product.name + '" width="250" height="350">';
@@ -3193,12 +3195,16 @@ var flag =0;
        }
     }
 
-    function getCountProduct(targetUrl) {
+
+    function getCountProduct1(strAry) {
       // Using the core $.ajax() method
       $.ajax({
           // The URL for the request
-          url: "Countproducts",
+          url: "Countproducts1",
 
+          data :{
+             account : strAry[0]
+          },
 
           // Whether this is a POST or GET request
           type: "GET",
@@ -3210,7 +3216,7 @@ var flag =0;
         // The response is passed to the function
         .done(function( json ) {
           let products = json;
-          addProductsCount(products);
+          addProductsCount1(products);
         })
         // Code to run if the request fails; the raw request and
         // status codes are passed to the function

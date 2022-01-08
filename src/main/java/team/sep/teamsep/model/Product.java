@@ -118,7 +118,7 @@ public class Product {
   }
 
   public String  getAccount() {
-    return  account;
+    return account;
   }
 
   public void setAccount(String account) {
