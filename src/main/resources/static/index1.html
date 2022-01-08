@@ -2747,7 +2747,7 @@ form textarea {
 <span id="show"></span>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Langer Shop</a>
+        <a class="navbar-brand" href="#"><img src="https://img.icons8.com/external-prettycons-flat-prettycons/28/000000/external-shopping-cart-shopping-prettycons-flat-prettycons-1.png"/>&ensp;Langer Shop</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -2756,12 +2756,6 @@ form textarea {
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a onclick="tohome()" class="nav-link active" aria-current="page" style="cursor:pointer">首頁</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">逢甲商城</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">一中商城</a>
                 </li>
             </ul>
 
@@ -2777,6 +2771,7 @@ form textarea {
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="nav-link" onclick="tomember()" style="cursor:pointer">修改密碼</a></li>
                         <li><a class="nav-link" onclick="toOrder()" style="cursor:pointer">查看訂單</a></li>
+                        <li><a class="nav-link" onclick="tosell()" style="cursor:pointer">我的賣場</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -3115,6 +3110,12 @@ $(function(){
     function tohome(){
     var getval = result;
     window.location.href="index1.html?valus"+getval;
+    //console.log(getval);
+    }
+
+    function tosell(){
+    var getval = result;
+    window.location.href="index2.html?valus"+getval;
     //console.log(getval);
     }
 

@@ -2747,7 +2747,7 @@ form textarea {
 <span id="show"></span>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Langer  Shop</a>
+    <a class="navbar-brand" href="#"><img src="https://img.icons8.com/external-prettycons-flat-prettycons/28/000000/external-shopping-cart-shopping-prettycons-flat-prettycons-1.png"/>&ensp;Langer  Shop</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -2756,12 +2756,6 @@ form textarea {
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a onclick="tohome()" class="nav-link active" aria-current="page" style="cursor:pointer">首頁</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">逢甲商城</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">一中商城</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -2779,8 +2773,13 @@ form textarea {
         <li class="nav-item">
           <a class="nav-link" href="index.html">登出</a>
         </li>
-        <li class="nav-item">
-          <a onclick="tomember()" class="nav-link" style="cursor:pointer">會員中心</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            會員中心
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+            <li><a class="nav-link" onclick="tosell()" style="cursor:pointer">商城</a></li>
+          </ul>
         </li>
       </ul>
 
@@ -3115,6 +3114,12 @@ form textarea {
     //console.log(getval);
     }
 
+    function tosell(){
+    var getval = result;
+    window.location.href="index1.html?valus"+getval;
+    //console.log(getval);
+    }
+
     //console.log(result);
     function tomember(){
     var getval = result;
@@ -3146,8 +3151,10 @@ form textarea {
 
   $( document ).ready( function() {
     console.log( "ready!" );
+    var strAry = result.split('&');
+    //alert(strAry[0]);
     emptyProducts();
-    getCountProduct();
+    getCountProduct1(strAry);
   });
 
     $('#searchProduct').click(function() {
@@ -3170,7 +3177,7 @@ form textarea {
 var flag =0;
     var counter = 0;
     var number = 0;
-    function addProductsCount(products) {
+    function addProductsCount1(products) {
       for ( let product of products ) {
         let html = '<div class="card col-4">';
         html += '<img src="' + product. picture + '" class="card-img-top" alt="' + product.name + '" width="250" height="350">';
@@ -3188,12 +3195,16 @@ var flag =0;
        }
     }
 
-    function getCountProduct(targetUrl) {
+
+    function getCountProduct1(strAry) {
       // Using the core $.ajax() method
       $.ajax({
           // The URL for the request
-          url: "Countproducts",
+          url: "Countproducts1",
 
+          data :{
+             account : strAry[0]
+          },
 
           // Whether this is a POST or GET request
           type: "GET",
@@ -3205,7 +3216,7 @@ var flag =0;
         // The response is passed to the function
         .done(function( json ) {
           let products = json;
-          addProductsCount(products);
+          addProductsCount1(products);
         })
         // Code to run if the request fails; the raw request and
         // status codes are passed to the function
