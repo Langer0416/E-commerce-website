@@ -2771,6 +2771,7 @@ form textarea {
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="nav-link" onclick="tomember()" style="cursor:pointer">修改密碼</a></li>
                         <li><a class="nav-link" onclick="toOrder()" style="cursor:pointer">查看訂單</a></li>
+                        <li><a class="nav-link" onclick="tosell()" style="cursor:pointer">我的賣場</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -3109,6 +3110,12 @@ $(function(){
     function tohome(){
     var getval = result;
     window.location.href="index1.html?valus"+getval;
+    //console.log(getval);
+    }
+
+    function tosell(){
+    var getval = result;
+    window.location.href="index2.html?valus"+getval;
     //console.log(getval);
     }
 
