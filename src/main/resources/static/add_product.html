@@ -283,7 +283,9 @@ body{
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<!-- 若需相容 IE11，要加載 Promise Polyfill-->
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
 <!--Option 2: Separate Popper and Bootstrap JS -->
 <!--
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
@@ -375,9 +377,16 @@ $(document).ready(function() {
         //return result;
     }
     function toadd_product(){
-    alert("新增成功!");
     var getval = result;
-    window.location.href="add_product.html?valus"+getval;
+     Swal.fire({
+                  title: '新增成功!',
+                  icon: 'success',
+                  confirmButtonColor: '#3085d6',
+                }).then((result) => {
+                if(result.isConfirmed) {
+                       window.location.href="add_product.html?valus"+getval;
+                   }
+                })
     //console.log(getval);
     }
 
@@ -435,8 +444,16 @@ $(document).ready(function() {
         // The response is passed to the function
         .done(function( text ) {
           console.log("success");
-          alert("新增成功");
-          location.href='index2.html';
+          var getval = result;
+     Swal.fire({
+                  title: '新增成功!',
+                  icon: 'success',
+                  confirmButtonColor: '#3085d6',
+                }).then((result) => {
+                if(result.isConfirmed) {
+                       window.location.href="add_product.html?valus"+getval;
+                   }
+                })
         })
         // Code to run if the request fails; the raw request and
         // status codes are passed to the function

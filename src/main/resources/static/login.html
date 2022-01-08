@@ -471,7 +471,7 @@ font-family: 'Pacifico', cursive;
                     <a class="nav-link" href="#">會員中心</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">購物車(0)</a>
+                    <a class="nav-link" href="#">購物車</a>
                 </li>
             </ul>
 
@@ -589,20 +589,17 @@ var i = 0;
         })
         .done(function( text ) {
             if(text == "Success"){
-                Swal.fire({
-                 "密碼錯誤", //標題
-                "若無帳密請先註冊!", //訊息內容(可省略)
-                "error" //圖示(可省略) success/info/warning/error/question
-                //圖示範例：https://sweetalert2.github.io/#icons
-            }).then(function(result) {
-               if (result.value) {
-                    Swal.fire("您按了OK");
-                    to();
+               Swal.fire({
+                  title: 'Welcome',
+                  text: "買家登入成功!",
+                  icon: 'success',
+                  confirmButtonColor: '#3085d6',
+                }).then((result) => {
+                if(result.isConfirmed) {
+                        to();
+                   }
+                })
                }
-            });
-
-                //location.href='index1.html';
-                }
             else{
                 //alert("密碼錯誤若無帳密請先註冊");
                 login1();
@@ -635,9 +632,16 @@ var i = 0;
         })
         .done(function( text ) {
             if(text == "Success"){
-                alert("登入成功賣家");
-                to1();
-                //location.href='index2.html';
+                Swal.fire({
+                  title: 'Welcome',
+                  text: "賣家登入成功!",
+                  icon: 'success',
+                  confirmButtonColor: '#3085d6',
+                }).then((result) => {
+                if(result.isConfirmed) {
+                        to1();
+                   }
+                })
                 }
             else{
                 Swal.fire(
