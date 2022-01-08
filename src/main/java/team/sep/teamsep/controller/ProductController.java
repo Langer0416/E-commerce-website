@@ -24,7 +24,7 @@ public class ProductController {
 
   @GetMapping("/Countproducts1")
   public List<Product>  getCountProducts1(
-          @RequestParam("account") String account
+      @RequestParam("account") String account
   ) {
     return productManager.getCountProducts1(account);
   }
@@ -46,8 +46,8 @@ public class ProductController {
 
   @GetMapping(value = "/CheckShopCar")
   public List<ShopCar> CheckShopCar(
-          @RequestParam ("account") String account,
-          @RequestParam ("name") String name
+      @RequestParam ("account") String account,
+      @RequestParam ("name") String name
   ) {
     //System.out.println(account);
     //System.out.println(name);
@@ -56,7 +56,7 @@ public class ProductController {
 
   @GetMapping(value = "/InstockByProductname")
   public List<Product> InstockByProductname(
-          @RequestParam("name") String name) {
+      @RequestParam("name") String name) {
     System.out.println(name);
     return productManager.InstockByProductname(name);
   }
@@ -74,7 +74,7 @@ public class ProductController {
 
   @GetMapping(value = "/ChooseProductIntoShopCar/{id}")
   public List<Product> InsertIntoCar1(
-          @PathVariable("id") String id
+      @PathVariable("id") String id
   ) {
     //System.out.println(id);
     return productManager.InsertIntoCar1(id);
@@ -82,7 +82,7 @@ public class ProductController {
 
   @GetMapping(value = "/shopcar/{id}")
   public String InsertIntoCar2(
-          @PathVariable("id")  String id
+      @PathVariable("id")  String id
   ) {
     System.out.println(id);
     return productManager.InsertIntoCar2(id);
@@ -90,12 +90,12 @@ public class ProductController {
 
   @GetMapping(value = "/StuffIntoCar")
   public String StuffIn(
-          @RequestParam("price") long price,
-          @RequestParam("picture") String picture,
-          @RequestParam("instock") long instock,
-          @RequestParam("quantity") long quantity,
-          @RequestParam("name") String name,
-          @RequestParam("account") String account
+      @RequestParam("price") long price,
+      @RequestParam("picture") String picture,
+      @RequestParam("instock") long instock,
+      @RequestParam("quantity") long quantity,
+      @RequestParam("name") String name,
+      @RequestParam("account") String account
   ) {
     System.out.println(price);
     return productManager.StuffIntoCar(price, picture, instock, quantity, name, account);
@@ -107,12 +107,12 @@ public class ProductController {
 
   @GetMapping(value = "/pay")
   public String send(
-          @RequestParam("account")  String account,
-          @RequestParam("pay") String pay,
-          @RequestParam("deliver")  String deliver,
-          @RequestParam("name")  String name,
-          @RequestParam("money")  Integer money,
-          @RequestParam("quantity") String quantity
+      @RequestParam("account")  String account,
+      @RequestParam("pay") String pay,
+      @RequestParam("deliver")  String deliver,
+      @RequestParam("name")  String name,
+      @RequestParam("money")  Integer money,
+      @RequestParam("quantity") String quantity
   ) {
 
     // System.out.println(nowstock);
@@ -122,12 +122,12 @@ public class ProductController {
   @RequestMapping(value = "/add", method = RequestMethod.GET)
   @ResponseBody
   public String add(
-          @RequestParam("name")  String name,
-          @RequestParam("stock")  Integer stock,
-          @RequestParam("price")  Integer price,
-          @RequestParam("quantity")  Integer quantity,
-          @RequestParam("picture")  String picture,
-          @RequestParam("account") String account
+      @RequestParam("name")  String name,
+      @RequestParam("stock")  Integer stock,
+      @RequestParam("price")  Integer price,
+      @RequestParam("quantity")  Integer quantity,
+      @RequestParam("picture")  String picture,
+      @RequestParam("account") String account
   ) {
     return productManager.addProduct(name, stock, price, quantity, picture, account);
   }
@@ -135,7 +135,7 @@ public class ProductController {
   @RequestMapping(value = "/shown", method = RequestMethod.GET)
   @ResponseBody
   public String shown(
-          @RequestParam("id")  String name
+      @RequestParam("id")  String name
   ) {
     return productManager.shownProduct(name);
   }
@@ -143,8 +143,8 @@ public class ProductController {
   @RequestMapping(value = "/updatestock", method = RequestMethod.GET)
   @ResponseBody
   public String updatestock(
-          @RequestParam("name")  String name,
-          @RequestParam("stock")  Integer stock
+      @RequestParam("name")  String name,
+      @RequestParam("stock")  Integer stock
   ) {
     return productManager.updatestock(name, stock);
   }
@@ -152,12 +152,12 @@ public class ProductController {
   @RequestMapping(value = "/update", method = RequestMethod.GET)
   @ResponseBody
   public String update(
-          @RequestParam("name")  String name,
-          @RequestParam("stock")  Integer stock,
-          @RequestParam("price")  Integer price,
-          @RequestParam("quantity")  Integer quantity,
-          @RequestParam("picture")  String picture,
-          @RequestParam("account") String account
+      @RequestParam("name")  String name,
+      @RequestParam("stock")  Integer stock,
+      @RequestParam("price")  Integer price,
+      @RequestParam("quantity")  Integer quantity,
+      @RequestParam("picture")  String picture,
+      @RequestParam("account") String account
   ) {
     return productManager.updateProduct(name, stock, price, quantity, picture, account);
   }
@@ -165,11 +165,11 @@ public class ProductController {
   @RequestMapping(value = "/UpdateShopCarProduct", method = RequestMethod.GET)
   @ResponseBody
   public String update(
-          @RequestParam("id")  Integer id,
-          @RequestParam("price")  Integer price,
-          @RequestParam("quantity")  String quantity,
-          @RequestParam("name") String name,
-          @RequestParam("account") String account
+      @RequestParam("id")  Integer id,
+      @RequestParam("price")  Integer price,
+      @RequestParam("quantity")  String quantity,
+      @RequestParam("name") String name,
+      @RequestParam("account") String account
   ) {
     return productManager.updateShopcarProduct(id, price, quantity, name, account);
   }
@@ -179,8 +179,8 @@ public class ProductController {
   @RequestMapping(value = "/change", method = RequestMethod.GET)
   @ResponseBody
   public String change(
-          @RequestParam("account")  String account,
-          @RequestParam("password")  String password
+      @RequestParam("account")  String account,
+      @RequestParam("password")  String password
   ) {
     return productManager.changepassword(account, password);
   }
@@ -188,8 +188,8 @@ public class ProductController {
   @RequestMapping(value = "/changesellerpassword", method = RequestMethod.GET)
   @ResponseBody
   public String changesellerpassword(
-          @RequestParam("account")  String account,
-          @RequestParam("password")  String password
+      @RequestParam("account")  String account,
+      @RequestParam("password")  String password
   ) {
     return productManager.sellerchangepassword(account, password);
   }
@@ -197,8 +197,8 @@ public class ProductController {
   @RequestMapping(value = "/check_your_product", method = RequestMethod.GET)
   @ResponseBody
   public String check_your_product(
-          @RequestParam("name")  String name,
-          @RequestParam("account")  String account
+      @RequestParam("name")  String name,
+      @RequestParam("account")  String account
   ) {
     return productManager.check_your_product(name, account);
   }
@@ -206,8 +206,8 @@ public class ProductController {
   @RequestMapping(value = "/login", method = RequestMethod.GET)
   @ResponseBody
   public String login(
-          @RequestParam("account")  String account,
-          @RequestParam("password")  String password
+      @RequestParam("account")  String account,
+      @RequestParam("password")  String password
   ) {
     return productManager.loginProduct(account, password);
   }
@@ -215,8 +215,8 @@ public class ProductController {
   @RequestMapping(value = "/login1", method = RequestMethod.GET)
   @ResponseBody
   public String login1(
-          @RequestParam("account")  String account,
-          @RequestParam("password")  String password
+      @RequestParam("account")  String account,
+      @RequestParam("password")  String password
   ) {
     return productManager.loginProduct1(account, password);
   }
@@ -224,10 +224,10 @@ public class ProductController {
   @RequestMapping(value = "/register", method = RequestMethod.GET)
   @ResponseBody
   public String register(
-          @RequestParam("account")  String account,
-          @RequestParam("name")  String name,
-          @RequestParam("phone")  Integer phone,
-          @RequestParam("password")  String password
+      @RequestParam("account")  String account,
+      @RequestParam("name")  String name,
+      @RequestParam("phone")  Integer phone,
+      @RequestParam("password")  String password
   ) {
     return productManager.registerProduct(account, name, phone, password);
   }
