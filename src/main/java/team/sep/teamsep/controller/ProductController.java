@@ -23,7 +23,7 @@ public class ProductController {
   }
 
   @GetMapping("/Countproducts1")
-  public List<Product> getCountProducts1(
+  public List<Product>  getCountProducts1(
       @RequestParam("account") String account
   ) {
     return productManager.getCountProducts1(account);
