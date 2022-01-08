@@ -589,8 +589,18 @@ var i = 0;
         })
         .done(function( text ) {
             if(text == "Success"){
-                alert("登入成功顧客");
-                to();
+                Swal.fire({
+                 "密碼錯誤", //標題
+                "若無帳密請先註冊!", //訊息內容(可省略)
+                "error" //圖示(可省略) success/info/warning/error/question
+                //圖示範例：https://sweetalert2.github.io/#icons
+            }).then(function(result) {
+               if (result.value) {
+                    Swal.fire("您按了OK");
+                    to();
+               }
+            });
+
                 //location.href='index1.html';
                 }
             else{
@@ -630,7 +640,12 @@ var i = 0;
                 //location.href='index2.html';
                 }
             else{
-                alert("密碼錯誤若無帳密請先註冊");
+                Swal.fire(
+                "密碼錯誤", //標題
+                "若無帳密請先註冊!", //訊息內容(可省略)
+                "error" //圖示(可省略) success/info/warning/error/question
+                //圖示範例：https://sweetalert2.github.io/#icons
+            );
                 }
         })
         .fail( function(xhr, status, errorThrown) {
