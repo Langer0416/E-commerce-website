@@ -489,25 +489,36 @@ int count11;
   /**
    * registerProduct.
    */
-
+int count3;
   public String registerProduct(String account, String name, Integer phone, String password) {
     try (Connection connection = sql2oDbHandler.getConnector().open()) {
-      String query = "Insert INTO project.customer(ACCOUNT,NAME,PHONE_NUMBER,PASSWORD) "
-              +
-              "VALUES(:account,:name,:phone,:password)";
 
-      b = connection.createQuery(query)
-              .addParameter("account", account)
-              .addParameter("name", name)
-              .addParameter("phone", phone)
-              .addParameter("password", password)
-              .executeUpdate()
-              .getKey(int.class);
+      String query2 = "SELECT count(*) as total FROM project.customer WHERE account= :account";
+      System.out.println(query2);
+      count3 = connection.createQuery(query2)
+          .addParameter("account", account)
+          .executeScalar(Integer.class);
+
+      if (count3 == 0) {
+        b=0;
+        String query = "Insert INTO project.customer(ACCOUNT,NAME,PHONE_NUMBER,PASSWORD) "
+          +
+          "VALUES(:account,:name,:phone,:password)";
+        System.out.println(query);
+        connection.createQuery(query)
+            .addParameter("account", account)
+            .addParameter("name", name)
+            .addParameter("phone", phone)
+            .addParameter("password", password)
+            .executeUpdate();
+      } else {
+        b=1;
+      }
+    }
       if (b == 0) {
         return "success";
       } else {
         return "Fail";
       }
-    }
   }
 }
