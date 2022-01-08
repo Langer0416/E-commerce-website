@@ -3190,8 +3190,25 @@ var flag =0;
        // html += '<a href="#" class="btn btn-primary">' + "加入購物車" + '</a>';
         html += '</div>';
         html += '</div>';
-
+        number++;
             $('#productList').append(html);
+       }
+       if(number==0){
+
+<!--            <li class="list-inline-item"><a class="btn btn-main" href="update_product.html">成為會員</a></li>-->
+<!--          </ul>-->
+
+
+       let html = '<div>';
+          html += '<ul class="list-inline mt-30">';
+          html += '<center>'+'<li class="list-inline-item"><a class="btn btn-main" href="update_product.html">' + "添加您的商品" +'</li>'+'<center>';
+          html += '</ul>';
+          html += '</div>';
+<!--          html += '<center>'+'<a>' + "添加您的商品" +'<a>'+'<center>';-->
+          $('#productList').append(html);
+       }
+       else{
+       number=0;
        }
     }
 
@@ -3215,8 +3232,17 @@ var flag =0;
         // Code to run if the request succeeds (is done);
         // The response is passed to the function
         .done(function( json ) {
+<!--        if(text=="Success"){-->
           let products = json;
           addProductsCount1(products);
+<!--          }-->
+<!--        else {-->
+<!--        let html = '<div class="card col-4">';-->
+<!--        html += '<a >' + "加入購物車" + '</a>';-->
+<!--        html += '</div>';-->
+
+<!--            $('#productList').append(html);-->
+<!--         }-->
         })
         // Code to run if the request fails; the raw request and
         // status codes are passed to the function

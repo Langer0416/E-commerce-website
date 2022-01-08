@@ -49,16 +49,27 @@ public class ProductService {
               .executeAndFetch(Product.class);
     }
   }
-
+  int count11;
   public List<Product> getCountProducts1(String account) {
     try (Connection connection = sql2oDbHandler.getConnector().open()) {
       String query = "SELECT PRODUCT_ID id,PRODUCT_NAME name,INSTOCK"
-          +
-          " stock,PICTURE picture,PRICE price,QUANTITY quantity FROM project.product where account = :account";
+              +
+              " stock,PICTURE picture,PRICE price,QUANTITY quantity FROM project.product where account = :account";
 
       return connection.createQuery(query)
-          .addParameter("account", account)
-          .executeAndFetch(Product.class);
+              .addParameter("account", account)
+              .executeAndFetch(Product.class);
+
+//        String query1 = "SELECT count(*) as total FROM project.product where account = :account";
+//
+//        count11 = connection.createQuery(query1)
+//            .addParameter("account", account)
+//            .executeScalar(Integer.class);
+//      if (count11 > 0) {
+//        return "Success";
+//      } else {
+//        return "fail";
+//      }
     }
   }
 
