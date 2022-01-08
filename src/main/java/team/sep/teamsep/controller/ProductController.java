@@ -22,6 +22,7 @@ public class ProductController {
     return productManager.getCountProducts();
   }
 
+  @GetMapping("/Countproducts1")
   public List<Product>  getCountProducts1(
           @RequestParam("account") String account
   ) {
