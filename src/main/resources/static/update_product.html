@@ -12,6 +12,47 @@
     <title>Langer Shop</title>
 </head>
 <style>
+.button-83 {
+  appearance: button;
+  background-color: transparent;
+  background-image: linear-gradient(to bottom, #fff, #f8eedb);
+  border: 0 solid #e5e7eb;
+  border-radius: .5rem;
+  box-sizing: border-box;
+  color: #482307;
+  column-gap: 1rem;
+  cursor: pointer;
+  display: flex;
+  font-family: ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-size: 80%;
+  font-weight: 700;
+  line-height: 12px;
+  margin: 0;
+  outline: 2px solid transparent;
+  padding: 1rem 1.5rem;
+  text-align: center;
+  text-transform: none;
+  transition: all .1s cubic-bezier(.4, 0, .2, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  box-shadow: -6px 8px 10px rgba(81,41,10,0.1),0px 2px 2px rgba(81,41,10,0.2);
+}
+
+.button-83:active {
+  background-color: #f3f4f6;
+  box-shadow: -1px 2px 5px rgba(81,41,10,0.15),0px 1px 1px rgba(81,41,10,0.15);
+  transform: translateY(0.125rem);
+}
+
+.button-83:focus {
+  box-shadow: rgba(72, 35, 7, .46) 0 0 0 4px, -6px 8px 10px rgba(81,41,10,0.1), 0px 2px 2px rgba(81,41,10,0.2);
+}
+
+
+
+
+
     * {
   margin: 0;
   padding: 0;
@@ -175,16 +216,15 @@ body {
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a onclick="tohome()" class="btn" aria-current="page" style="cursor:pointer">首頁</a>
+                    <a onclick="tohome()" class="nav-link active" aria-current="page" style="cursor:pointer">首頁</a>
                 </li>
-
                 <li class="nav-item dropdown">
-                    <a class="btn" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" style="cursor:pointer" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         商品管理
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="btn" onclick="insertproduct()" style="cursor:pointer">新增商品</a></li>
-                        <li><a class="btn" onclick="updateproduct()" style="cursor:pointer">修改商品</a></li>
+                        <li><a class="nav-link" onclick="insertproduct()" style="cursor:pointer">新增商品</a></li>
+                        <li><a class="nav-link" onclick="updateproduct()" style="cursor:pointer">修改商品</a></li>
                     </ul>
                 </li>
             </ul>
@@ -193,20 +233,22 @@ body {
             <ul class="navbar-nav mb-2 mb-lg-0 d-
             flex">
                 <li class="nav-item">
-                    <a class="btn" href="index.html">登出</a>
+                    <a class="nav-link" href="index.html">登出</a>
                 </li>
-                <li class="nav-item">
-                    <a onclick="tomember()" class="btn"  style="cursor:pointer">會員中心</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        會員中心
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                        <li><a class="nav-link" onclick="tosell()" style="cursor:pointer">商城</a></li>
+                    </ul>
                 </li>
-               <!-- <li class="nav-item">
-                    <a class="nav-link" href="#">購物車(0)</a>
-                </li>-->
             </ul>
 
-            <form class="d-flex">
+            <!--<form class="d-flex">
                 <input class="form-control " type="text" placeholder="商品名稱" aria-label="product name" aria-describedby="searchProduct" id="productKeyword">
                 <button class="btn btn-outline-success" type="button" id="searchProduct">Search</button>
-            </form>
+            </form>-->
         </div>
     </div>
 </nav>
@@ -285,7 +327,11 @@ button.addEventListener('click', function() {
    form.classList.add('form--no')
 });
 
-
+     function tosell(){
+    var getval = result;
+    window.location.href="index1.html?valus"+getval;
+    //console.log(getval);
+    }
 
      $(function(){
     $("#show").html(oneValues());
