@@ -3954,7 +3954,18 @@ $(function(){
     }
 
     function ale(){
-
+Swal.fire({
+  title: '已經註冊過了喔!!!',
+  icon: 'info',
+  width: 600,
+  padding: '3em',
+  backdrop: `
+    rgba(0,0,123,0.4)
+    url("https://sweetalert2.github.io/images/nyan-cat.gif")
+    left top
+    no-repeat
+  `
+})
    }
     function tohome(){
     var getval = result;
