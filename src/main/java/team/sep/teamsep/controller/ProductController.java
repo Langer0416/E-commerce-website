@@ -116,7 +116,7 @@ public class ProductController {
   ) {
 
     // System.out.println(nowstock);
-    return productManager.pay(account, pay, deliver, name, money ,quantity);
+    return productManager.pay(account, pay, deliver, name, money, quantity);
   }
 
   @RequestMapping(value = "/add", method = RequestMethod.GET)
