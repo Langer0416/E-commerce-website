@@ -208,20 +208,22 @@ body{
             <ul class="navbar-nav mb-2 mb-lg-0 d-
             flex">
                 <li class="nav-item">
-                    <a class="btn" href="index.html">登出</a>
+                    <a class="nav-link" href="index.html">登出</a>
                 </li>
-                <li class="nav-item">
-                    <a onclick="tomember()" class="btn" style="cursor:pointer">會員中心</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        會員中心
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                        <li><a class="nav-link" onclick="tosell()" style="cursor:pointer">商城</a></li>
+                    </ul>
                 </li>
-                <!--<li class="nav-item">
-                    <a class="nav-link" href="#">購物車(0)</a>
-                </li>-->
             </ul>
 
-            <form class="d-flex">
+            <!--<form class="d-flex">
                 <input class="form-control " type="text" placeholder="商品名稱" aria-label="product name" aria-describedby="searchProduct" id="productKeyword">
                 <button class="btn btn-outline-success" type="button" id="searchProduct">Search</button>
-            </form>
+            </form>-->
         </div>
     </div>
 </nav>
@@ -314,6 +316,8 @@ $(document).ready(function() {
     elem.append($ripple);
   };
 
+
+
   $(document).on("click", ".login__submit", function(e) {
     if (animating) return;
     animating = true;
@@ -357,7 +361,11 @@ $(document).ready(function() {
 
 });
 
-
+function tosell(){
+    var getval = result;
+    window.location.href="index1.html?valus"+getval;
+    //console.log(getval);
+    }
 
  $(function(){
     $("#show").html(oneValues());
