@@ -22,14 +22,20 @@ public class ProductService {
 
   }
 
+  /**
+   *InstockByProductname.
+   */
+
   public List<Product> InstockByProductname(String name) {
     try (Connection connection = sql2oDbHandler.getConnector().open()) {
-      String query = "SELECT INSTOCK  stock,PRODUCT_NAME name FROM project.product where PRODUCT_NAME =:name";
+      String query = "SELECT INSTOCK  stock,PRODUCT_NAME name "
+          +
+          "FROM project.product where PRODUCT_NAME =:name";
 
       System.out.println(query);
 
       return connection.createQuery(query)
-              .addParameter("name",name)
+              .addParameter("name", name)
               .executeAndFetch(Product.class);
     }
   }
@@ -49,12 +55,20 @@ public class ProductService {
               .executeAndFetch(Product.class);
     }
   }
+
   int count11;
+
+  /**
+   * getCountProducts1.
+   */
+
   public List<Product> getCountProducts1(String account) {
     try (Connection connection = sql2oDbHandler.getConnector().open()) {
       String query = "SELECT PRODUCT_ID id,PRODUCT_NAME name,INSTOCK"
               +
-              " stock,PICTURE picture,PRICE price,QUANTITY quantity FROM project.product where account = :account";
+              " stock,PICTURE picture,PRICE price,QUANTITY quantity "
+          +
+          "FROM project.product where account = :account";
 
       return connection.createQuery(query)
               .addParameter("account", account)
@@ -232,7 +246,8 @@ public class ProductService {
    * pay.
    */
 
-  public String pay(String account, String pay, String deliver, String name, Integer money, String quantity) {
+  public String pay(String account, String pay, String deliver,
+                    String name, Integer money, String quantity) {
     try (Connection connection = sql2oDbHandler.getConnector().open()) {
       String query = "Insert INTO project.pay(account,pay,deliver,name,money) "
               +
@@ -248,28 +263,29 @@ public class ProductService {
               .executeUpdate();
 
       String name1 = name;
-      String stock = quantity ;
-      int k =0;
+      String stock = quantity;
+      int k = 0;
       //System.out.println(name1);
       String[] tokens = name1.split(" ");
-      String[] tokens1 =stock.split(" ");
-      for (String token:tokens)
-      {
+      String[] tokens1 = stock.split(" ");
+      for (String token : tokens) {
         System.out.println(token);
-        String query1 = "DELETE FROM project.productcar where PRODUCT_NAME =:token and ACCOUNT =:account";
+        String query1 = "DELETE FROM project.productcar where PRODUCT_NAME =:token "
+            +
+            "and ACCOUNT =:account";
         System.out.println(query1);
         connection.createQuery(query1)
-                .addParameter("account",account)
-                .addParameter("token",token)
+                .addParameter("account", account)
+                .addParameter("token", token)
                 .executeUpdate();
       }
-      int j=0;
-      for (String token1:tokens1)
-      {
+      int j = 0;
+      for (String token1 : tokens1) {
 
         System.out.println(tokens[j]);
         System.out.println(token1);
-        //String query2 = "UPDATE project.product SET INSTOCK = :INSTOCK-:token1  WHERE PRODUCT_NAME =:tokens[j]";
+        //String query2 = "UPDATE project.product SET INSTOCK = :INSTOCK-:token1
+        // WHERE PRODUCT_NAME =:tokens[j]";
         j++;
       }
     }
@@ -358,6 +374,10 @@ public class ProductService {
     }
   }
 
+  /**
+   * updatestock.
+   */
+
   public String updatestock(String name, Integer stock) {
     try (Connection connection = sql2oDbHandler.getConnector().open()) {
       String query = "UPDATE project.product SET INSTOCK =:stock  WHERE PRODUCT_NAME = :name";
@@ -374,14 +394,20 @@ public class ProductService {
   /**
    * updateProduct.
    */
- int check_account= 0;
+  int check_account = 0;
+
+  /**
+   * updateProduct.
+   */
 
   public String updateProduct(String name, Integer stock,
-                              Integer price, Integer quantity, String picture,String account) {
+                              Integer price, Integer quantity, String picture, String account) {
     try (Connection connection = sql2oDbHandler.getConnector().open()) {
       String query = "UPDATE project.product SET INSTOCK =:stock, PRICE = :price,"
               +
-              "QUANTITY = :quantity ,PICTURE = :picture WHERE PRODUCT_NAME = :name and account = :account";
+              "QUANTITY = :quantity ,PICTURE = :picture WHERE PRODUCT_NAME = :name "
+          +
+          "and account = :account";
 
 
       connection.createQuery(query)
@@ -439,6 +465,10 @@ public class ProductService {
       return "success";
     }
   }
+
+  /**
+   * check_your_product.
+   */
 
   public String check_your_product(String name, String account) {
     try (Connection connection = sql2oDbHandler.getConnector().open()) {
@@ -511,7 +541,12 @@ public class ProductService {
   /**
    * registerProduct.
    */
-int count3;
+  int count3;
+
+  /**
+   * registerProduct.
+   */
+
   public String registerProduct(String account, String name, Integer phone, String password) {
     try (Connection connection = sql2oDbHandler.getConnector().open()) {
 
@@ -522,10 +557,10 @@ int count3;
           .executeScalar(Integer.class);
 
       if (count3 == 0) {
-        b=0;
+        b = 0;
         String query = "Insert INTO project.customer(ACCOUNT,NAME,PHONE_NUMBER,PASSWORD) "
-          +
-          "VALUES(:account,:name,:phone,:password)";
+            +
+            "VALUES(:account,:name,:phone,:password)";
         System.out.println(query);
         connection.createQuery(query)
             .addParameter("account", account)
@@ -534,13 +569,13 @@ int count3;
             .addParameter("password", password)
             .executeUpdate();
       } else {
-        b=1;
+        b = 1;
       }
     }
-      if (b == 0) {
-        return "success";
-      } else {
-        return "Fail";
-      }
+    if (b == 0) {
+      return "success";
+    } else {
+      return "Fail";
+    }
   }
 }
