@@ -3119,9 +3119,6 @@ Form1.btnsubmit.click();
         //return result;
     }
 
-    function ale(){
-
-    }
     function tohome(){
     var getval = result;
     window.location.href="index2.html?valus"+getval;
@@ -3189,6 +3186,22 @@ Form1.btnsubmit.click();
         emptyProducts();
       }
     });
+
+
+    function ale1(){
+Swal.fire({
+  title: '已經註冊過了喔!!!',
+  icon: 'info',
+  width: 600,
+  padding: '3em',
+  backdrop: `
+    rgba(0,0,123,0.4)
+    url("https://sweetalert2.github.io/images/nyan-cat.gif")
+    left top
+    no-repeat
+  `
+})
+   }
 
    function emptyProducts() {
       $('#productList').empty();
