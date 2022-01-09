@@ -3107,10 +3107,10 @@ font-weight: 400;
                                 <h4>3C</h4>
                             </div>
                             <ul class="category-list" >
-                                <li><a href="category.html">鍵盤 <span>1</span></a></li>
-                                <li><a href="category.html">滑鼠 <span>1</span></a></li>
-                                <li><a href="category.html">耳機  <span>1</span></a></li>
-                                <li><a href="category.html">筆電  <span>1</span></a></li>
+                                <li><a onclick="toshopping(1)" style="cursor:pointer">鍵盤 <span>1</span></a></li>
+                                <li><a onclick="toshopping(2)" style="cursor:pointer">滑鼠 <span>1</span></a></li>
+                                <li><a onclick="toshopping(3)" style="cursor:pointer">耳機  <span>1</span></a></li>
+                                <li><a onclick="toshopping(47)" style="cursor:pointer">筆電  <span>1</span></a></li>
                             </ul>
                         </div>
                     </div> <!-- /Category List -->
@@ -3122,10 +3122,10 @@ font-weight: 400;
                                 <h4>日常用品</h4>
                             </div>
                             <ul class="category-list" >
-                                <li><a href="category.html">牙膏 <span>1</span></a></li>
-                                <li><a href="category.html">垃圾袋 <span>1</span></a></li>
-                                <li><a href="category.html">衛生紙  <span>1</span></a></li>
-                                <li><a href="category.html">垃圾桶<span>1</span></a></li>
+                                <li><a onclick="toshopping(6)" style="cursor:pointer">牙膏 <span>1</span></a></li>
+                                <li><a onclick="toshopping(5)" style="cursor:pointer">垃圾袋 <span>1</span></a></li>
+                                <li><a onclick="toshopping(4)" style="cursor:pointer">衛生紙  <span>1</span></a></li>
+                                <li><a onclick="toshopping(11)" style="cursor:pointer">垃圾桶<span>1</span></a></li>
                             </ul>
                         </div>
                     </div> <!-- /Category List -->
@@ -3137,10 +3137,10 @@ font-weight: 400;
                                 <h4>美食</h4>
                             </div>
                             <ul class="category-list" >
-                                <li><a href="category.html">巧克力 <span>1</span></a></li>
-                                <li><a href="category.html">泡麵 <span>1</span></a></li>
-                                <li><a href="category.html">沖泡咖啡  <span>1</span></a></li>
-                                <li><a href="category.html">維他命C <span>1</span></a></li>
+                                <li><a onclick="toshopping(7)" style="cursor:pointer">巧克力 <span>1</span></a></li>
+                                <li><a onclick="toshopping(9)" style="cursor:pointer">泡麵 <span>1</span></a></li>
+                                <li><a onclick="toshopping(8)" style="cursor:pointer">沖泡咖啡  <span>1</span></a></li>
+                                <li><a onclick="toshopping(19)" style="cursor:pointer">維他命C <span>1</span></a></li>
                             </ul>
                         </div>
                     </div> <!-- /Category List -->
@@ -3152,10 +3152,10 @@ font-weight: 400;
                                 <h4>保健用品</h4>
                             </div>
                             <ul class="category-list" >
-                                <li><a href="category.html">魚油 <span>1</span></a></li>
-                                <li><a href="category.html">葉黃素 <span>1</span></a></li>
-                                <li><a href="category.html">乳液 <span>1</span></a></li>
-                                <li><a href="category.html">護手霜 <span>1</span></a></li>
+                                <li><a onclick="toshopping(21)" style="cursor:pointer">魚油 <span>1</span></a></li>
+                                <li><a onclick="toshopping(20)" style="cursor:pointer">葉黃素 <span>1</span></a></li>
+                                <li><a onclick="toshopping(26)" style="cursor:pointer">乳液 <span>1</span></a></li>
+                                <li><a onclick="toshopping(27)" style="cursor:pointer">護手霜 <span>1</span></a></li>
                             </ul>
                         </div>
                     </div>
@@ -3343,6 +3343,13 @@ $(function(){
     window.location.href="index1.html?valus"+ary[0];
     //console.log(getval);
     }
+
+
+    function toshopping(text){
+        var getval = result;
+        window.location.href="ChooseProductIntoShopCar.html?valus"+getval+"pi"+text;
+        //console.log(getval);
+        }
 
      function Order(){
     var getval = result;
