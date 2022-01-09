@@ -3506,6 +3506,23 @@ strong.chat_time {
   color: #bbb;
 }
     </style>
+    <style>.carousel .carousel-item {
+  height: 400px;
+}
+
+.carousel .carousel-item img {
+max-height: 170%;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+    </style>
 </head>
 <body>
 <span id="show"></span>
@@ -3645,6 +3662,32 @@ strong.chat_time {
                 </div>
             </div>
         </div>
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="2500">
+                    <img src="https://p2.bahamut.com.tw/B/2KU/52/d9a7bde97bef9c855b3bf28d4d1e1yw5.JPG?v=1634634678589" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="2500">
+                    <img src="https://p2.bahamut.com.tw/B/2KU/51/ab25d5302c2e5d9c75e369b2661e1yv5.JPG?v=1634634678589" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="2500">
+                    <img src="https://www.computerdiy.com.tw/wp-content/uploads/20211230094531_93.jpeg" class="d-block w-100">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div><br><br>
         <div class="row">
             <!-- offer 01 -->
             <div class="col-lg-12">
