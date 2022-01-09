@@ -3120,8 +3120,8 @@ form textarea {
     page2 =3;
     console.log( "ready!" );
     emptyProducts();
-    getProducts('products');
     getCountProduct();
+    //getProducts('products');
   });
 
     $('#searchProduct').click(function() {
@@ -3147,6 +3147,7 @@ form textarea {
    function emptyProducts() {
       $('#productList').empty();
     }
+
     var product_count=0;
     var max_page = 0;
     function addProductsCount(products) {
@@ -3182,6 +3183,9 @@ form textarea {
         $('#productList').append(html);
         counter++;
       }
+        console.log(page1);
+        console.log(page2);
+        console.log(max_page);
          let htm = '<nav aria-label="Page navigation example">';
          htm += '<br>';
          htm += '<ul class="pagination justify-content-center">';
@@ -3296,6 +3300,7 @@ form textarea {
         .done(function( json ) {
           let products = json;
           addProductsCount(products);
+          getProducts('products');
         })
         // Code to run if the request fails; the raw request and
         // status codes are passed to the function
