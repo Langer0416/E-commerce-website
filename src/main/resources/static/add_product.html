@@ -234,13 +234,13 @@ body{
                 <li class="tab activeTab"><img src="https://i.imgur.com/Fk1Urva.png" alt="" class="icon"/></li>
             </ul>
 
-            <form class="form">
-                <input type="text" id="pname" name="pname" placeholder="輸入商品名稱" class="textbox" />
-                <input type="number" id="pinstock" name="pinstock" placeholder="輸入商品庫存量" class="textbox" />
-                <input type="number" id="pprice" name="pprice" placeholder="輸入商品價錢" class="textbox" />
-                <input type="number" id="pquantity" name="pquantity" placeholder="輸入商品最低購買量" class="textbox" />
-                <input type="url" id="ppicture" name="ppicture" size="60" placeholder="輸入商品URL" class="textbox" />
-                <input type="button" value="Submit"  id="addProduct" onclick="toadd_product()" class="button" />
+            <form name="Form1" class="form">
+                <input onkeydown=KeyDown() type="text" id="pname" name="pname" placeholder="輸入商品名稱" class="textbox" />
+                <input onkeydown=KeyDown() type="number" id="pinstock" name="pinstock" placeholder="輸入商品庫存量" class="textbox" />
+                <input onkeydown=KeyDown() type="number" id="pprice" name="pprice" placeholder="輸入商品價錢" class="textbox" />
+                <input onkeydown=KeyDown() type="number" id="pquantity" name="pquantity" placeholder="輸入商品最低購買量" class="textbox" />
+                <input onkeydown=KeyDown() type="url" id="ppicture" name="ppicture" size="60" placeholder="輸入商品URL" class="textbox" />
+                <input name="btnsubmit" type="button" value="Submit"  id="addProduct" onclick="toadd_product()" class="button" />
                 <!-- <label>商品名稱:  </label><br>
         <input type="text" id="pname" name="pname" placeholder="輸入商品名稱"><br><br>
         <label>商品庫存量:  </label><br>
@@ -296,6 +296,16 @@ body{
 
 
 <script>
+function KeyDown()
+{
+if (event.keyCode == 13)
+{
+event.returnValue=false;
+event.cancel = true;
+Form1.btnsubmit.click();
+}
+}
+
 $(document).ready(function() {
 
   var animating = false,

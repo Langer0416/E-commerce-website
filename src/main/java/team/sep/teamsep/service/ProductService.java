@@ -56,6 +56,19 @@ public class ProductService {
     }
   }
 
+  public List<Product> getProducts_ByAccount(String name,String account) {
+    try (Connection connection = sql2oDbHandler.getConnector().open()) {
+      String query = "SELECT PRODUCT_ID id,PRODUCT_NAME name,INSTOCK"
+              +
+              " stock,PICTURE picture,PRICE price,QUANTITY quantity FROM project.product where account = :account and PRODUCT_NAME like :name";
+
+
+      return connection.createQuery(query)
+              .addParameter("account",account)
+              .addParameter("name",name)
+              .executeAndFetch(Product.class);
+    }
+  }
   int count11;
 
   /**

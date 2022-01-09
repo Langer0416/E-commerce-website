@@ -514,21 +514,21 @@ font-family: 'Pacifico', cursive;
         <div class="container">
             <h1><bea>Register<br><h2>Create your account</h2></bea></h1>
             <div class="login-form">
-                <form action="">
+                <form name="Form1" action="">
                     <label for="account"></label>
-                    <input type="text"required id="account_text" aria-label="account_text" placeholder="帳號"style="box-shadow:2px 2px 2px #E8FFFF;font-family:Microsoft JhengHei;">
+                    <input onkeydown=KeyDown() type="text"required id="account_text" aria-label="account_text" placeholder="帳號"style="box-shadow:2px 2px 2px #E8FFFF;font-family:Microsoft JhengHei;">
                     <label for="name"></label>
-                    <input type="text"required id="name_text" aria-label="name_text" placeholder="姓名"style="box-shadow:2px 2px 2px #E8FFFF;font-family:Microsoft JhengHei;">
+                    <input onkeydown=KeyDown() type="text"required id="name_text" aria-label="name_text" placeholder="姓名"style="box-shadow:2px 2px 2px #E8FFFF;font-family:Microsoft JhengHei;">
                     <label for="phone"></label>
-                    <input type="text"required id="phone_text" aria-label="phone_text" placeholder="電話"style="box-shadow:2px 2px 2px #E8FFFF;font-family:Microsoft JhengHei;">
+                    <input onkeydown=KeyDown() type="text"required id="phone_text" aria-label="phone_text" placeholder="電話"style="box-shadow:2px 2px 2px #E8FFFF;font-family:Microsoft JhengHei;">
                     <label for="password"></label>
-                    <input type="password"required id="password_text" aria-label="password_text" placeholder="密碼"style="box-shadow:2px 2px 2px #E8FFFF;font-family:Microsoft JhengHei;">
+                    <input onkeydown=KeyDown() type="password"required id="password_text" aria-label="password_text" placeholder="密碼"style="box-shadow:2px 2px 2px #E8FFFF;font-family:Microsoft JhengHei;">
                     <br>
                     <div class="remember-form"required >
                     <input type="checkbox">
                         <h4><span style="font-family:Microsoft JhengHei;">我同意 服務條款, 停權管理規章 和 隱私政策。</span></h4>
                 </div>
-                    <button class="btn btn-outline-success" type="button" id="register_button" style="width:500px;height:50px;box-shadow:2px 2px 2px #E8FFE8;font-family:Microsoft JhengHei;">註冊</button>
+                    <button name="btnsubmit" class="btn btn-outline-success" type="button" id="register_button" style="width:500px;height:50px;box-shadow:2px 2px 2px #E8FFE8;font-family:Microsoft JhengHei;">註冊</button>
 
                 </form>
             </div>
@@ -557,6 +557,16 @@ font-family: 'Pacifico', cursive;
 </form>-->
 
 <script>
+function KeyDown()
+{
+if (event.keyCode == 13)
+{
+event.returnValue=false;
+event.cancel = true;
+Form1.btnsubmit.click();
+}
+}
+
 var i = 0;
     $('#register_button').click( function(){
     console.log(1);

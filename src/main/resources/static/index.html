@@ -2824,9 +2824,9 @@ form textarea {
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-12 col-md-12 align-content-center">
-                                <form class="d-flex">
-                                    <input class="form-control " type="text" placeholder="商品名稱" aria-label="product name" aria-describedby="searchProduct" id="productKeyword">
-                                    <button class="btn btn-secondary" type="button" id="searchProduct"><img src="https://img.icons8.com/material-rounded/24/000000/search.png"/></button>
+                                <form name="Form1" class="d-flex">
+                                    <input onkeydown=KeyDown() class="form-control " type="text" placeholder="商品名稱" aria-label="product name" aria-describedby="searchProduct" id="productKeyword">
+                                    <button name="btnsubmit" class="btn btn-secondary" type="button" id="searchProduct"><img src="https://img.icons8.com/material-rounded/24/000000/search.png"/></button>
                                 </form>
                             </div>
                         </div>
@@ -3110,7 +3110,15 @@ form textarea {
 -->
 
 <script>
-
+function KeyDown()
+{
+if (event.keyCode == 13)
+{
+event.returnValue=false;
+event.cancel = true;
+Form1.btnsubmit.click();
+}
+}
   var page =1;
   var page1 =2;
   var page2 =3;
