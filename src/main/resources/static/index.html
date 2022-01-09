@@ -2748,7 +2748,16 @@ form textarea {
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>.carousel .carousel-item {
+  height: 300px;
+}
 
+.carousel .carousel-item img {
+  min-height: 300px;
+  max-height: 400px;
+  object-fit: cover;
+}
+    </style>
 </head>
 <body>
 
@@ -2816,8 +2825,6 @@ form textarea {
                 <div class="content-block">
                     <h1>Buy & Sell Near You </h1>
                     <p> <br> </p>
-
-
                 </div>
                 <!-- Advance Search -->
                 <div class="advance-search">
@@ -2858,6 +2865,32 @@ form textarea {
                 </div>
             </div>
         </div>
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="1000">
+                    <img src="http://www.jcketang.com//wp-content/uploads/2018/12/NicePSD117.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="1000">
+                    <img src="https://s.yimg.com/zp/MipBanners/C1BCF1C021-278571.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item" data-bs-interval="1000">
+                    <img src="https://i2.wp.com/jetsobear.com/wp-content/uploads/2018/11/IMG_20181108_172515.jpg?w=1024&ssl=1 1024w, https://i2.wp.com/jetsobear.com/wp-content/uploads/2018/11/IMG_20181108_172515.jpg?resize=300%2C165&ssl=1 300w, https://i2.wp.com/jetsobear.com/wp-content/uploads/2018/11/IMG_20181108_172515.jpg?resize=768%2C422&ssl=1 768w, https://i2.wp.com/jetsobear.com/wp-content/uploads/2018/11/IMG_20181108_172515.jpg?resize=950%2C523&ssl=1 950w" class="d-block w-100">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div><br><br>
         <div class="row">
             <!-- offer 01 -->
             <div class="col-lg-12">
