@@ -26,7 +26,7 @@ public class ProductService {
    *InstockByProductname.
    */
 
-  public List<Product> InstockByProductname(String name) {
+  public List<Product> aaInstockByProductname(String name) {
     try (Connection connection = sql2oDbHandler.getConnector().open()) {
       String query = "SELECT INSTOCK  stock,PRODUCT_NAME name "
           +
@@ -146,7 +146,7 @@ public class ProductService {
    * CheckShopCar.
    */
 
-  public List<ShopCar> CheckShopCar(String account, String name) {
+  public List<ShopCar> aaCheckShopCar(String account, String name) {
     try (Connection connection = sql2oDbHandler.getConnector().open()) {
       String query = "SELECT ACCOUNT account,PRODUCT_NAME name,PRODUCT_ID id,"
               +
@@ -185,7 +185,7 @@ public class ProductService {
    */
 
   //List<Product> first = 0;
-  public List<Product> InsertIntoCar1(String id) {
+  public List<Product> aaInsertIntoCar1(String id) {
     try (Connection connection = sql2oDbHandler.getConnector().open()) {
       //String query = "Insert into project.productcar(PRODUCT_NAME,INSTOCK,PRICE,PICTURE)
       // select PRODUCT_NAME,INSTOCK,PRICE,PICTURE FROM project.product where PRODUCT_NAME = :id";
@@ -220,7 +220,7 @@ public class ProductService {
    * StuffIntoCar.
    */
 
-  public String StuffIntoCar(long price, String picture, long instock, long
+  public String aaStuffIntoCar(long price, String picture, long instock, long
           quantity, String name, String account) {
     try (Connection connection = sql2oDbHandler.getConnector().open()) {
       String query = "Insert INTO project.productcar(PRICE,PICTURE,"
@@ -311,7 +311,7 @@ public class ProductService {
    * InsertIntoCar2.
    */
 
-  public String InsertIntoCar2(String id) {
+  public String aaInsertIntoCar2(String id) {
     try (Connection connection = sql2oDbHandler.getConnector().open()) {
       String query = "DELETE FROM project.productcar where PRODUCT_NAME = :id";
 
@@ -394,7 +394,8 @@ public class ProductService {
   /**
    * updateProduct.
    */
-  int check_account = 0;
+
+  int checkaccount = 0;
 
   /**
    * updateProduct.
@@ -536,7 +537,7 @@ public class ProductService {
     }
   }
 
-  int b;
+  int abc;
 
   /**
    * registerProduct.
@@ -557,7 +558,7 @@ public class ProductService {
           .executeScalar(Integer.class);
 
       if (count3 == 0) {
-        b = 0;
+        abc = 0;
         String query = "Insert INTO project.customer(ACCOUNT,NAME,PHONE_NUMBER,PASSWORD) "
             +
             "VALUES(:account,:name,:phone,:password)";
@@ -569,10 +570,10 @@ public class ProductService {
             .addParameter("password", password)
             .executeUpdate();
       } else {
-        b = 1;
+        abc = 1;
       }
     }
-    if (b == 0) {
+    if (abc == 0) {
       return "success";
     } else {
       return "Fail";
