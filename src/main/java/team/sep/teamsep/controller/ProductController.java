@@ -78,14 +78,14 @@ public class ProductController {
   ) {
     //System.out.println(account);
     //System.out.println(name);
-    return  productManager.CheckShopCar(account, name);
+    return  productManager.aaCheckShopCar(account, name);
   }
 
   @GetMapping(value = "/InstockByProductname")
   public List<Product> aaInstockByProductname(
       @RequestParam("name") String name) {
     System.out.println(name);
-    return productManager.InstockByProductname(name);
+    return productManager.aaInstockByProductname(name);
   }
 
   @GetMapping("/Order")
@@ -104,7 +104,7 @@ public class ProductController {
       @PathVariable("id") String id
   ) {
     //System.out.println(id);
-    return productManager.InsertIntoCar1(id);
+    return productManager.aaInsertIntoCar1(id);
   }
 
   @GetMapping(value = "/shopcar/{id}")
@@ -112,7 +112,7 @@ public class ProductController {
       @PathVariable("id")  String id
   ) {
     System.out.println(id);
-    return productManager.InsertIntoCar2(id);
+    return productManager.aaInsertIntoCar2(id);
   }
 
   @GetMapping(value = "/StuffIntoCar")
@@ -125,7 +125,7 @@ public class ProductController {
       @RequestParam("account") String account
   ) {
     System.out.println(price);
-    return productManager.StuffIntoCar(price, picture, instock, quantity, name, account);
+    return productManager.aaStuffIntoCar(price, picture, instock, quantity, name, account);
   }
 
   /**
