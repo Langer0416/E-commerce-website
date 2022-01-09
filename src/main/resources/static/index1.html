@@ -3558,7 +3558,7 @@ strong.chat_time {
         <div class="chat_header">
             <div class="chat_option">
 
-                <span id="chat_head">&emsp;&emsp;&emsp;&emsp;聊聊</span> <br>
+                <span id="chat_head">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;聊聊</span> <br>
                 <span id="chat_fullscreen_loader" class="chat_fullscreen_loader"><i class="fullscreen zmdi zmdi-window-maximize"></i></span>
 
             </div>
@@ -3569,6 +3569,7 @@ strong.chat_time {
             <p>開始與賣家對話吧</p>
         </div>
         <div id="chat_converse" class="chat_conversion chat_converse">
+            <a id="back_first_screen" class="fab"><i class="zmdi zmdi-arrow-right"></i></a>
             <span class="chat_msg_item chat_msg_item_admin">
             <div class="chat_avatar">
                <img src="https://img.icons8.com/external-tal-revivo-filled-tal-revivo/24/000000/external-blush-smile-with-eyes-closed-emoji-shared-on-internet-smiley-filled-tal-revivo.png"/>
@@ -4228,7 +4229,9 @@ function toggleFab() {
   $('.fab').toggleClass('is-visible');
 
 }
-
+$('#back_first_screen').click(function(e) {
+        hideChat(0);
+  });
   $('#chat_first_screen').click(function(e) {
         hideChat(1);
   });
