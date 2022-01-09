@@ -259,28 +259,28 @@ body {
             <h1 class="user__title">A Update Product form</h1>
         </header>
 
-        <form class="form">
+        <form name="Form1" class="form">
             <div class="form__group">
-                <input type="text" id="pname" name="pname" placeholder="輸入商品名稱" class="form__input" /><br>
+                <input onkeydown=KeyDown() ="text" id="pname" name="pname" placeholder="輸入商品名稱" class="form__input" /><br>
             </div>
 
             <div class="form__group">
-                <input type="number" id="pinstock" name="pinstock" placeholder="輸入商品庫存量" class="form__input" /><br>
+                <input onkeydown=KeyDown() type="number" id="pinstock" name="pinstock" placeholder="輸入商品庫存量" class="form__input" /><br>
             </div>
 
             <div class="form__group">
-                <input type="number" id="pprice" name="pprice" placeholder="輸入商品價錢" class="form__input" /><br>
+                <input onkeydown=KeyDown() type="number" id="pprice" name="pprice" placeholder="輸入商品價錢" class="form__input" /><br>
             </div>
 
             <div class="form__group">
-                <input type="number" id="pquantity" name="pquantity" placeholder="輸入商品最低購買量" class="form__input" /><br>
+                <input onkeydown=KeyDown() type="number" id="pquantity" name="pquantity" placeholder="輸入商品最低購買量" class="form__input" /><br>
             </div>
 
             <div class="form__group">
-                <input type="url" id="ppicture" name="ppicture"  placeholder="輸入商品URL" class="form__input" /><br>
+                <input onkeydown=KeyDown() type="url" id="ppicture" name="ppicture"  placeholder="輸入商品URL" class="form__input" /><br>
             </div>
 
-            <button id="UpdateProduct" onclick="toupdate_product()" class="btn" type="button">Submit and Update</button>
+            <button name="btnsubmit" id="UpdateProduct" onclick="toupdate_product()" class="btn" type="button">Submit and Update</button>
         </form>
     </div>
     <!--<form>
@@ -320,6 +320,16 @@ body {
 -->
 
 <script>
+function KeyDown()
+{
+if (event.keyCode == 13)
+{
+event.returnValue=false;
+event.cancel = true;
+Form1.btnsubmit.click();
+}
+}
+
 const button = document.querySelector('.btn')
 const form   = document.querySelector('.form')
 

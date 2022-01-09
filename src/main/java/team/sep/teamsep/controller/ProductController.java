@@ -49,6 +49,14 @@ public class ProductController {
     return productManager.getCountProducts();
   }
 
+  @GetMapping("/getProducts_ByAccount")
+  public List<Product>  getProducts_ByAccount(
+          @RequestParam("name") String name,
+          @RequestParam("account") String account
+  ) {
+    return productManager.getProducts_ByAccount(name,account);
+  }
+
   @GetMapping("/Countproducts1")
   public List<Product>  getCountProducts1(
       @RequestParam("account") String account
