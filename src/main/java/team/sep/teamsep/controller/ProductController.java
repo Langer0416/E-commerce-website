@@ -72,7 +72,7 @@ public class ProductController {
    */
 
   @GetMapping(value = "/CheckShopCar")
-  public List<ShopCar> CheckShopCar(
+  public List<ShopCar> aaCheckShopCar(
       @RequestParam ("account") String account,
       @RequestParam ("name") String name
   ) {
@@ -82,7 +82,7 @@ public class ProductController {
   }
 
   @GetMapping(value = "/InstockByProductname")
-  public List<Product> InstockByProductname(
+  public List<Product> aaInstockByProductname(
       @RequestParam("name") String name) {
     System.out.println(name);
     return productManager.InstockByProductname(name);
@@ -100,7 +100,7 @@ public class ProductController {
   }
 
   @GetMapping(value = "/ChooseProductIntoShopCar/{id}")
-  public List<Product> InsertIntoCar1(
+  public List<Product> aaInsertIntoCar1(
       @PathVariable("id") String id
   ) {
     //System.out.println(id);
@@ -108,7 +108,7 @@ public class ProductController {
   }
 
   @GetMapping(value = "/shopcar/{id}")
-  public String InsertIntoCar2(
+  public String aaInsertIntoCar2(
       @PathVariable("id")  String id
   ) {
     System.out.println(id);
@@ -116,7 +116,7 @@ public class ProductController {
   }
 
   @GetMapping(value = "/StuffIntoCar")
-  public String StuffIn(
+  public String aaStuffIn(
       @RequestParam("price") long price,
       @RequestParam("picture") String picture,
       @RequestParam("instock") long instock,
