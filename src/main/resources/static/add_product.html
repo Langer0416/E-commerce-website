@@ -150,6 +150,7 @@ body{
   box-sizing:border-box;
   padding:10px;
   margin-bottom:30px;
+  font-size: 16px;
 }
 
 .textbox:focus{
@@ -191,10 +192,10 @@ body{
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a onclick="tohome()" class="btn" aria-current="page" style="cursor:pointer">首頁</a>
+                    <a onclick="tohome()" class="btn" aria-current="page" style="cursor:pointer; font-size: 14px">首頁</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a style="font-size: 14px" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         商品管理
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -208,14 +209,14 @@ body{
             <ul class="navbar-nav mb-2 mb-lg-0 d-
             flex">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">登出</a>
+                    <a style="font-size: 14px" class="nav-link" href="index.html">登出</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a style="font-size: 14px" class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         會員中心
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                        <li><a class="nav-link" onclick="tosell()" style="cursor:pointer">商城</a></li>
+                        <li><a style="font-size: 14px" class="nav-link" onclick="tosell()" style="cursor:pointer">商城</a></li>
                     </ul>
                 </li>
             </ul>
@@ -236,11 +237,11 @@ body{
 
             <form name="Form1" class="form">
                 <input onkeydown=KeyDown() type="text" id="pname" name="pname" placeholder="輸入商品名稱" class="textbox" />
-                <input onkeydown=KeyDown() type="number" id="pinstock" name="pinstock" placeholder="輸入商品庫存量" class="textbox" />
-                <input onkeydown=KeyDown() type="number" id="pprice" name="pprice" placeholder="輸入商品價錢" class="textbox" />
-                <input onkeydown=KeyDown() type="number" id="pquantity" name="pquantity" placeholder="輸入商品最低購買量" class="textbox" />
-                <input onkeydown=KeyDown() type="url" id="ppicture" name="ppicture" size="60" placeholder="輸入商品URL" class="textbox" />
-                <input name="btnsubmit" type="button" value="Submit"  id="addProduct" onclick="toadd_product()" class="button" />
+                <input onkeydown=KeyDown() type="number" id="pinstock" name="pinstock" placeholder="輸入商品庫存量" class="textbox"  />
+                <input onkeydown=KeyDown() type="number" id="pprice" name="pprice" placeholder="輸入商品價錢" class="textbox"  />
+                <input onkeydown=KeyDown() type="number" id="pquantity" name="pquantity" placeholder="輸入商品最低購買量" class="textbox"  />
+                <input onkeydown=KeyDown() type="url" id="ppicture" name="ppicture" size="60" placeholder="輸入商品URL" class="textbox"  />
+                <input name="btnsubmit" type="button" value="Submit"  id="addProduct" onclick="toadd_product()" class="button"  />
                 <!-- <label>商品名稱:  </label><br>
         <input type="text" id="pname" name="pname" placeholder="輸入商品名稱"><br><br>
         <label>商品庫存量:  </label><br>
